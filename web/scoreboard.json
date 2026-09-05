@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated": "2026-09-05T21:38:26Z",
-  "generated_at": "2026-09-05T21:38:26Z",
+  "generated": "2026-09-05T21:48:23Z",
+  "generated_at": "2026-09-05T21:48:23Z",
   "root": "C:\\dev\\ait",
   "fleet": {
     "seats": 4,
@@ -383,8 +383,8 @@
             {
               "path": "VariantCollator/PRODUCTION_V2.md",
               "exists": true,
-              "bytes": 4417,
-              "mtime": "2026-09-05T21:25:46Z"
+              "bytes": 5061,
+              "mtime": "2026-09-05T21:43:59Z"
             },
             {
               "path": "VariantCollator/COMPLETION_REPORT.md",
@@ -395,8 +395,8 @@
             {
               "path": "VariantCollator/README.md",
               "exists": true,
-              "bytes": 8136,
-              "mtime": "2026-09-05T21:25:18Z"
+              "bytes": 8409,
+              "mtime": "2026-09-05T21:43:29Z"
             },
             {
               "path": "VariantCollator/EXAMPLES.md",
@@ -449,8 +449,8 @@
         {
           "path": "VariantCollator/PRODUCTION_V2.md",
           "exists": true,
-          "bytes": 4417,
-          "mtime": "2026-09-05T21:25:46Z"
+          "bytes": 5061,
+          "mtime": "2026-09-05T21:43:59Z"
         },
         {
           "path": "VariantCollator/COMPLETION_REPORT.md",
@@ -461,8 +461,8 @@
         {
           "path": "VariantCollator/README.md",
           "exists": true,
-          "bytes": 8136,
-          "mtime": "2026-09-05T21:25:18Z"
+          "bytes": 8409,
+          "mtime": "2026-09-05T21:43:29Z"
         },
         {
           "path": "VariantCollator/EXAMPLES.md",
@@ -3615,6 +3615,6 @@
     "pid": 31392,
     "builtAt": "2026-09-05T17:16:45Z"
   },
-  "rebuild_ms": 10.24,
-  "etag": "08ae5f4f5918e75e70970ccc9fcedf53"
+  "rebuild_ms": 10.3,
+  "etag": "48a50e07e008c3fdc63a7c41b3c40dd3"
 }
