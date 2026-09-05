@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated": "2026-09-05T21:08:28Z",
-  "generated_at": "2026-09-05T21:08:28Z",
+  "generated": "2026-09-05T21:13:24Z",
+  "generated_at": "2026-09-05T21:13:24Z",
   "root": "C:\\dev\\ait",
   "fleet": {
     "seats": 4,
@@ -9,7 +9,7 @@
     "unreadable": 0,
     "shipped": 2,
     "mean_grail": 33.56,
-    "active_loops": 4,
+    "active_loops": 2,
     "tools_on_disk": 4,
     "ledger_rows": 3,
     "manifest_rows": 3,
@@ -38,7 +38,7 @@
       "loop": {
         "task": 2,
         "tool": "VariantCollator",
-        "stop": false,
+        "stop": true,
         "loops_done": 0,
         "started": "2026-09-05T20:09:40Z",
         "tokens": {
@@ -57,7 +57,7 @@
           "loop": "inf",
           "seat": "bram"
         },
-        "history_count": 6
+        "history_count": 7
       },
       "grail": {
         "total": 12.5,
@@ -201,15 +201,15 @@
                 "tests": true
               },
               "v1-B": {
-                "exists": false,
-                "production_v1": false,
-                "readme": false,
-                "tests": false
-              },
-              "v1-C": {
                 "exists": true,
                 "production_v1": false,
                 "readme": false,
+                "tests": true
+              },
+              "v1-C": {
+                "exists": true,
+                "production_v1": true,
+                "readme": true,
                 "tests": true
               },
               "v1-D": {
@@ -259,7 +259,7 @@
           "name": "self_report",
           "fields": {
             "self_report_id": null,
-            "stop": false
+            "stop": true
           }
         }
       },
@@ -299,15 +299,15 @@
               "tests": true
             },
             "v1-B": {
-              "exists": false,
-              "production_v1": false,
-              "readme": false,
-              "tests": false
-            },
-            "v1-C": {
               "exists": true,
               "production_v1": false,
               "readme": false,
+              "tests": true
+            },
+            "v1-C": {
+              "exists": true,
+              "production_v1": true,
+              "readme": true,
               "tests": true
             },
             "v1-D": {
@@ -357,8 +357,8 @@
         {
           "path": ".state/bram.json",
           "exists": true,
-          "bytes": 1391,
-          "mtime": "2026-09-05T20:24:53Z"
+          "bytes": 1474,
+          "mtime": "2026-09-05T21:09:42Z"
         },
         {
           "path": ".state/bram.events.jsonl",
@@ -486,6 +486,16 @@
           "source": "state.history",
           "tool": null,
           "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T21:09:42Z",
+          "seat": "bram",
+          "task": null,
+          "result": "stop received (OmniLad)",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
         }
       ]
     },
@@ -501,7 +511,7 @@
       "loop": {
         "task": 6,
         "tool": "AsWritten",
-        "stop": false,
+        "stop": true,
         "loops_done": 2,
         "started": "2026-09-05T20:58:49Z",
         "tokens": {
@@ -520,7 +530,7 @@
           "loop": "inf",
           "seat": "cael"
         },
-        "history_count": 30
+        "history_count": 31
       },
       "grail": {
         "total": 78.12,
@@ -837,7 +847,7 @@
           "name": "self_report",
           "fields": {
             "self_report_id": "m_mtovix49t8l5qr",
-            "stop": false
+            "stop": true
           }
         }
       },
@@ -1005,8 +1015,8 @@
             {
               "path": "AsWritten/BUILD_LOG.md",
               "exists": true,
-              "bytes": 7591,
-              "mtime": "2026-09-05T21:07:47Z"
+              "bytes": 7621,
+              "mtime": "2026-09-05T21:10:40Z"
             },
             {
               "path": "AsWritten/PRODUCTION_V2.md",
@@ -1017,14 +1027,14 @@
             {
               "path": "AsWritten/COMPLETION_REPORT.md",
               "exists": true,
-              "bytes": 1109,
-              "mtime": "2026-09-05T21:06:26Z"
+              "bytes": 1224,
+              "mtime": "2026-09-05T21:09:54Z"
             },
             {
               "path": "AsWritten/README.md",
               "exists": true,
-              "bytes": 1221,
-              "mtime": "2026-09-05T21:05:10Z"
+              "bytes": 1272,
+              "mtime": "2026-09-05T21:09:54Z"
             },
             {
               "path": "AsWritten/EXAMPLES.md",
@@ -1067,8 +1077,8 @@
         {
           "path": ".state/cael.json",
           "exists": true,
-          "bytes": 4008,
-          "mtime": "2026-09-05T21:07:47Z"
+          "bytes": 4091,
+          "mtime": "2026-09-05T21:09:31Z"
         },
         {
           "path": ".state/cael.events.jsonl",
@@ -1109,8 +1119,8 @@
         {
           "path": "AsWritten/BUILD_LOG.md",
           "exists": true,
-          "bytes": 7591,
-          "mtime": "2026-09-05T21:07:47Z"
+          "bytes": 7621,
+          "mtime": "2026-09-05T21:10:40Z"
         },
         {
           "path": "AsWritten/PRODUCTION_V2.md",
@@ -1121,14 +1131,14 @@
         {
           "path": "AsWritten/COMPLETION_REPORT.md",
           "exists": true,
-          "bytes": 1109,
-          "mtime": "2026-09-05T21:06:26Z"
+          "bytes": 1224,
+          "mtime": "2026-09-05T21:09:54Z"
         },
         {
           "path": "AsWritten/README.md",
           "exists": true,
-          "bytes": 1221,
-          "mtime": "2026-09-05T21:05:10Z"
+          "bytes": 1272,
+          "mtime": "2026-09-05T21:09:54Z"
         },
         {
           "path": "AsWritten/EXAMPLES.md",
@@ -1577,6 +1587,16 @@
           "seat": "cael",
           "task": 6,
           "result": "gate6 cleared",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T21:09:31Z",
+          "seat": "cael",
+          "task": null,
+          "result": "stop received (OmniLad)",
           "missing": [],
           "source": "state.history",
           "tool": null,
@@ -2336,6 +2356,26 @@
     }
   ],
   "events": [
+    {
+      "at": "2026-09-05T21:09:42Z",
+      "seat": "bram",
+      "task": null,
+      "result": "stop received (OmniLad)",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T21:09:31Z",
+      "seat": "cael",
+      "task": null,
+      "result": "stop received (OmniLad)",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
     {
       "at": "2026-09-05T21:07:47Z",
       "seat": "cael",
@@ -3209,6 +3249,6 @@
     "pid": 31392,
     "builtAt": "2026-09-05T17:16:45Z"
   },
-  "rebuild_ms": 10.61,
-  "etag": "82a82b35c64f2f17f9079f98b670b9c4"
+  "rebuild_ms": 12.21,
+  "etag": "cff54e760970060eaa7bfd63fd2a9612"
 }
