@@ -745,7 +745,6 @@ function buildSeatInner(root, seat, ctx) {
   if (!state || typeof state !== 'object') throw new Error('state is not an object');
 
   remember(ctx.cache, 'seat:' + seat, state.started || nowIso(st.mtime));
-  if (ctx.cache.first_seen['unreadable:' + seat]) delete ctx.cache.first_seen['unreadable:' + seat];
 
   let eventsText = '';
   if (safeStat(eventsPath)) {
@@ -885,6 +884,8 @@ function buildSeatInner(root, seat, ctx) {
   for (let i = 0; i < toolBundles.length; i++) {
     fileStats.push.apply(fileStats, toolBundles[i].files);
   }
+
+  if (ctx.cache.first_seen['unreadable:' + seat]) delete ctx.cache.first_seen['unreadable:' + seat];
 
   return {
     identity: identity,

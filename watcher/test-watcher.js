@@ -287,6 +287,12 @@ test('page waits, marks stale, busts cache, compares JSON etag field', () => {
   assert.match(html, /cache:\s*"no-store"/);
   assert.doesNotMatch(html, /fetch failed/i);
   assert.doesNotMatch(html, /headers\.get\(\s*["']etag["']/i);
+  assert.match(html, /a\.missing && a\.missing\.length/);
+  assert.match(html, /\["Ledger rows"/);
+  assert.match(html, /\["Manifest rows"/);
+  assert.match(html, /\["Tools on disk"/);
+  assert.match(html, /\["Readable"/);
+  assert.match(html, /\["Unreadable"/);
 });
 
 test('invent-seat: board.seats equals .state/*.json only', () => {
@@ -357,6 +363,24 @@ test('fleet deltas compare to the previous payload in cache', () => {
   cache.previous_fleet.shipped = first.fleet.shipped - 1;
   const third = w.buildScoreboard(FIXTURE, { cache: cache, now: '2026-09-05T16:02:00Z' });
   assert.equal(third.fleet.deltas.shipped, 1);
+});
+
+test('D1: unreadable BUILD_LOG etag is stable across rebuilds', () => {
+  const cache = { version: 1, first_seen: {}, previous_fleet: null };
+  const first = w.buildScoreboard(FIXTURE, { cache: cache, now: '2026-09-05T16:00:00Z' });
+  const glm = seatByName(first, 'glm');
+  assert.equal(glm.identity.readable, false);
+  assert.match(String(glm.identity.unreadable_error), /BUILD_LOG|not a file/i);
+  const since = glm.identity.unreadable_since;
+  assert.ok(since);
+  assert.ok(first.etag);
+  const second = w.buildScoreboard(FIXTURE, { cache: cache, now: '2026-09-05T16:30:00Z' });
+  assert.equal(seatByName(second, 'glm').identity.unreadable_since, since);
+  assert.equal(second.etag, first.etag);
+  const third = w.buildScoreboard(FIXTURE, { cache: cache, now: '2026-09-05T17:00:00Z' });
+  assert.equal(third.etag, first.etag);
+  assert.equal(seatByName(third, 'glm').identity.unreadable_since, since);
+  assert.ok(seatByName(third, 'quip').identity.readable);
 });
 
 test('A_B4: string first_seen does not break rebuild', () => {

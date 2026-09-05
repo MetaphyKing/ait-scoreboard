@@ -252,9 +252,14 @@ footer { margin-top: 28px; color: var(--muted); font-size: 0.78rem; }
     var dlt = f.deltas || {};
     var cells = [
       ["Seats", f.seats, dlt.seats],
+      ["Readable", f.readable, dlt.readable],
+      ["Unreadable", f.unreadable, dlt.unreadable],
       ["Shipped", f.shipped, dlt.shipped],
       ["Mean grail", f.mean_grail, dlt.mean_grail],
-      ["Active loops", f.active_loops, dlt.active_loops]
+      ["Active loops", f.active_loops, dlt.active_loops],
+      ["Tools on disk", f.tools_on_disk, dlt.tools_on_disk],
+      ["Ledger rows", f.ledger_rows, dlt.ledger_rows],
+      ["Manifest rows", f.manifest_rows, dlt.manifest_rows]
     ];
     $("fleet").innerHTML = cells.map(function (c) {
       return '<div class="panel stat"><b>' + esc(fmt(c[1])) + deltaHtml(c[2]) +
@@ -363,6 +368,7 @@ footer { margin-top: 28px; color: var(--muted); font-size: 0.78rem; }
       }).join("");
       var attempts = (s.gate_attempts || []).map(function (a) {
         return "<li>" + esc(a.at) + " T" + a.task + " " + esc(a.result) +
+          (a.missing && a.missing.length ? " [" + esc(a.missing.join("; ")) + "]" : "") +
           (a.first_try ? " <span class='badge ok'>first try</span>" : "") + "</li>";
       }).join("");
       var tools = (s.tools || []).map(function (t) {
