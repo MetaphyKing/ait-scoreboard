@@ -1,8 +1,8 @@
 # Copyright 2026 Metaphy LLC
 # SPDX-License-Identifier: Apache-2.0
 #
-# GitHub Pages from /web on main. This is the documented host path.
-# Do not deploy this board to L_A9.
+# GitHub Pages from /web on main — public mirror.
+# Live origin is L_A9 /ait/.
 
 name: pages
 

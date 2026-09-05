@@ -111,6 +111,11 @@ td { padding: 8px 8px 8px 0; border-top: 1px solid var(--line); vertical-align: 
 }
 .badge.ok { background: rgba(201, 162, 39, 0.14); color: var(--gold); }
 .badge.warn { background: rgba(196, 123, 43, 0.16); color: var(--ochre); }
+.badge.stale { background: rgba(196, 123, 43, 0.2); color: var(--ochre); }
+.delta { font-family: var(--mono); font-size: 0.68rem; color: var(--muted); }
+.delta.up { color: #7ad4e2; }
+.delta.down { color: var(--ochre); }
+.wait { color: var(--muted); font-size: 0.95rem; padding: 18px 4px; }
 .seat { margin-top: 14px; }
 .seat summary { cursor: pointer; list-style: none; }
 .seat summary::-webkit-details-marker { display: none; }
@@ -128,7 +133,7 @@ td { padding: 8px 8px 8px 0; border-top: 1px solid var(--line); vertical-align: 
   font-size: 0.8rem;
   color: #c7ccd8;
 }
-.explain.open { display: block; }
+.explain.open, tr.explain-row.open .explain { display: block; }
 pre.raw {
   margin: 0;
   padding: 14px;
@@ -162,8 +167,9 @@ footer { margin-top: 28px; color: var(--muted); font-size: 0.78rem; }
     <hr class="gold-rule">
     <div class="sub">
       <span>Holy Grail loop &middot; all the data</span>
-      <span class="mono" id="stamp">loading ./scoreboard.json</span>
+      <span class="mono" id="stamp">waiting for the first event</span>
       <span class="mono" id="poll">poll 5s</span>
+      <span class="badge stale hidden" id="stale">stale</span>
     </div>
   </header>
 
@@ -173,7 +179,7 @@ footer { margin-top: 28px; color: var(--muted); font-size: 0.78rem; }
   </div>
 
   <div id="board">
-    <div class="grid fleet" id="fleet"></div>
+    <div class="grid fleet" id="fleet"><p class="wait" id="wait">waiting for the first event</p></div>
     <div class="grid stand" style="margin-top:14px">
       <section class="panel">
         <h2>Standings</h2>
@@ -196,16 +202,18 @@ footer { margin-top: 28px; color: var(--muted); font-size: 0.78rem; }
   </div>
 
   <footer>
-    Relative fetch <span class="stat">./scoreboard.json</span> so this page works at
-    <span class="stat">/ait/</span> or GitHub Pages from <span class="stat">/web</span> on main.
-    Not deployed to L_A9. Builder artifact &mdash; not a Verifier PASS.
+    L_A9 serves <span class="stat">/ait/</span> (relative <span class="stat">./scoreboard.json</span>).
+    GitHub Pages from <span class="stat">/web</span> on main is the public mirror.
+    Builder artifact &mdash; not a Verifier PASS.
   </footer>
 </div>
 <script>
 (function () {
   var DATA_URL = "./scoreboard.json";
   var POLL_MS = 5000;
-  var etag = null;
+  var STALE_MS = 30000;
+  var seenEtag = null;
+  var lastGoodAt = null;
   var data = null;
   var showAll = {};
 
@@ -225,23 +233,32 @@ footer { margin-top: 28px; color: var(--muted); font-size: 0.78rem; }
     var p = g.parts || {};
     var i = g.inputs || {};
     return "Grail " + fmt(g.total) + " / 100 = " +
-      fmt(p.shipped) + " shipped (" + fmt(i.shipped) + "/" + fmt(i.shipped_cap) + " cap, max 40) + " +
+      fmt(p.shipped) + " shipped (" + fmt(i.shipped) + "/" + fmt(i.shipped_field_max) + " field max, max 40) + " +
       fmt(p.first_try) + " first-try (" + fmt(i.first_try_clears) + "/" + fmt(i.total_clears) + " clears, max 25) + " +
       fmt(p.novelty) + " novelty mean " + fmt(i.novelty_mean) + " (max 20) + " +
       fmt(p.speed) + " speed (median " + fmt(i.median_minutes_per_shipped) + " min/shipped inverted vs " +
       fmt(i.speed_ref_minutes) + " min, max 15).";
   }
 
+  function deltaHtml(v) {
+    if (v == null) return "";
+    var cls = v > 0 ? " up" : (v < 0 ? " down" : "");
+    var sign = v > 0 ? "+" : "";
+    return " <span class='delta" + cls + "'>" + sign + fmt(v) + "</span>";
+  }
+
   function renderFleet(d) {
     var f = d.fleet || {};
+    var dlt = f.deltas || {};
     var cells = [
-      ["Seats", f.seats],
-      ["Shipped", f.shipped],
-      ["Mean grail", f.mean_grail],
-      ["Active loops", f.active_loops]
+      ["Seats", f.seats, dlt.seats],
+      ["Shipped", f.shipped, dlt.shipped],
+      ["Mean grail", f.mean_grail, dlt.mean_grail],
+      ["Active loops", f.active_loops, dlt.active_loops]
     ];
     $("fleet").innerHTML = cells.map(function (c) {
-      return '<div class="panel stat"><b>' + esc(fmt(c[1])) + '</b><span>' + esc(c[0]) + '</span></div>';
+      return '<div class="panel stat"><b>' + esc(fmt(c[1])) + deltaHtml(c[2]) +
+        '</b><span>' + esc(c[0]) + '</span></div>';
     }).join("");
   }
 
@@ -258,14 +275,14 @@ footer { margin-top: 28px; color: var(--muted); font-size: 0.78rem; }
         "<td>" + (idx + 1) + "</td>" +
         "<td><strong>" + esc(idn.seat) + "</strong><br><span class='badge'>" + esc(idn.runtime) + "</span>" +
           (idn.readable ? "" : " <span class='badge warn'>unreadable</span>") + "</td>" +
-        "<td><button type='button' class='grail-btn' data-seat='" + esc(idn.seat) + "'>" +
+        "<td><button type='button' class='grail-btn' data-seat='" + esc(idn.seat) + "' aria-expanded='false'>" +
           (win ? "<span class='win'>" : "") + fmt(g.total) + (win ? "</span>" : "") + "</button></td>" +
         "<td>" + fmt(g.inputs && g.inputs.shipped) + "</td>" +
         "<td>" + fmt(g.inputs && g.inputs.first_try_rate) + "</td>" +
         "<td>" + fmt(g.inputs && g.inputs.novelty_mean) + "</td>" +
         "<td>" + fmt(g.inputs && g.inputs.median_minutes_per_shipped) + "</td>" +
         "<td>T" + fmt(loop.task) + " " + esc(loop.tool || "") + "</td>" +
-        "</tr><tr class='explain-row'><td colspan='8'><div class='explain' id='ex-" + esc(idn.seat) + "'>" +
+        "</tr><tr class='explain-row' id='exrow-" + esc(idn.seat) + "'><td colspan='8'><div class='explain' id='ex-" + esc(idn.seat) + "'>" +
         esc(grailExplain(s)) + "</div></td></tr>";
     }).join("");
     $("standings").innerHTML = "<table><thead><tr><th>#</th><th>Seat</th><th>Grail</th><th>Ship</th><th>1st</th><th>Nov</th><th>Min</th><th>Now</th></tr></thead><tbody>" + rows + "</tbody></table>";
@@ -378,7 +395,8 @@ footer { margin-top: 28px; color: var(--muted); font-size: 0.78rem; }
 
   function render(d) {
     data = d;
-    $("stamp").textContent = "generated " + (d.generated_at || "?") + " · " + (d.rebuild_ms || "?") + "ms";
+    $("stamp").textContent = "generated " + (d.generated || d.generated_at || "?") +
+      " · etag " + String(d.etag || "").slice(0, 8);
     $("raw-pre").textContent = JSON.stringify(d, null, 2);
     renderFleet(d);
     renderStandings(d);
@@ -387,49 +405,70 @@ footer { margin-top: 28px; color: var(--muted); font-size: 0.78rem; }
     renderSeats(d);
   }
 
+  function markStale(on) {
+    var el = $("stale");
+    if (el) el.classList.toggle("hidden", !on);
+  }
+
   document.addEventListener("click", function (ev) {
     var t = ev.target;
-    if (t.id === "tab-board" || t.id === "tab-raw") {
-      var raw = t.id === "tab-raw";
-      $("tab-board").setAttribute("aria-selected", raw ? "false" : "true");
-      $("tab-raw").setAttribute("aria-selected", raw ? "true" : "false");
-      $("board").classList.toggle("hidden", raw);
-      $("raw").classList.toggle("hidden", !raw);
-      return;
-    }
-    if (t.classList.contains("grail-btn")) {
-      var box = $("ex-" + t.getAttribute("data-seat"));
-      if (box) box.classList.toggle("open");
-      return;
-    }
-    if (t.getAttribute("data-all") && data) {
-      var k = t.getAttribute("data-all");
-      showAll[k] = !showAll[k];
-      renderSeats(data);
+    if (t.closest) {
+      var tab = t.closest("#tab-board, #tab-raw");
+      if (tab) {
+        var raw = tab.id === "tab-raw";
+        $("tab-board").setAttribute("aria-selected", raw ? "false" : "true");
+        $("tab-raw").setAttribute("aria-selected", raw ? "true" : "false");
+        $("board").classList.toggle("hidden", raw);
+        $("raw").classList.toggle("hidden", !raw);
+        return;
+      }
+      var btn = t.closest(".grail-btn");
+      if (btn) {
+        var seat = btn.getAttribute("data-seat");
+        var box = $("ex-" + seat);
+        var row = $("exrow-" + seat);
+        var open = box && !box.classList.contains("open");
+        if (box) box.classList.toggle("open", open);
+        if (row) row.classList.toggle("open", open);
+        btn.setAttribute("aria-expanded", open ? "true" : "false");
+        return;
+      }
+      var allBtn = t.closest("[data-all]");
+      if (allBtn && data) {
+        var k = allBtn.getAttribute("data-all");
+        showAll[k] = !showAll[k];
+        renderSeats(data);
+      }
     }
   });
 
   function pull() {
-    var headers = { "Cache-Control": "no-store" };
-    if (etag) headers["If-None-Match"] = etag;
-    fetch(DATA_URL, { cache: "no-store", headers: headers })
+    if (lastGoodAt && (Date.now() - lastGoodAt > STALE_MS)) markStale(true);
+    var url = DATA_URL + "?t=" + Date.now();
+    fetch(url, { cache: "no-store", headers: { "Cache-Control": "no-store" } })
       .then(function (res) {
-        var next = res.headers.get("ETag");
-        if (next) etag = next;
-        if (res.status === 304) {
-          $("poll").textContent = "poll 5s · etag not modified";
-          return null;
-        }
         if (!res.ok) throw new Error("HTTP " + res.status);
-        $("poll").textContent = "poll 5s · " + (next ? "etag ok" : "no etag");
         return res.json();
       })
       .then(function (json) {
-        if (json) render(json);
+        lastGoodAt = Date.now();
+        markStale(false);
+        $("poll").textContent = "poll 5s · field etag";
+        if (!json) return;
+        if (json.etag && json.etag === seenEtag) return;
+        seenEtag = json.etag || null;
+        render(json);
       })
-      .catch(function (err) {
-        $("stamp").textContent = "fetch failed: " + err.message;
-        $("poll").textContent = "poll 5s · retrying";
+      .catch(function () {
+        if (!data) {
+          $("stamp").textContent = "waiting for the first event";
+          $("poll").textContent = "poll 5s · waiting";
+        } else if (lastGoodAt && (Date.now() - lastGoodAt > STALE_MS)) {
+          markStale(true);
+          $("poll").textContent = "poll 5s · stale";
+        } else {
+          $("poll").textContent = "poll 5s · retrying";
+        }
       });
   }
 

@@ -1,17 +1,29 @@
 {
   "schema_version": 1,
+  "generated": "2026-09-05T16:00:00Z",
   "generated_at": "2026-09-05T16:00:00Z",
   "root": "watcher/fixtures/ait-root",
   "fleet": {
-    "seats": 3,
+    "seats": 4,
     "readable": 2,
-    "unreadable": 1,
+    "unreadable": 2,
     "shipped": 3,
-    "mean_grail": 51.37,
+    "mean_grail": 75.29,
     "active_loops": 2,
-    "tools_on_disk": 5,
+    "tools_on_disk": 6,
     "ledger_rows": 4,
-    "manifest_rows": 5
+    "manifest_rows": 5,
+    "deltas": {
+      "seats": null,
+      "readable": null,
+      "unreadable": null,
+      "shipped": null,
+      "mean_grail": null,
+      "active_loops": null,
+      "tools_on_disk": null,
+      "ledger_rows": null,
+      "manifest_rows": null
+    }
   },
   "seats": [
     {
@@ -20,7 +32,7 @@
         "runtime": "Broken",
         "runtime_key": "broken",
         "readable": false,
-        "unreadable_since": "2026-09-05T16:07:03Z",
+        "unreadable_since": "2026-09-05T16:00:00Z",
         "unreadable_error": "Expected property name or '}' in JSON at position 1 (line 1 column 2)"
       },
       "loop": null,
@@ -40,7 +52,7 @@
           "novelty_mean": 0,
           "novelty_n": 0,
           "median_minutes_per_shipped": null,
-          "shipped_cap": 10,
+          "shipped_field_max": 2,
           "speed_ref_minutes": 240
         }
       },
@@ -57,6 +69,56 @@
         },
         {
           "path": ".state/broken.events.jsonl",
+          "exists": false,
+          "bytes": 0,
+          "mtime": null
+        }
+      ],
+      "events": []
+    },
+    {
+      "identity": {
+        "seat": "glm",
+        "runtime": "GLM",
+        "runtime_key": "glm",
+        "readable": false,
+        "unreadable_since": "2026-09-05T16:36:45Z",
+        "unreadable_error": "tool BadLog: BUILD_LOG.md is not a file"
+      },
+      "loop": null,
+      "grail": {
+        "total": 0,
+        "parts": {
+          "shipped": 0,
+          "first_try": 0,
+          "novelty": 0,
+          "speed": 0
+        },
+        "inputs": {
+          "shipped": 0,
+          "first_try_clears": 0,
+          "total_clears": 0,
+          "first_try_rate": 0,
+          "novelty_mean": 0,
+          "novelty_n": 0,
+          "median_minutes_per_shipped": null,
+          "shipped_field_max": 2,
+          "speed_ref_minutes": 240
+        }
+      },
+      "task_timing": {},
+      "gate_attempts": [],
+      "tasks": {},
+      "tools": [],
+      "file_stats": [
+        {
+          "path": ".state/glm.json",
+          "exists": true,
+          "bytes": 593,
+          "mtime": "2026-09-05T16:34:20Z"
+        },
+        {
+          "path": ".state/glm.events.jsonl",
           "exists": false,
           "bytes": 0,
           "mtime": null
@@ -98,9 +160,9 @@
         "history_count": 12
       },
       "grail": {
-        "total": 43.83,
+        "total": 59.83,
         "parts": {
-          "shipped": 4,
+          "shipped": 20,
           "first_try": 21.88,
           "novelty": 14.2,
           "speed": 3.75
@@ -113,7 +175,7 @@
           "novelty_mean": 71,
           "novelty_n": 1,
           "median_minutes_per_shipped": 180,
-          "shipped_cap": 10,
+          "shipped_field_max": 2,
           "speed_ref_minutes": 240
         }
       },
@@ -375,8 +437,7 @@
               "CODE QUALITY": "PASS",
               "INTEGRATION": "PASS"
             },
-            "self_report_id": "m_auralens01",
-            "novelty_score": 4
+            "self_report_id": "m_auralens01"
           },
           "novelty_file": "AuraLens/novelty-deep.md",
           "novelty_score": 71,
@@ -483,8 +544,7 @@
               "CODE QUALITY": null,
               "INTEGRATION": null
             },
-            "self_report_id": null,
-            "novelty_score": null
+            "self_report_id": null
           },
           "novelty_file": null,
           "novelty_score": null,
@@ -877,11 +937,11 @@
         "history_count": 21
       },
       "grail": {
-        "total": 58.91,
+        "total": 90.74,
         "parts": {
-          "shipped": 8,
+          "shipped": 40,
           "first_try": 23.33,
-          "novelty": 17.27,
+          "novelty": 17.1,
           "speed": 10.31
         },
         "inputs": {
@@ -889,10 +949,10 @@
           "first_try_clears": 14,
           "total_clears": 15,
           "first_try_rate": 0.93,
-          "novelty_mean": 86.33,
-          "novelty_n": 3,
+          "novelty_mean": 85.5,
+          "novelty_n": 2,
           "median_minutes_per_shipped": 75,
-          "shipped_cap": 10,
+          "shipped_field_max": 2,
           "speed_ref_minutes": 240
         }
       },
@@ -1121,7 +1181,7 @@
             "redundancy": "(a) something different — no cognitive-fit measurer.",
             "chosen_tool": "CognitiveFit",
             "novelty_file": "CognitiveFit/novelty-engine.md",
-            "novelty_score": 88
+            "novelty_score": null
           }
         },
         "2": {
@@ -1217,11 +1277,10 @@
               "CODE QUALITY": null,
               "INTEGRATION": null
             },
-            "self_report_id": null,
-            "novelty_score": 3
+            "self_report_id": null
           },
           "novelty_file": "CognitiveFit/novelty-engine.md",
-          "novelty_score": 88,
+          "novelty_score": null,
           "production_v2": false,
           "completion_report": false,
           "readme": false,
@@ -1315,8 +1374,7 @@
               "CODE QUALITY": "PASS",
               "INTEGRATION": "PASS"
             },
-            "self_report_id": "m_quickrename01",
-            "novelty_score": 3
+            "self_report_id": "m_quickrename01"
           },
           "novelty_file": "QuickRename/novelty-standard.md",
           "novelty_score": 78,
@@ -1423,8 +1481,7 @@
               "CODE QUALITY": "PASS",
               "INTEGRATION": "PASS"
             },
-            "self_report_id": "m_windowsnap01",
-            "novelty_score": 3
+            "self_report_id": "m_windowsnap01"
           },
           "novelty_file": "WindowSnap/novelty-score.md",
           "novelty_score": 93,
@@ -1977,13 +2034,574 @@
       ]
     }
   ],
+  "events": [
+    {
+      "at": "2026-09-05T12:20:00Z",
+      "seat": "opus",
+      "task": null,
+      "result": "choose",
+      "missing": [],
+      "source": "state.history",
+      "tool": "DiffPilot",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T12:08:00Z",
+      "seat": "opus",
+      "task": 0,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T12:08:00Z",
+      "seat": "opus",
+      "task": 0,
+      "result": "gate0 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T12:00:00Z",
+      "seat": "opus",
+      "task": null,
+      "result": "start",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T10:10:00Z",
+      "seat": "quip",
+      "task": null,
+      "result": "choose",
+      "missing": [],
+      "source": "state.history",
+      "tool": "CognitiveFit",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T10:04:00Z",
+      "seat": "quip",
+      "task": 0,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T10:04:00Z",
+      "seat": "quip",
+      "task": 0,
+      "result": "gate0 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T10:00:00Z",
+      "seat": "quip",
+      "task": null,
+      "result": "start",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-03T12:00:00Z",
+      "seat": "opus",
+      "task": 6,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-03T12:00:00Z",
+      "seat": "opus",
+      "task": 6,
+      "result": "gate6 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-03T11:40:00Z",
+      "seat": "opus",
+      "task": 5,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-03T11:40:00Z",
+      "seat": "opus",
+      "task": 5,
+      "result": "gate5 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-03T11:20:00Z",
+      "seat": "opus",
+      "task": 4,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-03T11:20:00Z",
+      "seat": "opus",
+      "task": 4,
+      "result": "gate4 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-03T11:00:00Z",
+      "seat": "opus",
+      "task": 4,
+      "result": "refused",
+      "missing": [
+        "GATE TEST: PASS missing"
+      ],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-03T10:50:00Z",
+      "seat": "opus",
+      "task": 3,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-03T10:50:00Z",
+      "seat": "opus",
+      "task": 3,
+      "result": "gate3 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-03T10:20:00Z",
+      "seat": "opus",
+      "task": 2,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-03T10:20:00Z",
+      "seat": "opus",
+      "task": 2,
+      "result": "gate2 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-03T09:40:00Z",
+      "seat": "opus",
+      "task": 1,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-03T09:40:00Z",
+      "seat": "opus",
+      "task": 1,
+      "result": "gate1 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-03T09:20:00Z",
+      "seat": "opus",
+      "task": null,
+      "result": "choose",
+      "missing": [],
+      "source": "state.history",
+      "tool": "AuraLens",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-03T09:10:00Z",
+      "seat": "opus",
+      "task": 0,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-03T09:10:00Z",
+      "seat": "opus",
+      "task": 0,
+      "result": "gate0 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-03T09:00:00Z",
+      "seat": "opus",
+      "task": null,
+      "result": "start",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-02T11:30:00Z",
+      "seat": "quip",
+      "task": 6,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-02T11:30:00Z",
+      "seat": "quip",
+      "task": 6,
+      "result": "gate6 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-02T11:10:00Z",
+      "seat": "quip",
+      "task": 5,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-02T11:10:00Z",
+      "seat": "quip",
+      "task": 5,
+      "result": "gate5 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-02T10:55:00Z",
+      "seat": "quip",
+      "task": 4,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-02T10:55:00Z",
+      "seat": "quip",
+      "task": 4,
+      "result": "gate4 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-02T10:40:00Z",
+      "seat": "quip",
+      "task": 3,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-02T10:40:00Z",
+      "seat": "quip",
+      "task": 3,
+      "result": "gate3 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-02T10:25:00Z",
+      "seat": "quip",
+      "task": 2,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-02T10:25:00Z",
+      "seat": "quip",
+      "task": 2,
+      "result": "gate2 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-02T10:10:00Z",
+      "seat": "quip",
+      "task": 1,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-02T10:10:00Z",
+      "seat": "quip",
+      "task": 1,
+      "result": "gate1 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-02T10:05:00Z",
+      "seat": "quip",
+      "task": null,
+      "result": "choose",
+      "missing": [],
+      "source": "state.history",
+      "tool": "QuickRename",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-02T10:02:00Z",
+      "seat": "quip",
+      "task": 0,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-02T10:02:00Z",
+      "seat": "quip",
+      "task": 0,
+      "result": "gate0 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-02T10:00:00Z",
+      "seat": "quip",
+      "task": null,
+      "result": "start",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-01T11:00:00Z",
+      "seat": "quip",
+      "task": 6,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-01T11:00:00Z",
+      "seat": "quip",
+      "task": 6,
+      "result": "gate6 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-01T10:50:00Z",
+      "seat": "quip",
+      "task": 5,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-01T10:50:00Z",
+      "seat": "quip",
+      "task": 5,
+      "result": "gate5 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-01T10:40:00Z",
+      "seat": "quip",
+      "task": 4,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-01T10:40:00Z",
+      "seat": "quip",
+      "task": 4,
+      "result": "gate4 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-01T10:30:00Z",
+      "seat": "quip",
+      "task": 3,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-01T10:30:00Z",
+      "seat": "quip",
+      "task": 3,
+      "result": "gate3 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-01T10:20:00Z",
+      "seat": "quip",
+      "task": 2,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-01T10:20:00Z",
+      "seat": "quip",
+      "task": 2,
+      "result": "gate2 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-01T10:15:00Z",
+      "seat": "quip",
+      "task": 2,
+      "result": "refused",
+      "missing": [
+        "builds/v1-C missing"
+      ],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-01T10:08:00Z",
+      "seat": "quip",
+      "task": 1,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-01T10:08:00Z",
+      "seat": "quip",
+      "task": 1,
+      "result": "gate1 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-01T10:05:00Z",
+      "seat": "quip",
+      "task": null,
+      "result": "choose",
+      "missing": [],
+      "source": "state.history",
+      "tool": "WindowSnap",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-01T10:02:00Z",
+      "seat": "quip",
+      "task": 0,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-01T10:02:00Z",
+      "seat": "quip",
+      "task": 0,
+      "result": "gate0 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-01T10:00:00Z",
+      "seat": "quip",
+      "task": null,
+      "result": "start",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    }
+  ],
   "head_to_head": [
     {
       "a": "opus",
       "b": "quip",
       "grail": {
-        "a": 43.83,
-        "b": 58.91,
+        "a": 59.83,
+        "b": 90.74,
         "lead": "quip"
       },
       "shipped": {
@@ -1998,7 +2616,7 @@
       },
       "novelty": {
         "a": 71,
-        "b": 86.33,
+        "b": 85.5,
         "lead": "quip"
       },
       "speed": {
@@ -2011,7 +2629,7 @@
   "records": {
     "highest_grail": {
       "seat": "quip",
-      "value": 58.91
+      "value": 90.74
     },
     "most_shipped": {
       "seat": "quip",
@@ -2023,7 +2641,7 @@
     },
     "highest_novelty": {
       "seat": "quip",
-      "value": 86.33
+      "value": 85.5
     },
     "fastest_median": {
       "seat": "quip",
@@ -2031,9 +2649,14 @@
     }
   },
   "grail_formula": {
-    "total": "40 shipped (scaled to cap) + 25 first-try + 20 novelty mean + 15 speed (median min/shipped inverted)",
-    "shipped_cap": 10,
+    "total": "40 shipped (scaled to field max) + 25 first-try + 20 novelty mean + 15 speed (median min/shipped inverted)",
+    "shipped_field_max": 2,
     "speed_ref_minutes": 240
   },
-  "rebuild_ms": 10.69
+  "watcher": {
+    "pid": 6630,
+    "builtAt": "2026-09-05T15:00:00Z"
+  },
+  "rebuild_ms": 10.36,
+  "etag": "528100bbe25e70fe154931255f4fb65f"
 }

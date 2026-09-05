@@ -9,25 +9,30 @@ dependencies: Node stdlib and vanilla HTML/CSS/JS. One file per concern.
 Logan approved the contract 2026-09-05 08:56 PT. This repo is the Builder
 deliverable for run `ait-scoreboard-20260905`. It is **not** a Verifier PASS.
 
-## Hosting choice
+## Hosting
 
-Prefer **GitHub Pages from `/web` on `main`**.
+**L_A9 serves `/ait/`.** That is the live origin. Copy or bind `web/index.html`
+and the watcher output `scoreboard.json` into the `/ait/` directory on L_A9 so
+the relative `./scoreboard.json` fetch works. GitHub Pages from `/web` on
+`main` is the public **mirror**, not the only host.
 
-- `web/index.html` fetches **relative** `./scoreboard.json`, so the same files
-  work at `https://<user>.github.io/ait-scoreboard/` and under `/ait/`.
-- `.github/workflows/pages.yml` publishes the `web/` folder.
+- `web/index.html` fetches **relative** `./scoreboard.json?t=<now>` with
+  `cache: no-store`. It compares the JSON `etag` field (the `/ait/` origin
+  sends no HTTP ETag).
+- `.github/workflows/pages.yml` publishes the `web/` folder as the mirror.
 - `web/.nojekyll` keeps the JSON as a raw asset.
-- **Do not deploy this board to L_A9.** The watcher may *read* `C:\dev\ait` on
-  that box; the page is served from Pages, not from the workstation.
+- A mirror push to this repo happens on **AIT-DONE**. Vesper's deploy lane
+  does that push; this repo does not build the push automation.
 
-Enable Pages: repo Settings → Pages → Source = GitHub Actions.
+Enable the Pages mirror: repo Settings → Pages → Source = GitHub Actions.
 
 ## Run against `C:\dev\ait`
 
-On the box that holds the loop (default root is the Windows path):
+On L_A9 (default root is the Windows path; write the JSON next to the `/ait/`
+page):
 
 ```bat
-node watcher\scoreboard-watcher.js C:\dev\ait web\scoreboard.json
+node watcher\scoreboard-watcher.js C:\dev\ait C:\path\to\ait-web\scoreboard.json
 ```
 
 On any other machine, pass the tree you actually have:
@@ -41,18 +46,21 @@ Behavior:
 - argv[2] = AIT root (default `C:\dev\ait`)
 - argv[3] = output JSON (default `<cwd>/web/scoreboard.json`)
 - 500 ms debounce, atomic temp+rename, 30 s safety rebuild
-- `scoreboard-cache.json` next to the output holds the first-seen map
+- `scoreboard-cache.json` next to the output holds the first-seen map and the
+  previous fleet payload (for deltas)
 - ASCII-only logs on stdout
-- A bad seat file never kills the process; that seat is marked unreadable
+- A bad seat file or a bad BUILD_LOG marks **only that seat** unreadable
 
 Local preview of the page (from `web/` so the relative fetch works):
 
 ```bash
-python -m http.server 8765 --directory web
+python3 -m http.server 8765 --directory web
 ```
 
-Open `http://127.0.0.1:8765/`. The page polls every 5 s with `cache: no-store`
-and sends `If-None-Match` when the host provides an ETag.
+Open `http://127.0.0.1:8765/`. The page polls every 5 s. Before the first good
+JSON it shows **waiting for the first event**. After 30 s without a good fetch
+it shows a **stale** badge. It re-renders only when the JSON `etag` field
+changes.
 
 ## Tests
 
@@ -62,17 +70,18 @@ node watcher/test-watcher.js
 ```
 
 `watcher/test-watcher.js` uses `node:test` and the tree under
-`watcher/fixtures/`. It asserts JSON shape, atomic write, debounce, and Grail
-Score arithmetic on two fake seats (`quip`, `opus`) plus one unreadable file.
+`watcher/fixtures/`. It asserts JSON shape (including `generated`, `etag`,
+`watcher`, `events`), atomic write, debounce, Grail Score arithmetic (field
+max), novelty `TOTAL:` parse, fleet deltas, and per-seat isolation.
 
 ## Schema and score
 
 See [SCHEMA.md](SCHEMA.md).
 
 ```
-Grail 0-100 = 40 shipped (scaled to cap 10)
+Grail 0-100 = 40 shipped (scaled to the field max; field of 0 = 0 for all)
             + 25 first-try (clears with no prior refuse on that loop+task)
-            + 20 novelty mean (parsed N/100)
+            + 20 novelty mean (TOTAL: n/100 from novelty*.md only)
             + 15 speed (median minutes/shipped, inverted against 240 min)
 ```
 
@@ -80,8 +89,8 @@ Grail 0-100 = 40 shipped (scaled to cap 10)
 
 Per seat: identity and runtime label, current loop, Task 0-6 timing, gate
 attempts, Task 1-6 field bags, file stats, and every event (page shows 50 with
-Show all). Fleet totals, head-to-head, records. Tap a Grail number to see the
-arithmetic. RAW tab dumps the JSON.
+Show all). Fleet totals with deltas vs the previous build, head-to-head,
+records. Tap a Grail number to see the arithmetic. RAW tab dumps the JSON.
 
 Runtime labels: `quip` = Hermes desktop; `qwen` = Claude Code Ollama
 qwen-uncensored; `opus` / `aura` / `glm` / `gemini` / `gpt5` as usual.
@@ -91,10 +100,10 @@ the title. No alarm-red. No cursor glow.
 
 ## Deliberately unbuilt
 
-- No deploy to L_A9, no IFCH bus posts, no credentials in this repo
+- No IFCH bus posts, no credentials in this repo
 - No WebSocket push (5 s poll only)
 - No auth, no custom domain, no mobile app
-- Novelty Engine is not re-run; scores are parsed from sheets already on disk
+- Novelty Engine is not re-run; only `TOTAL: n/100` lines on `novelty*.md` count
 - `gate.py` and the AIT skill are not vendored
 - No historical backfill beyond files present in the AIT root
 - No claim that fixture tools are real MetaphyKing uploads
@@ -105,8 +114,8 @@ the title. No alarm-red. No cursor glow.
 - Windows replace-on-rename is a tmp → dest dance, not a single POSIX rename
 - `fs.watch` recursive can miss events on some network volumes; 30 s safety rebuild covers that
 - First-seen cache can drift if files are copied with new mtimes
-- Novelty and manifest parsers are heuristic (markdown / `N/100`)
-- Shipped cap 10 and speed ref 240 min are conventions, not fleet-measured par
+- Manifest table parse is markdown-fragile
+- Speed ref 240 min is a convention, not fleet-measured par
 - Google Fonts need network; system fonts are the fallback
 - Many open tabs will each poll; there is no shared worker
 - Live `C:\dev\ait` was not readable from this cloud builder; fixtures stand in
@@ -116,9 +125,9 @@ the title. No alarm-red. No cursor glow.
 ```
 watcher/scoreboard-watcher.js   Node watcher (stdlib)
 watcher/test-watcher.js         node:test
-watcher/fixtures/ait-root/      two seats + one broken state file
+watcher/fixtures/ait-root/      two live seats + unreadable state + bad BUILD_LOG
 web/index.html                  board
-web/scoreboard.json             fixture snapshot for Pages
+web/scoreboard.json             fixture snapshot for /ait/ and the Pages mirror
 SCHEMA.md                       JSON contract
 LICENSE                         Apache-2.0
 ```

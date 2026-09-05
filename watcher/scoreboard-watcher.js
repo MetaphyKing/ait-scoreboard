@@ -14,6 +14,7 @@
 
 'use strict';
 
+const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
 const { performance } = require('perf_hooks');
@@ -22,7 +23,6 @@ const SCHEMA_VERSION = 1;
 const DEFAULT_ROOT = 'C:\\dev\\ait';
 const DEBOUNCE_MS = 500;
 const SAFETY_MS = 30000;
-const SHIPPED_CAP = 10;
 const SPEED_REF_MINUTES = 240;
 const TASK_NAMES = [
   'workspace',
@@ -69,6 +69,8 @@ function log(msg) {
 function nowIso(d) {
   return (d || new Date()).toISOString().replace(/\.\d{3}Z$/, 'Z');
 }
+
+const WATCHER_BUILT_AT = nowIso();
 
 function parseIso(s) {
   if (!s || typeof s !== 'string') return null;
@@ -141,6 +143,7 @@ function seatLabel(seat) {
 
 function computeGrailScore(input) {
   const shipped = Math.max(0, Number(input.shipped) || 0);
+  const fieldMax = Math.max(0, Number(input.fieldMax) || 0);
   const firstTryClears = Math.max(0, Number(input.firstTryClears) || 0);
   const totalClears = Math.max(0, Number(input.totalClears) || 0);
   const noveltyScores = Array.isArray(input.noveltyScores)
@@ -150,7 +153,7 @@ function computeGrailScore(input) {
     ? input.minutesPerShipped.filter((n) => Number.isFinite(n) && n >= 0)
     : [];
 
-  const shippedPoints = 40 * Math.min(shipped, SHIPPED_CAP) / SHIPPED_CAP;
+  const shippedPoints = fieldMax <= 0 ? 0 : 40 * (shipped / fieldMax);
   const firstTryPoints = totalClears > 0 ? 25 * (firstTryClears / totalClears) : 0;
   const noveltyMean = noveltyScores.length ? mean(noveltyScores) : 0;
   const noveltyPoints = 20 * (clamp(noveltyMean, 0, 100) / 100);
@@ -176,7 +179,7 @@ function computeGrailScore(input) {
       novelty_mean: round2(noveltyMean),
       novelty_n: noveltyScores.length,
       median_minutes_per_shipped: medianMin == null ? null : round2(medianMin),
-      shipped_cap: SHIPPED_CAP,
+      shipped_field_max: fieldMax,
       speed_ref_minutes: SPEED_REF_MINUTES
     }
   };
@@ -266,18 +269,10 @@ function fileStatRecord(root, rel) {
 
 function parseNoveltyScore(text) {
   if (!text) return null;
-  const patterns = [
-    /(\d+(?:\.\d+)?)\s*\/\s*100\b/,
-    /novelty[^\d]{0,40}(\d+(?:\.\d+)?)/i,
-    /\bscore\s*[:=]\s*(\d+(?:\.\d+)?)/i
-  ];
-  for (let i = 0; i < patterns.length; i++) {
-    const m = text.match(patterns[i]);
-    if (m) {
-      const n = Number(m[1]);
-      if (Number.isFinite(n) && n >= 0 && n <= 100) return n;
-    }
-  }
+  const m = String(text).match(/^\s*TOTAL:\s*(\d+(?:\.\d+)?)\s*\/\s*100\s*$/im);
+  if (!m) return null;
+  const n = Number(m[1]);
+  if (Number.isFinite(n) && n >= 0 && n <= 100) return n;
   return null;
 }
 
@@ -306,8 +301,7 @@ function parseBuildLog(text) {
     score_table: hasHeading(text, 'score table'),
     pivots: hasHeading(text, 'pivots'),
     gates: {},
-    self_report_id: null,
-    novelty_score: parseNoveltyScore(text)
+    self_report_id: null
   };
   for (let i = 0; i < GATE_LINES.length; i++) {
     const g = GATE_LINES[i];
@@ -392,15 +386,19 @@ function parseEvents(text, seat) {
 }
 
 function loadCache(cachePath) {
+  const empty = { version: 1, first_seen: {}, previous_fleet: null };
   const st = safeStat(cachePath);
-  if (!st) return { version: 1, first_seen: {} };
+  if (!st) return empty;
   try {
     const parsed = parseJsonSafe(readText(cachePath));
-    if (parsed.ok && parsed.value && parsed.value.first_seen) return parsed.value;
+    if (parsed.ok && parsed.value && typeof parsed.value === 'object') {
+      if (!parsed.value.first_seen) parsed.value.first_seen = {};
+      return parsed.value;
+    }
   } catch (e) {
     /* ignore */
   }
-  return { version: 1, first_seen: {} };
+  return empty;
 }
 
 function remember(cache, key, when) {
@@ -451,51 +449,107 @@ function discoverToolDirs(root) {
 }
 
 function readToolBundle(root, tool) {
-  const rel = tool;
-  const dir = path.join(root, tool);
-  const buildLogPath = path.join(dir, 'BUILD_LOG.md');
-  const buildLogText = safeStat(buildLogPath) ? readText(buildLogPath) : '';
-  const parsedLog = parseBuildLog(buildLogText);
-  let noveltyFile = null;
-  let noveltyScore = parsedLog.novelty_score;
-  const files = listDir(dir);
-  for (let i = 0; i < files.length; i++) {
-    const n = files[i].name;
-    if (files[i].isFile() && /^novelty/i.test(n) && /\.md$/i.test(n)) {
-      noveltyFile = tool + '/' + n;
-      const score = parseNoveltyScore(readText(path.join(dir, n)));
-      if (score != null) noveltyScore = score;
+  try {
+    const rel = tool;
+    const dir = path.join(root, tool);
+    const buildLogPath = path.join(dir, 'BUILD_LOG.md');
+    let buildLogText = '';
+    const logStat = safeStat(buildLogPath);
+    if (logStat) {
+      if (!logStat.isFile()) {
+        throw new Error('BUILD_LOG.md is not a file');
+      }
+      buildLogText = readText(buildLogPath);
     }
-  }
-  const roads = ['v1-A', 'v1-B', 'v1-C', 'v1-D'];
-  const builds = {};
-  for (let i = 0; i < roads.length; i++) {
-    const r = roads[i];
-    const rd = path.join(dir, 'builds', r);
-    builds[r] = {
-      exists: !!safeStat(rd),
-      production_v1: !!safeStat(path.join(rd, 'PRODUCTION_V1.md')),
-      readme: !!safeStat(path.join(rd, 'README.md')),
-      tests: !!(safeStat(path.join(rd, 'tests')) || listDir(rd).some((e) => /^test/i.test(e.name)))
+    const parsedLog = parseBuildLog(buildLogText);
+    let noveltyFile = null;
+    let noveltyScore = null;
+    const files = listDir(dir);
+    for (let i = 0; i < files.length; i++) {
+      const n = files[i].name;
+      if (files[i].isFile() && /^novelty/i.test(n) && /\.md$/i.test(n)) {
+        noveltyFile = tool + '/' + n;
+        const score = parseNoveltyScore(readText(path.join(dir, n)));
+        if (score != null) noveltyScore = score;
+      }
+    }
+    const roads = ['v1-A', 'v1-B', 'v1-C', 'v1-D'];
+    const builds = {};
+    for (let i = 0; i < roads.length; i++) {
+      const r = roads[i];
+      const rd = path.join(dir, 'builds', r);
+      builds[r] = {
+        exists: !!safeStat(rd),
+        production_v1: !!safeStat(path.join(rd, 'PRODUCTION_V1.md')),
+        readme: !!safeStat(path.join(rd, 'README.md')),
+        tests: !!(safeStat(path.join(rd, 'tests')) || listDir(rd).some((e) => /^test/i.test(e.name)))
+      };
+    }
+    return {
+      name: tool,
+      build_log: parsedLog,
+      novelty_file: noveltyFile,
+      novelty_score: noveltyScore,
+      production_v2: !!safeStat(path.join(dir, 'PRODUCTION_V2.md')),
+      completion_report: !!safeStat(path.join(dir, 'COMPLETION_REPORT.md')),
+      readme: !!safeStat(path.join(dir, 'README.md')),
+      examples: !!safeStat(path.join(dir, 'EXAMPLES.md')),
+      builds: builds,
+      files: [
+        fileStatRecord(root, rel + '/BUILD_LOG.md'),
+        fileStatRecord(root, rel + '/PRODUCTION_V2.md'),
+        fileStatRecord(root, rel + '/COMPLETION_REPORT.md'),
+        fileStatRecord(root, rel + '/README.md'),
+        fileStatRecord(root, rel + '/EXAMPLES.md')
+      ]
     };
+  } catch (e) {
+    const err = new Error('tool ' + tool + ': ' + (e && e.message ? e.message : e));
+    err.code = 'SEAT_TOOL_UNREADABLE';
+    throw err;
   }
+}
+
+function emptyGrail() {
+  return computeGrailScore({
+    shipped: 0,
+    fieldMax: 0,
+    firstTryClears: 0,
+    totalClears: 0,
+    noveltyScores: [],
+    minutesPerShipped: []
+  });
+}
+
+function unreadableSeat(root, seat, cache, err) {
+  const identity = {
+    seat: seat,
+    runtime: seatLabel(seat),
+    runtime_key: seat,
+    readable: false,
+    unreadable_since: remember(cache, 'unreadable:' + seat, nowIso()),
+    unreadable_error: err && err.message ? err.message : String(err || 'unreadable')
+  };
   return {
-    name: tool,
-    build_log: parsedLog,
-    novelty_file: noveltyFile,
-    novelty_score: noveltyScore,
-    production_v2: !!safeStat(path.join(dir, 'PRODUCTION_V2.md')),
-    completion_report: !!safeStat(path.join(dir, 'COMPLETION_REPORT.md')),
-    readme: !!safeStat(path.join(dir, 'README.md')),
-    examples: !!safeStat(path.join(dir, 'EXAMPLES.md')),
-    builds: builds,
-    files: [
-      fileStatRecord(root, rel + '/BUILD_LOG.md'),
-      fileStatRecord(root, rel + '/PRODUCTION_V2.md'),
-      fileStatRecord(root, rel + '/COMPLETION_REPORT.md'),
-      fileStatRecord(root, rel + '/README.md'),
-      fileStatRecord(root, rel + '/EXAMPLES.md')
-    ]
+    identity: identity,
+    loop: null,
+    grail: emptyGrail(),
+    score_input: {
+      shipped: 0,
+      firstTryClears: 0,
+      totalClears: 0,
+      noveltyScores: [],
+      minutesPerShipped: []
+    },
+    task_timing: {},
+    gate_attempts: [],
+    tasks: {},
+    tools: [],
+    file_stats: [
+      fileStatRecord(root, path.join('.state', seat + '.json')),
+      fileStatRecord(root, path.join('.state', seat + '.events.jsonl'))
+    ],
+    events: []
   };
 }
 
@@ -622,6 +676,15 @@ function taskTimingFromHistory(history, cache, seat) {
 }
 
 function buildSeat(root, seat, ctx) {
+  try {
+    return buildSeatInner(root, seat, ctx);
+  } catch (e) {
+    log('seat ' + seat + ' unreadable: ' + (e && e.message ? e.message : e));
+    return unreadableSeat(root, seat, ctx.cache, e);
+  }
+}
+
+function buildSeatInner(root, seat, ctx) {
   const relState = path.join('.state', seat + '.json');
   const relEvents = path.join('.state', seat + '.events.jsonl');
   const statePath = path.join(root, relState);
@@ -637,45 +700,14 @@ function buildSeat(root, seat, ctx) {
 
   const st = safeStat(statePath);
   if (!st) {
-    identity.readable = false;
-    identity.unreadable_since = remember(ctx.cache, 'unreadable:' + seat, nowIso());
-    identity.unreadable_error = 'state file missing';
-    return {
-      identity: identity,
-      loop: null,
-      grail: computeGrailScore({ shipped: 0, firstTryClears: 0, totalClears: 0, noveltyScores: [], minutesPerShipped: [] }),
-      task_timing: {},
-      gate_attempts: [],
-      tasks: {},
-      tools: [],
-      file_stats: [fileStatRecord(root, relState), fileStatRecord(root, relEvents)],
-      events: []
-    };
+    return unreadableSeat(root, seat, ctx.cache, new Error('state file missing'));
   }
 
   let state;
-  try {
-    const parsed = parseJsonSafe(readText(statePath));
-    if (!parsed.ok) throw new Error(parsed.error);
-    state = parsed.value;
-    if (!state || typeof state !== 'object') throw new Error('state is not an object');
-  } catch (e) {
-    identity.readable = false;
-    identity.unreadable_since = remember(ctx.cache, 'unreadable:' + seat, nowIso());
-    identity.unreadable_error = e && e.message ? e.message : 'unreadable';
-    log('seat ' + seat + ' unreadable: ' + identity.unreadable_error);
-    return {
-      identity: identity,
-      loop: null,
-      grail: computeGrailScore({ shipped: 0, firstTryClears: 0, totalClears: 0, noveltyScores: [], minutesPerShipped: [] }),
-      task_timing: {},
-      gate_attempts: [],
-      tasks: {},
-      tools: [],
-      file_stats: [fileStatRecord(root, relState), fileStatRecord(root, relEvents)],
-      events: []
-    };
-  }
+  const parsed = parseJsonSafe(readText(statePath));
+  if (!parsed.ok) throw new Error(parsed.error);
+  state = parsed.value;
+  if (!state || typeof state !== 'object') throw new Error('state is not an object');
 
   remember(ctx.cache, 'seat:' + seat, state.started || nowIso(st.mtime));
   if (ctx.cache.first_seen['unreadable:' + seat]) delete ctx.cache.first_seen['unreadable:' + seat];
@@ -736,13 +768,14 @@ function buildSeat(root, seat, ctx) {
   const shippedFromFiles = toolBundles.filter((t) => t.production_v2).length;
   const shipped = Math.max(shippedFromLoops, shippedFromManifest, shippedFromFiles);
 
-  const grail = computeGrailScore({
+  const scoreInput = {
     shipped: shipped,
     firstTryClears: firstTryClears,
     totalClears: clears.length,
     noveltyScores: noveltyScores,
     minutesPerShipped: minutesPerShipped
-  });
+  };
+  const grail = computeGrailScore(Object.assign({ fieldMax: 0 }, scoreInput));
 
   const timing = taskTimingFromHistory(state.history, ctx.cache, seat);
   const currentBundle = currentTool
@@ -830,6 +863,7 @@ function buildSeat(root, seat, ctx) {
       history_count: Array.isArray(state.history) ? state.history.length : 0
     },
     grail: grail,
+    score_input: scoreInput,
     task_timing: timing,
     gate_attempts: attempts,
     tasks: tasks,
@@ -916,6 +950,91 @@ function recordsOf(seats) {
   };
 }
 
+function fleetSnapshot(fleet) {
+  return {
+    seats: fleet.seats,
+    readable: fleet.readable,
+    unreadable: fleet.unreadable,
+    shipped: fleet.shipped,
+    mean_grail: fleet.mean_grail,
+    active_loops: fleet.active_loops,
+    tools_on_disk: fleet.tools_on_disk,
+    ledger_rows: fleet.ledger_rows,
+    manifest_rows: fleet.manifest_rows
+  };
+}
+
+function fleetDeltas(current, previous) {
+  const keys = [
+    'seats',
+    'readable',
+    'unreadable',
+    'shipped',
+    'mean_grail',
+    'active_loops',
+    'tools_on_disk',
+    'ledger_rows',
+    'manifest_rows'
+  ];
+  const out = {};
+  for (let i = 0; i < keys.length; i++) {
+    const k = keys[i];
+    if (!previous || previous[k] == null) {
+      out[k] = null;
+    } else {
+      out[k] = round2((Number(current[k]) || 0) - (Number(previous[k]) || 0));
+    }
+  }
+  return out;
+}
+
+function mergeFleetEvents(seats) {
+  const all = [];
+  for (let i = 0; i < seats.length; i++) {
+    const evs = seats[i].events || [];
+    for (let j = 0; j < evs.length; j++) all.push(evs[j]);
+  }
+  all.sort(function (a, b) {
+    const ta = parseIso(a.at) || 0;
+    const tb = parseIso(b.at) || 0;
+    return tb - ta;
+  });
+  return all;
+}
+
+function contentEtag(board) {
+  const copy = {};
+  const keys = Object.keys(board);
+  for (let i = 0; i < keys.length; i++) {
+    const k = keys[i];
+    if (k === 'generated' || k === 'generated_at' || k === 'rebuild_ms' || k === 'watcher' || k === 'etag') {
+      continue;
+    }
+    copy[k] = board[k];
+  }
+  return crypto.createHash('sha256').update(JSON.stringify(copy)).digest('hex').slice(0, 32);
+}
+
+function applyFieldMax(seats) {
+  const readable = seats.filter((s) => s.identity.readable);
+  let fieldMax = 0;
+  for (let i = 0; i < readable.length; i++) {
+    const n = readable[i].score_input ? readable[i].score_input.shipped : 0;
+    if (n > fieldMax) fieldMax = n;
+  }
+  for (let i = 0; i < seats.length; i++) {
+    const input = seats[i].score_input || {
+      shipped: 0,
+      firstTryClears: 0,
+      totalClears: 0,
+      noveltyScores: [],
+      minutesPerShipped: []
+    };
+    seats[i].grail = computeGrailScore(Object.assign({}, input, { fieldMax: fieldMax }));
+  }
+  return fieldMax;
+}
+
 function buildScoreboard(root, options) {
   const opts = options || {};
   const started = performance.now();
@@ -943,7 +1062,16 @@ function buildScoreboard(root, options) {
 
   const ctx = { cache: cache, manifest: manifest, ledger: ledger };
   const names = discoverSeats(root);
-  const seats = names.map((s) => buildSeat(root, s, ctx));
+  const seats = names.map(function (s) {
+    try {
+      return buildSeat(root, s, ctx);
+    } catch (e) {
+      log('seat ' + s + ' unreadable: ' + (e && e.message ? e.message : e));
+      return unreadableSeat(root, s, cache, e);
+    }
+  });
+  const fieldMax = applyFieldMax(seats);
+  for (let i = 0; i < seats.length; i++) delete seats[i].score_input;
   const readable = seats.filter((s) => s.identity.readable);
   const fleet = {
     seats: seats.length,
@@ -956,22 +1084,30 @@ function buildScoreboard(root, options) {
     ledger_rows: ledger.length,
     manifest_rows: manifest.length
   };
+  fleet.deltas = fleetDeltas(fleet, cache.previous_fleet || null);
 
   const board = {
     schema_version: SCHEMA_VERSION,
+    generated: generatedAt,
     generated_at: generatedAt,
     root: root,
     fleet: fleet,
     seats: seats,
+    events: mergeFleetEvents(seats),
     head_to_head: headToHead(seats),
     records: recordsOf(seats),
     grail_formula: {
-      total: '40 shipped (scaled to cap) + 25 first-try + 20 novelty mean + 15 speed (median min/shipped inverted)',
-      shipped_cap: SHIPPED_CAP,
+      total: '40 shipped (scaled to field max) + 25 first-try + 20 novelty mean + 15 speed (median min/shipped inverted)',
+      shipped_field_max: fieldMax,
       speed_ref_minutes: SPEED_REF_MINUTES
+    },
+    watcher: {
+      pid: process.pid,
+      builtAt: opts.builtAt || WATCHER_BUILT_AT
     },
     rebuild_ms: round2(performance.now() - started)
   };
+  board.etag = contentEtag(board);
   return board;
 }
 
@@ -993,6 +1129,7 @@ function rebuildTo(root, outPath, cachePath, hooks) {
     if (hooks && hooks.onError) hooks.onError(e);
     return null;
   }
+  cache.previous_fleet = fleetSnapshot(board.fleet);
   writeAtomic(outPath, JSON.stringify(board, null, 2) + '\n');
   writeAtomic(cachePath, JSON.stringify(cache, null, 2) + '\n');
   log(
@@ -1093,7 +1230,6 @@ module.exports = {
   DEFAULT_ROOT: DEFAULT_ROOT,
   DEBOUNCE_MS: DEBOUNCE_MS,
   SAFETY_MS: SAFETY_MS,
-  SHIPPED_CAP: SHIPPED_CAP,
   SPEED_REF_MINUTES: SPEED_REF_MINUTES,
   SEAT_LABELS: SEAT_LABELS,
   TASK_NAMES: TASK_NAMES,
