@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated": "2026-09-05T20:28:24Z",
-  "generated_at": "2026-09-05T20:28:24Z",
+  "generated": "2026-09-05T20:48:28Z",
+  "generated_at": "2026-09-05T20:48:28Z",
   "root": "C:\\dev\\ait",
   "fleet": {
     "seats": 4,
@@ -710,7 +710,7 @@
           "name": "publish",
           "fields": {
             "completion_report": false,
-            "readme": false,
+            "readme": true,
             "manifest_row": false,
             "ledger_row": false,
             "repo": ""
@@ -750,7 +750,7 @@
           "novelty_score": null,
           "production_v2": false,
           "completion_report": false,
-          "readme": false,
+          "readme": true,
           "examples": false,
           "builds": {
             "v1-A": {
@@ -799,9 +799,9 @@
             },
             {
               "path": "Arrived/README.md",
-              "exists": false,
-              "bytes": 0,
-              "mtime": null
+              "exists": true,
+              "bytes": 1326,
+              "mtime": "2026-09-05T20:47:59Z"
             },
             {
               "path": "Arrived/EXAMPLES.md",
@@ -847,9 +847,9 @@
         },
         {
           "path": "Arrived/README.md",
-          "exists": false,
-          "bytes": 0,
-          "mtime": null
+          "exists": true,
+          "bytes": 1326,
+          "mtime": "2026-09-05T20:47:59Z"
         },
         {
           "path": "Arrived/EXAMPLES.md",
@@ -2253,6 +2253,6 @@
     "pid": 31392,
     "builtAt": "2026-09-05T17:16:45Z"
   },
-  "rebuild_ms": 9.98,
-  "etag": "faf60fec3a20c9eda9ead8add123da23"
+  "rebuild_ms": 9.27,
+  "etag": "8f40e43232ad6d9d26feb261b3092a6b"
 }
