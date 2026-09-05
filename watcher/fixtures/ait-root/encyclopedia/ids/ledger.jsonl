@@ -1,0 +1,4 @@
+{"id":"Rule/AIT-Tokens/a-af1e","genus":"Rule","lemma":"AIT-Tokens","swatch":"plum","kind":"pointer","spoken":"AIT tokens"}
+{"id":"Artifact/WindowSnap/w-001","genus":"Artifact","lemma":"WindowSnap","swatch":"gold","kind":"ait","spoken":"WindowSnap","superseded":false}
+{"id":"Artifact/QuickRename/q-001","genus":"Artifact","lemma":"QuickRename","swatch":"cyan","kind":"ait","spoken":"QuickRename","superseded":false}
+{"id":"Artifact/AuraLens/a-001","genus":"Artifact","lemma":"AuraLens","swatch":"violet","kind":"ait","spoken":"AuraLens","superseded":false}

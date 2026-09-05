@@ -1,0 +1,8 @@
+.DS_Store
+Thumbs.db
+*.tmp
+*.bak
+scoreboard-cache.json
+web/scoreboard-cache.json
+watcher/scoreboard-cache.json
+node_modules/

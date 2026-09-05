@@ -1,0 +1,2662 @@
+{
+  "schema_version": 1,
+  "generated": "2026-09-05T16:00:00Z",
+  "generated_at": "2026-09-05T16:00:00Z",
+  "root": "watcher/fixtures/ait-root",
+  "fleet": {
+    "seats": 4,
+    "readable": 2,
+    "unreadable": 2,
+    "shipped": 3,
+    "mean_grail": 75.29,
+    "active_loops": 2,
+    "tools_on_disk": 6,
+    "ledger_rows": 4,
+    "manifest_rows": 5,
+    "deltas": {
+      "seats": null,
+      "readable": null,
+      "unreadable": null,
+      "shipped": null,
+      "mean_grail": null,
+      "active_loops": null,
+      "tools_on_disk": null,
+      "ledger_rows": null,
+      "manifest_rows": null
+    }
+  },
+  "seats": [
+    {
+      "identity": {
+        "seat": "broken",
+        "runtime": "Broken",
+        "runtime_key": "broken",
+        "readable": false,
+        "unreadable_since": "2026-09-05T16:00:00Z",
+        "unreadable_error": "Expected property name or '}' in JSON at position 1 (line 1 column 2)"
+      },
+      "loop": null,
+      "grail": {
+        "total": 0,
+        "parts": {
+          "shipped": 0,
+          "first_try": 0,
+          "novelty": 0,
+          "speed": 0
+        },
+        "inputs": {
+          "shipped": 0,
+          "first_try_clears": 0,
+          "total_clears": 0,
+          "first_try_rate": 0,
+          "novelty_mean": 0,
+          "novelty_n": 0,
+          "median_minutes_per_shipped": null,
+          "shipped_field_max": 2,
+          "speed_ref_minutes": 240
+        }
+      },
+      "task_timing": {},
+      "gate_attempts": [],
+      "tasks": {},
+      "tools": [],
+      "file_stats": [
+        {
+          "path": ".state/broken.json",
+          "exists": true,
+          "bytes": 18,
+          "mtime": "2026-09-05T16:05:47Z"
+        },
+        {
+          "path": ".state/broken.events.jsonl",
+          "exists": false,
+          "bytes": 0,
+          "mtime": null
+        }
+      ],
+      "events": []
+    },
+    {
+      "identity": {
+        "seat": "glm",
+        "runtime": "GLM",
+        "runtime_key": "glm",
+        "readable": false,
+        "unreadable_since": "2026-09-05T16:36:45Z",
+        "unreadable_error": "tool BadLog: BUILD_LOG.md is not a file"
+      },
+      "loop": null,
+      "grail": {
+        "total": 0,
+        "parts": {
+          "shipped": 0,
+          "first_try": 0,
+          "novelty": 0,
+          "speed": 0
+        },
+        "inputs": {
+          "shipped": 0,
+          "first_try_clears": 0,
+          "total_clears": 0,
+          "first_try_rate": 0,
+          "novelty_mean": 0,
+          "novelty_n": 0,
+          "median_minutes_per_shipped": null,
+          "shipped_field_max": 2,
+          "speed_ref_minutes": 240
+        }
+      },
+      "task_timing": {},
+      "gate_attempts": [],
+      "tasks": {},
+      "tools": [],
+      "file_stats": [
+        {
+          "path": ".state/glm.json",
+          "exists": true,
+          "bytes": 593,
+          "mtime": "2026-09-05T16:34:20Z"
+        },
+        {
+          "path": ".state/glm.events.jsonl",
+          "exists": false,
+          "bytes": 0,
+          "mtime": null
+        }
+      ],
+      "events": []
+    },
+    {
+      "identity": {
+        "seat": "opus",
+        "runtime": "Claude Opus",
+        "runtime_key": "opus",
+        "readable": true,
+        "unreadable_since": null,
+        "unreadable_error": null
+      },
+      "loop": {
+        "task": 2,
+        "tool": "DiffPilot",
+        "stop": false,
+        "loops_done": 1,
+        "started": "2026-09-05T12:00:00Z",
+        "tokens": {
+          "novelty": "on",
+          "depth": "deep",
+          "difficulty": "4",
+          "category": "devtool",
+          "audience": "developer",
+          "lang": "python",
+          "combo": "none",
+          "deps": "stdlib",
+          "platform": "xplat",
+          "visibility": "public",
+          "builds": "2",
+          "timebox": "0",
+          "loop": "inf",
+          "seat": "opus"
+        },
+        "history_count": 12
+      },
+      "grail": {
+        "total": 59.83,
+        "parts": {
+          "shipped": 20,
+          "first_try": 21.88,
+          "novelty": 14.2,
+          "speed": 3.75
+        },
+        "inputs": {
+          "shipped": 1,
+          "first_try_clears": 7,
+          "total_clears": 8,
+          "first_try_rate": 0.88,
+          "novelty_mean": 71,
+          "novelty_n": 1,
+          "median_minutes_per_shipped": 180,
+          "shipped_field_max": 2,
+          "speed_ref_minutes": 240
+        }
+      },
+      "task_timing": {
+        "0": {
+          "name": "workspace",
+          "entered_at": "2026-09-03T09:00:00Z",
+          "cleared_at": "2026-09-05T12:08:00Z",
+          "minutes": 3068
+        },
+        "1": {
+          "name": "preflight",
+          "entered_at": "2026-09-03T09:10:00Z",
+          "cleared_at": "2026-09-03T09:40:00Z",
+          "minutes": 30
+        },
+        "2": {
+          "name": "build_v1",
+          "entered_at": "2026-09-03T09:40:00Z",
+          "cleared_at": "2026-09-03T10:20:00Z",
+          "minutes": 40
+        },
+        "3": {
+          "name": "combine_v2",
+          "entered_at": "2026-09-03T10:20:00Z",
+          "cleared_at": "2026-09-03T10:50:00Z",
+          "minutes": 30
+        },
+        "4": {
+          "name": "quality_gates",
+          "entered_at": "2026-09-03T10:50:00Z",
+          "cleared_at": "2026-09-03T11:20:00Z",
+          "minutes": 30
+        },
+        "5": {
+          "name": "publish",
+          "entered_at": "2026-09-03T11:20:00Z",
+          "cleared_at": "2026-09-03T11:40:00Z",
+          "minutes": 20
+        },
+        "6": {
+          "name": "self_report",
+          "entered_at": "2026-09-03T11:40:00Z",
+          "cleared_at": "2026-09-03T12:00:00Z",
+          "minutes": 20
+        }
+      },
+      "gate_attempts": [
+        {
+          "at": "2026-09-03T09:10:00Z",
+          "seat": "opus",
+          "task": 0,
+          "result": "cleared",
+          "missing": [],
+          "first_try": true,
+          "loop_index": 0
+        },
+        {
+          "at": "2026-09-03T09:40:00Z",
+          "seat": "opus",
+          "task": 1,
+          "result": "cleared",
+          "missing": [],
+          "first_try": true,
+          "loop_index": 0
+        },
+        {
+          "at": "2026-09-03T10:20:00Z",
+          "seat": "opus",
+          "task": 2,
+          "result": "cleared",
+          "missing": [],
+          "first_try": true,
+          "loop_index": 0
+        },
+        {
+          "at": "2026-09-03T10:50:00Z",
+          "seat": "opus",
+          "task": 3,
+          "result": "cleared",
+          "missing": [],
+          "first_try": true,
+          "loop_index": 0
+        },
+        {
+          "at": "2026-09-03T11:00:00Z",
+          "seat": "opus",
+          "task": 4,
+          "result": "refused",
+          "missing": [
+            "GATE TEST: PASS missing"
+          ],
+          "first_try": false,
+          "loop_index": 0
+        },
+        {
+          "at": "2026-09-03T11:20:00Z",
+          "seat": "opus",
+          "task": 4,
+          "result": "cleared",
+          "missing": [],
+          "first_try": false,
+          "loop_index": 0
+        },
+        {
+          "at": "2026-09-03T11:40:00Z",
+          "seat": "opus",
+          "task": 5,
+          "result": "cleared",
+          "missing": [],
+          "first_try": true,
+          "loop_index": 0
+        },
+        {
+          "at": "2026-09-03T12:00:00Z",
+          "seat": "opus",
+          "task": 6,
+          "result": "cleared",
+          "missing": [],
+          "first_try": true,
+          "loop_index": 0
+        },
+        {
+          "at": "2026-09-05T12:08:00Z",
+          "seat": "opus",
+          "task": 0,
+          "result": "cleared",
+          "missing": [],
+          "first_try": true,
+          "loop_index": 1
+        }
+      ],
+      "tasks": {
+        "0": {
+          "name": "workspace",
+          "fields": {
+            "root_ok": true,
+            "manifest": true,
+            "encyclopedia": true,
+            "ledger": true
+          }
+        },
+        "1": {
+          "name": "preflight",
+          "fields": {
+            "tokens": {
+              "novelty": "on",
+              "depth": "deep",
+              "difficulty": "4",
+              "category": "devtool",
+              "audience": "developer",
+              "lang": "python",
+              "combo": "none",
+              "deps": "stdlib",
+              "platform": "xplat",
+              "visibility": "public",
+              "builds": "2",
+              "timebox": "0",
+              "loop": "inf",
+              "seat": "opus"
+            },
+            "local_vs_github": "in progress",
+            "redundancy": "pending",
+            "chosen_tool": "DiffPilot",
+            "novelty_file": null,
+            "novelty_score": null
+          }
+        },
+        "2": {
+          "name": "build_v1",
+          "fields": {
+            "builds": {
+              "v1-A": {
+                "exists": true,
+                "production_v1": false,
+                "readme": false,
+                "tests": false
+              },
+              "v1-B": {
+                "exists": true,
+                "production_v1": false,
+                "readme": false,
+                "tests": false
+              },
+              "v1-C": {
+                "exists": true,
+                "production_v1": false,
+                "readme": false,
+                "tests": false
+              },
+              "v1-D": {
+                "exists": true,
+                "production_v1": false,
+                "readme": false,
+                "tests": false
+              }
+            },
+            "shoulder_angels_1": false,
+            "shoulder_angels_2": false,
+            "builds_token": "2"
+          }
+        },
+        "3": {
+          "name": "combine_v2",
+          "fields": {
+            "production_v2": false,
+            "score_table": false,
+            "pivots": false
+          }
+        },
+        "4": {
+          "name": "quality_gates",
+          "fields": {
+            "gates": {
+              "TEST": null,
+              "DOCUMENTATION": null,
+              "EXAMPLES": null,
+              "ERROR HANDLING": null,
+              "CODE QUALITY": null,
+              "INTEGRATION": null
+            }
+          }
+        },
+        "5": {
+          "name": "publish",
+          "fields": {
+            "completion_report": false,
+            "readme": true,
+            "manifest_row": true,
+            "ledger_row": false,
+            "repo": ""
+          }
+        },
+        "6": {
+          "name": "self_report",
+          "fields": {
+            "self_report_id": null,
+            "stop": false
+          }
+        }
+      },
+      "tools": [
+        {
+          "name": "AuraLens",
+          "build_log": {
+            "tokens_text": "{\"novelty\":\"on\",\"depth\":\"deep\",\"difficulty\":\"4\",\"seat\":\"opus\"}",
+            "local_vs_github": "Recorded.",
+            "redundancy": "(a) something different.",
+            "chosen_tool": "AuraLens - Local log lens for agent traces.",
+            "shoulder_angels_1": true,
+            "shoulder_angels_2": true,
+            "score_table": true,
+            "pivots": true,
+            "gates": {
+              "TEST": "PASS",
+              "DOCUMENTATION": "PASS",
+              "EXAMPLES": "PASS",
+              "ERROR HANDLING": "PASS",
+              "CODE QUALITY": "PASS",
+              "INTEGRATION": "PASS"
+            },
+            "self_report_id": "m_auralens01"
+          },
+          "novelty_file": "AuraLens/novelty-deep.md",
+          "novelty_score": 71,
+          "production_v2": true,
+          "completion_report": true,
+          "readme": true,
+          "examples": true,
+          "builds": {
+            "v1-A": {
+              "exists": true,
+              "production_v1": true,
+              "readme": true,
+              "tests": true
+            },
+            "v1-B": {
+              "exists": true,
+              "production_v1": true,
+              "readme": true,
+              "tests": true
+            },
+            "v1-C": {
+              "exists": true,
+              "production_v1": true,
+              "readme": true,
+              "tests": true
+            },
+            "v1-D": {
+              "exists": true,
+              "production_v1": true,
+              "readme": true,
+              "tests": true
+            }
+          },
+          "files": [
+            {
+              "path": "AuraLens/BUILD_LOG.md",
+              "exists": true,
+              "bytes": 602,
+              "mtime": "2026-09-05T16:06:32Z"
+            },
+            {
+              "path": "AuraLens/PRODUCTION_V2.md",
+              "exists": true,
+              "bytes": 35,
+              "mtime": "2026-09-05T16:06:21Z"
+            },
+            {
+              "path": "AuraLens/COMPLETION_REPORT.md",
+              "exists": true,
+              "bytes": 38,
+              "mtime": "2026-09-05T16:06:21Z"
+            },
+            {
+              "path": "AuraLens/README.md",
+              "exists": true,
+              "bytes": 35,
+              "mtime": "2026-09-05T16:06:21Z"
+            },
+            {
+              "path": "AuraLens/EXAMPLES.md",
+              "exists": true,
+              "bytes": 27,
+              "mtime": "2026-09-05T16:06:21Z"
+            }
+          ],
+          "manifest": [
+            {
+              "tool": "AuraLens",
+              "repo": "https://github.com/MetaphyKing/AuraLens",
+              "date": "2026-09-03",
+              "purpose": "Local log lens for agent traces",
+              "status": "Uploaded",
+              "builder": "opus"
+            }
+          ],
+          "ledger": [
+            {
+              "id": "Artifact/AuraLens/a-001",
+              "genus": "Artifact",
+              "lemma": "AuraLens",
+              "swatch": "violet",
+              "kind": "ait",
+              "spoken": "AuraLens",
+              "superseded": false
+            }
+          ]
+        },
+        {
+          "name": "DiffPilot",
+          "build_log": {
+            "tokens_text": "seat=opus builds=2",
+            "local_vs_github": "in progress",
+            "redundancy": "pending",
+            "chosen_tool": "",
+            "shoulder_angels_1": false,
+            "shoulder_angels_2": false,
+            "score_table": false,
+            "pivots": false,
+            "gates": {
+              "TEST": null,
+              "DOCUMENTATION": null,
+              "EXAMPLES": null,
+              "ERROR HANDLING": null,
+              "CODE QUALITY": null,
+              "INTEGRATION": null
+            },
+            "self_report_id": null
+          },
+          "novelty_file": null,
+          "novelty_score": null,
+          "production_v2": false,
+          "completion_report": false,
+          "readme": true,
+          "examples": false,
+          "builds": {
+            "v1-A": {
+              "exists": true,
+              "production_v1": false,
+              "readme": false,
+              "tests": false
+            },
+            "v1-B": {
+              "exists": true,
+              "production_v1": false,
+              "readme": false,
+              "tests": false
+            },
+            "v1-C": {
+              "exists": true,
+              "production_v1": false,
+              "readme": false,
+              "tests": false
+            },
+            "v1-D": {
+              "exists": true,
+              "production_v1": false,
+              "readme": false,
+              "tests": false
+            }
+          },
+          "files": [
+            {
+              "path": "DiffPilot/BUILD_LOG.md",
+              "exists": true,
+              "bytes": 208,
+              "mtime": "2026-09-05T16:06:32Z"
+            },
+            {
+              "path": "DiffPilot/PRODUCTION_V2.md",
+              "exists": false,
+              "bytes": 0,
+              "mtime": null
+            },
+            {
+              "path": "DiffPilot/COMPLETION_REPORT.md",
+              "exists": false,
+              "bytes": 0,
+              "mtime": null
+            },
+            {
+              "path": "DiffPilot/README.md",
+              "exists": true,
+              "bytes": 31,
+              "mtime": "2026-09-05T16:06:21Z"
+            },
+            {
+              "path": "DiffPilot/EXAMPLES.md",
+              "exists": false,
+              "bytes": 0,
+              "mtime": null
+            }
+          ],
+          "manifest": [
+            {
+              "tool": "DiffPilot",
+              "repo": "",
+              "date": "2026-09-05",
+              "purpose": "Guided diff walkthroughs",
+              "status": "In Progress",
+              "builder": "opus"
+            }
+          ],
+          "ledger": []
+        }
+      ],
+      "file_stats": [
+        {
+          "path": ".state/opus.json",
+          "exists": true,
+          "bytes": 1233,
+          "mtime": "2026-09-05T16:05:56Z"
+        },
+        {
+          "path": ".state/opus.events.jsonl",
+          "exists": true,
+          "bytes": 686,
+          "mtime": "2026-09-05T16:05:56Z"
+        },
+        {
+          "path": "AuraLens/BUILD_LOG.md",
+          "exists": true,
+          "bytes": 602,
+          "mtime": "2026-09-05T16:06:32Z"
+        },
+        {
+          "path": "AuraLens/PRODUCTION_V2.md",
+          "exists": true,
+          "bytes": 35,
+          "mtime": "2026-09-05T16:06:21Z"
+        },
+        {
+          "path": "AuraLens/COMPLETION_REPORT.md",
+          "exists": true,
+          "bytes": 38,
+          "mtime": "2026-09-05T16:06:21Z"
+        },
+        {
+          "path": "AuraLens/README.md",
+          "exists": true,
+          "bytes": 35,
+          "mtime": "2026-09-05T16:06:21Z"
+        },
+        {
+          "path": "AuraLens/EXAMPLES.md",
+          "exists": true,
+          "bytes": 27,
+          "mtime": "2026-09-05T16:06:21Z"
+        },
+        {
+          "path": "DiffPilot/BUILD_LOG.md",
+          "exists": true,
+          "bytes": 208,
+          "mtime": "2026-09-05T16:06:32Z"
+        },
+        {
+          "path": "DiffPilot/PRODUCTION_V2.md",
+          "exists": false,
+          "bytes": 0,
+          "mtime": null
+        },
+        {
+          "path": "DiffPilot/COMPLETION_REPORT.md",
+          "exists": false,
+          "bytes": 0,
+          "mtime": null
+        },
+        {
+          "path": "DiffPilot/README.md",
+          "exists": true,
+          "bytes": 31,
+          "mtime": "2026-09-05T16:06:21Z"
+        },
+        {
+          "path": "DiffPilot/EXAMPLES.md",
+          "exists": false,
+          "bytes": 0,
+          "mtime": null
+        }
+      ],
+      "events": [
+        {
+          "at": "2026-09-03T09:00:00Z",
+          "seat": "opus",
+          "task": null,
+          "result": "start",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-03T09:10:00Z",
+          "seat": "opus",
+          "task": 0,
+          "result": "cleared",
+          "missing": [],
+          "source": "events.jsonl",
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-03T09:10:00Z",
+          "seat": "opus",
+          "task": 0,
+          "result": "gate0 cleared",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-03T09:20:00Z",
+          "seat": "opus",
+          "task": null,
+          "result": "choose",
+          "missing": [],
+          "source": "state.history",
+          "tool": "AuraLens",
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-03T09:40:00Z",
+          "seat": "opus",
+          "task": 1,
+          "result": "cleared",
+          "missing": [],
+          "source": "events.jsonl",
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-03T09:40:00Z",
+          "seat": "opus",
+          "task": 1,
+          "result": "gate1 cleared",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-03T10:20:00Z",
+          "seat": "opus",
+          "task": 2,
+          "result": "cleared",
+          "missing": [],
+          "source": "events.jsonl",
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-03T10:20:00Z",
+          "seat": "opus",
+          "task": 2,
+          "result": "gate2 cleared",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-03T10:50:00Z",
+          "seat": "opus",
+          "task": 3,
+          "result": "cleared",
+          "missing": [],
+          "source": "events.jsonl",
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-03T10:50:00Z",
+          "seat": "opus",
+          "task": 3,
+          "result": "gate3 cleared",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-03T11:00:00Z",
+          "seat": "opus",
+          "task": 4,
+          "result": "refused",
+          "missing": [
+            "GATE TEST: PASS missing"
+          ],
+          "source": "events.jsonl",
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-03T11:20:00Z",
+          "seat": "opus",
+          "task": 4,
+          "result": "cleared",
+          "missing": [],
+          "source": "events.jsonl",
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-03T11:20:00Z",
+          "seat": "opus",
+          "task": 4,
+          "result": "gate4 cleared",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-03T11:40:00Z",
+          "seat": "opus",
+          "task": 5,
+          "result": "cleared",
+          "missing": [],
+          "source": "events.jsonl",
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-03T11:40:00Z",
+          "seat": "opus",
+          "task": 5,
+          "result": "gate5 cleared",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-03T12:00:00Z",
+          "seat": "opus",
+          "task": 6,
+          "result": "cleared",
+          "missing": [],
+          "source": "events.jsonl",
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-03T12:00:00Z",
+          "seat": "opus",
+          "task": 6,
+          "result": "gate6 cleared",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T12:00:00Z",
+          "seat": "opus",
+          "task": null,
+          "result": "start",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T12:08:00Z",
+          "seat": "opus",
+          "task": 0,
+          "result": "cleared",
+          "missing": [],
+          "source": "events.jsonl",
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T12:08:00Z",
+          "seat": "opus",
+          "task": 0,
+          "result": "gate0 cleared",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T12:20:00Z",
+          "seat": "opus",
+          "task": null,
+          "result": "choose",
+          "missing": [],
+          "source": "state.history",
+          "tool": "DiffPilot",
+          "raw_ok": true
+        }
+      ]
+    },
+    {
+      "identity": {
+        "seat": "quip",
+        "runtime": "Hermes desktop",
+        "runtime_key": "quip",
+        "readable": true,
+        "unreadable_since": null,
+        "unreadable_error": null
+      },
+      "loop": {
+        "task": 3,
+        "tool": "CognitiveFit",
+        "stop": false,
+        "loops_done": 2,
+        "started": "2026-09-05T10:00:00Z",
+        "tokens": {
+          "novelty": "on",
+          "depth": "standard",
+          "difficulty": "3",
+          "category": "any",
+          "audience": "ai-engineer",
+          "lang": "python",
+          "combo": "none",
+          "deps": "stdlib",
+          "platform": "xplat",
+          "visibility": "public",
+          "builds": "4",
+          "timebox": "0",
+          "loop": "inf",
+          "seat": "quip"
+        },
+        "history_count": 21
+      },
+      "grail": {
+        "total": 90.74,
+        "parts": {
+          "shipped": 40,
+          "first_try": 23.33,
+          "novelty": 17.1,
+          "speed": 10.31
+        },
+        "inputs": {
+          "shipped": 2,
+          "first_try_clears": 14,
+          "total_clears": 15,
+          "first_try_rate": 0.93,
+          "novelty_mean": 85.5,
+          "novelty_n": 2,
+          "median_minutes_per_shipped": 75,
+          "shipped_field_max": 2,
+          "speed_ref_minutes": 240
+        }
+      },
+      "task_timing": {
+        "0": {
+          "name": "workspace",
+          "entered_at": "2026-09-01T10:00:00Z",
+          "cleared_at": "2026-09-05T10:04:00Z",
+          "minutes": 5764
+        },
+        "1": {
+          "name": "preflight",
+          "entered_at": "2026-09-01T10:02:00Z",
+          "cleared_at": "2026-09-02T10:10:00Z",
+          "minutes": 1448
+        },
+        "2": {
+          "name": "build_v1",
+          "entered_at": "2026-09-01T10:08:00Z",
+          "cleared_at": "2026-09-02T10:25:00Z",
+          "minutes": 1457
+        },
+        "3": {
+          "name": "combine_v2",
+          "entered_at": "2026-09-01T10:20:00Z",
+          "cleared_at": "2026-09-02T10:40:00Z",
+          "minutes": 1460
+        },
+        "4": {
+          "name": "quality_gates",
+          "entered_at": "2026-09-01T10:30:00Z",
+          "cleared_at": "2026-09-02T10:55:00Z",
+          "minutes": 1465
+        },
+        "5": {
+          "name": "publish",
+          "entered_at": "2026-09-01T10:40:00Z",
+          "cleared_at": "2026-09-02T11:10:00Z",
+          "minutes": 1470
+        },
+        "6": {
+          "name": "self_report",
+          "entered_at": "2026-09-01T10:50:00Z",
+          "cleared_at": "2026-09-02T11:30:00Z",
+          "minutes": 1480
+        }
+      },
+      "gate_attempts": [
+        {
+          "at": "2026-09-01T10:02:00Z",
+          "seat": "quip",
+          "task": 0,
+          "result": "cleared",
+          "missing": [],
+          "first_try": true,
+          "loop_index": 0
+        },
+        {
+          "at": "2026-09-01T10:08:00Z",
+          "seat": "quip",
+          "task": 1,
+          "result": "cleared",
+          "missing": [],
+          "first_try": true,
+          "loop_index": 0
+        },
+        {
+          "at": "2026-09-01T10:15:00Z",
+          "seat": "quip",
+          "task": 2,
+          "result": "refused",
+          "missing": [
+            "builds/v1-C missing"
+          ],
+          "first_try": false,
+          "loop_index": 0
+        },
+        {
+          "at": "2026-09-01T10:20:00Z",
+          "seat": "quip",
+          "task": 2,
+          "result": "cleared",
+          "missing": [],
+          "first_try": false,
+          "loop_index": 0
+        },
+        {
+          "at": "2026-09-01T10:30:00Z",
+          "seat": "quip",
+          "task": 3,
+          "result": "cleared",
+          "missing": [],
+          "first_try": true,
+          "loop_index": 0
+        },
+        {
+          "at": "2026-09-01T10:40:00Z",
+          "seat": "quip",
+          "task": 4,
+          "result": "cleared",
+          "missing": [],
+          "first_try": true,
+          "loop_index": 0
+        },
+        {
+          "at": "2026-09-01T10:50:00Z",
+          "seat": "quip",
+          "task": 5,
+          "result": "cleared",
+          "missing": [],
+          "first_try": true,
+          "loop_index": 0
+        },
+        {
+          "at": "2026-09-01T11:00:00Z",
+          "seat": "quip",
+          "task": 6,
+          "result": "cleared",
+          "missing": [],
+          "first_try": true,
+          "loop_index": 0
+        },
+        {
+          "at": "2026-09-02T10:02:00Z",
+          "seat": "quip",
+          "task": 0,
+          "result": "cleared",
+          "missing": [],
+          "first_try": true,
+          "loop_index": 1
+        },
+        {
+          "at": "2026-09-02T10:10:00Z",
+          "seat": "quip",
+          "task": 1,
+          "result": "cleared",
+          "missing": [],
+          "first_try": true,
+          "loop_index": 1
+        },
+        {
+          "at": "2026-09-02T10:25:00Z",
+          "seat": "quip",
+          "task": 2,
+          "result": "cleared",
+          "missing": [],
+          "first_try": true,
+          "loop_index": 1
+        },
+        {
+          "at": "2026-09-02T10:40:00Z",
+          "seat": "quip",
+          "task": 3,
+          "result": "cleared",
+          "missing": [],
+          "first_try": true,
+          "loop_index": 1
+        },
+        {
+          "at": "2026-09-02T10:55:00Z",
+          "seat": "quip",
+          "task": 4,
+          "result": "cleared",
+          "missing": [],
+          "first_try": true,
+          "loop_index": 1
+        },
+        {
+          "at": "2026-09-02T11:10:00Z",
+          "seat": "quip",
+          "task": 5,
+          "result": "cleared",
+          "missing": [],
+          "first_try": true,
+          "loop_index": 1
+        },
+        {
+          "at": "2026-09-02T11:30:00Z",
+          "seat": "quip",
+          "task": 6,
+          "result": "cleared",
+          "missing": [],
+          "first_try": true,
+          "loop_index": 1
+        },
+        {
+          "at": "2026-09-05T10:04:00Z",
+          "seat": "quip",
+          "task": 0,
+          "result": "cleared",
+          "missing": [],
+          "first_try": true,
+          "loop_index": 2
+        }
+      ],
+      "tasks": {
+        "0": {
+          "name": "workspace",
+          "fields": {
+            "root_ok": true,
+            "manifest": true,
+            "encyclopedia": true,
+            "ledger": true
+          }
+        },
+        "1": {
+          "name": "preflight",
+          "fields": {
+            "tokens": {
+              "novelty": "on",
+              "depth": "standard",
+              "difficulty": "3",
+              "category": "any",
+              "audience": "ai-engineer",
+              "lang": "python",
+              "combo": "none",
+              "deps": "stdlib",
+              "platform": "xplat",
+              "visibility": "public",
+              "builds": "4",
+              "timebox": "0",
+              "loop": "inf",
+              "seat": "quip"
+            },
+            "local_vs_github": "Local-only: WindowSnap, QuickRename. GitHub-only: praxis, stay. Both: WindowSnap, QuickRename.",
+            "redundancy": "(a) something different — no cognitive-fit measurer.",
+            "chosen_tool": "CognitiveFit",
+            "novelty_file": "CognitiveFit/novelty-engine.md",
+            "novelty_score": null
+          }
+        },
+        "2": {
+          "name": "build_v1",
+          "fields": {
+            "builds": {
+              "v1-A": {
+                "exists": true,
+                "production_v1": true,
+                "readme": true,
+                "tests": true
+              },
+              "v1-B": {
+                "exists": true,
+                "production_v1": false,
+                "readme": false,
+                "tests": false
+              },
+              "v1-C": {
+                "exists": true,
+                "production_v1": false,
+                "readme": false,
+                "tests": false
+              },
+              "v1-D": {
+                "exists": true,
+                "production_v1": false,
+                "readme": false,
+                "tests": false
+              }
+            },
+            "shoulder_angels_1": false,
+            "shoulder_angels_2": false,
+            "builds_token": "4"
+          }
+        },
+        "3": {
+          "name": "combine_v2",
+          "fields": {
+            "production_v2": false,
+            "score_table": false,
+            "pivots": false
+          }
+        },
+        "4": {
+          "name": "quality_gates",
+          "fields": {
+            "gates": {
+              "TEST": null,
+              "DOCUMENTATION": null,
+              "EXAMPLES": null,
+              "ERROR HANDLING": null,
+              "CODE QUALITY": null,
+              "INTEGRATION": null
+            }
+          }
+        },
+        "5": {
+          "name": "publish",
+          "fields": {
+            "completion_report": false,
+            "readme": false,
+            "manifest_row": true,
+            "ledger_row": false,
+            "repo": ""
+          }
+        },
+        "6": {
+          "name": "self_report",
+          "fields": {
+            "self_report_id": null,
+            "stop": false
+          }
+        }
+      },
+      "tools": [
+        {
+          "name": "CognitiveFit",
+          "build_log": {
+            "tokens_text": "novelty=on depth=standard difficulty=3 category=any audience=ai-engineer lang=python combo=none deps=stdlib platform=xplat visibility=public builds=4 timebox=0 loop=inf seat=quip",
+            "local_vs_github": "Local-only: WindowSnap, QuickRename. GitHub-only: praxis, stay. Both: WindowSnap, QuickRename.",
+            "redundancy": "(a) something different — no cognitive-fit measurer.",
+            "chosen_tool": "CognitiveFit - Measure architectural cognitive fit.",
+            "shoulder_angels_1": false,
+            "shoulder_angels_2": false,
+            "score_table": false,
+            "pivots": false,
+            "gates": {
+              "TEST": null,
+              "DOCUMENTATION": null,
+              "EXAMPLES": null,
+              "ERROR HANDLING": null,
+              "CODE QUALITY": null,
+              "INTEGRATION": null
+            },
+            "self_report_id": null
+          },
+          "novelty_file": "CognitiveFit/novelty-engine.md",
+          "novelty_score": null,
+          "production_v2": false,
+          "completion_report": false,
+          "readme": false,
+          "examples": false,
+          "builds": {
+            "v1-A": {
+              "exists": true,
+              "production_v1": true,
+              "readme": true,
+              "tests": true
+            },
+            "v1-B": {
+              "exists": true,
+              "production_v1": false,
+              "readme": false,
+              "tests": false
+            },
+            "v1-C": {
+              "exists": true,
+              "production_v1": false,
+              "readme": false,
+              "tests": false
+            },
+            "v1-D": {
+              "exists": true,
+              "production_v1": false,
+              "readme": false,
+              "tests": false
+            }
+          },
+          "files": [
+            {
+              "path": "CognitiveFit/BUILD_LOG.md",
+              "exists": true,
+              "bytes": 574,
+              "mtime": "2026-09-05T16:06:32Z"
+            },
+            {
+              "path": "CognitiveFit/PRODUCTION_V2.md",
+              "exists": false,
+              "bytes": 0,
+              "mtime": null
+            },
+            {
+              "path": "CognitiveFit/COMPLETION_REPORT.md",
+              "exists": false,
+              "bytes": 0,
+              "mtime": null
+            },
+            {
+              "path": "CognitiveFit/README.md",
+              "exists": false,
+              "bytes": 0,
+              "mtime": null
+            },
+            {
+              "path": "CognitiveFit/EXAMPLES.md",
+              "exists": false,
+              "bytes": 0,
+              "mtime": null
+            }
+          ],
+          "manifest": [
+            {
+              "tool": "CognitiveFit",
+              "repo": "",
+              "date": "2026-09-05",
+              "purpose": "Measure architectural cognitive fit",
+              "status": "In Progress",
+              "builder": "quip"
+            }
+          ],
+          "ledger": []
+        },
+        {
+          "name": "QuickRename",
+          "build_log": {
+            "tokens_text": "{\"novelty\":\"on\",\"depth\":\"standard\",\"difficulty\":\"3\",\"seat\":\"quip\"}",
+            "local_vs_github": "Local vs GitHub table recorded.",
+            "redundancy": "(a) something different.",
+            "chosen_tool": "QuickRename - Batch rename with preview.",
+            "shoulder_angels_1": true,
+            "shoulder_angels_2": true,
+            "score_table": true,
+            "pivots": true,
+            "gates": {
+              "TEST": "PASS",
+              "DOCUMENTATION": "PASS",
+              "EXAMPLES": "PASS",
+              "ERROR HANDLING": "PASS",
+              "CODE QUALITY": "PASS",
+              "INTEGRATION": "PASS"
+            },
+            "self_report_id": "m_quickrename01"
+          },
+          "novelty_file": "QuickRename/novelty-standard.md",
+          "novelty_score": 78,
+          "production_v2": true,
+          "completion_report": true,
+          "readme": true,
+          "examples": true,
+          "builds": {
+            "v1-A": {
+              "exists": true,
+              "production_v1": true,
+              "readme": true,
+              "tests": true
+            },
+            "v1-B": {
+              "exists": true,
+              "production_v1": true,
+              "readme": true,
+              "tests": true
+            },
+            "v1-C": {
+              "exists": true,
+              "production_v1": true,
+              "readme": true,
+              "tests": true
+            },
+            "v1-D": {
+              "exists": true,
+              "production_v1": true,
+              "readme": true,
+              "tests": true
+            }
+          },
+          "files": [
+            {
+              "path": "QuickRename/BUILD_LOG.md",
+              "exists": true,
+              "bytes": 632,
+              "mtime": "2026-09-05T16:06:32Z"
+            },
+            {
+              "path": "QuickRename/PRODUCTION_V2.md",
+              "exists": true,
+              "bytes": 38,
+              "mtime": "2026-09-05T16:06:21Z"
+            },
+            {
+              "path": "QuickRename/COMPLETION_REPORT.md",
+              "exists": true,
+              "bytes": 41,
+              "mtime": "2026-09-05T16:06:21Z"
+            },
+            {
+              "path": "QuickRename/README.md",
+              "exists": true,
+              "bytes": 38,
+              "mtime": "2026-09-05T16:06:21Z"
+            },
+            {
+              "path": "QuickRename/EXAMPLES.md",
+              "exists": true,
+              "bytes": 27,
+              "mtime": "2026-09-05T16:06:21Z"
+            }
+          ],
+          "manifest": [
+            {
+              "tool": "QuickRename",
+              "repo": "https://github.com/MetaphyKing/QuickRename",
+              "date": "2026-09-02",
+              "purpose": "Batch rename with preview",
+              "status": "Uploaded",
+              "builder": "quip"
+            }
+          ],
+          "ledger": [
+            {
+              "id": "Artifact/QuickRename/q-001",
+              "genus": "Artifact",
+              "lemma": "QuickRename",
+              "swatch": "cyan",
+              "kind": "ait",
+              "spoken": "QuickRename",
+              "superseded": false
+            }
+          ]
+        },
+        {
+          "name": "WindowSnap",
+          "build_log": {
+            "tokens_text": "{\"novelty\":\"on\",\"depth\":\"standard\",\"difficulty\":\"3\",\"seat\":\"quip\"}",
+            "local_vs_github": "Local-only: none. GitHub-only: many. Both: none.",
+            "redundancy": "(a) something different. No window-layout CLI in the graph.",
+            "chosen_tool": "WindowSnap - Snap and restore window layouts.",
+            "shoulder_angels_1": true,
+            "shoulder_angels_2": true,
+            "score_table": true,
+            "pivots": true,
+            "gates": {
+              "TEST": "PASS",
+              "DOCUMENTATION": "PASS",
+              "EXAMPLES": "PASS",
+              "ERROR HANDLING": "PASS",
+              "CODE QUALITY": "PASS",
+              "INTEGRATION": "PASS"
+            },
+            "self_report_id": "m_windowsnap01"
+          },
+          "novelty_file": "WindowSnap/novelty-score.md",
+          "novelty_score": 93,
+          "production_v2": true,
+          "completion_report": true,
+          "readme": true,
+          "examples": true,
+          "builds": {
+            "v1-A": {
+              "exists": true,
+              "production_v1": true,
+              "readme": true,
+              "tests": true
+            },
+            "v1-B": {
+              "exists": true,
+              "production_v1": true,
+              "readme": true,
+              "tests": true
+            },
+            "v1-C": {
+              "exists": true,
+              "production_v1": true,
+              "readme": true,
+              "tests": true
+            },
+            "v1-D": {
+              "exists": true,
+              "production_v1": true,
+              "readme": true,
+              "tests": true
+            }
+          },
+          "files": [
+            {
+              "path": "WindowSnap/BUILD_LOG.md",
+              "exists": true,
+              "bytes": 954,
+              "mtime": "2026-09-05T16:06:32Z"
+            },
+            {
+              "path": "WindowSnap/PRODUCTION_V2.md",
+              "exists": true,
+              "bytes": 37,
+              "mtime": "2026-09-05T16:06:21Z"
+            },
+            {
+              "path": "WindowSnap/COMPLETION_REPORT.md",
+              "exists": true,
+              "bytes": 40,
+              "mtime": "2026-09-05T16:06:21Z"
+            },
+            {
+              "path": "WindowSnap/README.md",
+              "exists": true,
+              "bytes": 37,
+              "mtime": "2026-09-05T16:06:21Z"
+            },
+            {
+              "path": "WindowSnap/EXAMPLES.md",
+              "exists": true,
+              "bytes": 27,
+              "mtime": "2026-09-05T16:06:21Z"
+            }
+          ],
+          "manifest": [
+            {
+              "tool": "WindowSnap",
+              "repo": "https://github.com/MetaphyKing/WindowSnap",
+              "date": "2026-09-01",
+              "purpose": "Snap and restore window layouts",
+              "status": "Uploaded",
+              "builder": "quip"
+            }
+          ],
+          "ledger": [
+            {
+              "id": "Artifact/WindowSnap/w-001",
+              "genus": "Artifact",
+              "lemma": "WindowSnap",
+              "swatch": "gold",
+              "kind": "ait",
+              "spoken": "WindowSnap",
+              "superseded": false
+            }
+          ]
+        }
+      ],
+      "file_stats": [
+        {
+          "path": ".state/quip.json",
+          "exists": true,
+          "bytes": 1819,
+          "mtime": "2026-09-05T16:05:47Z"
+        },
+        {
+          "path": ".state/quip.events.jsonl",
+          "exists": true,
+          "bytes": 1186,
+          "mtime": "2026-09-05T16:05:56Z"
+        },
+        {
+          "path": "CognitiveFit/BUILD_LOG.md",
+          "exists": true,
+          "bytes": 574,
+          "mtime": "2026-09-05T16:06:32Z"
+        },
+        {
+          "path": "CognitiveFit/PRODUCTION_V2.md",
+          "exists": false,
+          "bytes": 0,
+          "mtime": null
+        },
+        {
+          "path": "CognitiveFit/COMPLETION_REPORT.md",
+          "exists": false,
+          "bytes": 0,
+          "mtime": null
+        },
+        {
+          "path": "CognitiveFit/README.md",
+          "exists": false,
+          "bytes": 0,
+          "mtime": null
+        },
+        {
+          "path": "CognitiveFit/EXAMPLES.md",
+          "exists": false,
+          "bytes": 0,
+          "mtime": null
+        },
+        {
+          "path": "QuickRename/BUILD_LOG.md",
+          "exists": true,
+          "bytes": 632,
+          "mtime": "2026-09-05T16:06:32Z"
+        },
+        {
+          "path": "QuickRename/PRODUCTION_V2.md",
+          "exists": true,
+          "bytes": 38,
+          "mtime": "2026-09-05T16:06:21Z"
+        },
+        {
+          "path": "QuickRename/COMPLETION_REPORT.md",
+          "exists": true,
+          "bytes": 41,
+          "mtime": "2026-09-05T16:06:21Z"
+        },
+        {
+          "path": "QuickRename/README.md",
+          "exists": true,
+          "bytes": 38,
+          "mtime": "2026-09-05T16:06:21Z"
+        },
+        {
+          "path": "QuickRename/EXAMPLES.md",
+          "exists": true,
+          "bytes": 27,
+          "mtime": "2026-09-05T16:06:21Z"
+        },
+        {
+          "path": "WindowSnap/BUILD_LOG.md",
+          "exists": true,
+          "bytes": 954,
+          "mtime": "2026-09-05T16:06:32Z"
+        },
+        {
+          "path": "WindowSnap/PRODUCTION_V2.md",
+          "exists": true,
+          "bytes": 37,
+          "mtime": "2026-09-05T16:06:21Z"
+        },
+        {
+          "path": "WindowSnap/COMPLETION_REPORT.md",
+          "exists": true,
+          "bytes": 40,
+          "mtime": "2026-09-05T16:06:21Z"
+        },
+        {
+          "path": "WindowSnap/README.md",
+          "exists": true,
+          "bytes": 37,
+          "mtime": "2026-09-05T16:06:21Z"
+        },
+        {
+          "path": "WindowSnap/EXAMPLES.md",
+          "exists": true,
+          "bytes": 27,
+          "mtime": "2026-09-05T16:06:21Z"
+        }
+      ],
+      "events": [
+        {
+          "at": "2026-09-01T10:00:00Z",
+          "seat": "quip",
+          "task": null,
+          "result": "start",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-01T10:02:00Z",
+          "seat": "quip",
+          "task": 0,
+          "result": "cleared",
+          "missing": [],
+          "source": "events.jsonl",
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-01T10:02:00Z",
+          "seat": "quip",
+          "task": 0,
+          "result": "gate0 cleared",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-01T10:05:00Z",
+          "seat": "quip",
+          "task": null,
+          "result": "choose",
+          "missing": [],
+          "source": "state.history",
+          "tool": "WindowSnap",
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-01T10:08:00Z",
+          "seat": "quip",
+          "task": 1,
+          "result": "cleared",
+          "missing": [],
+          "source": "events.jsonl",
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-01T10:08:00Z",
+          "seat": "quip",
+          "task": 1,
+          "result": "gate1 cleared",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-01T10:15:00Z",
+          "seat": "quip",
+          "task": 2,
+          "result": "refused",
+          "missing": [
+            "builds/v1-C missing"
+          ],
+          "source": "events.jsonl",
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-01T10:20:00Z",
+          "seat": "quip",
+          "task": 2,
+          "result": "cleared",
+          "missing": [],
+          "source": "events.jsonl",
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-01T10:20:00Z",
+          "seat": "quip",
+          "task": 2,
+          "result": "gate2 cleared",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-01T10:30:00Z",
+          "seat": "quip",
+          "task": 3,
+          "result": "cleared",
+          "missing": [],
+          "source": "events.jsonl",
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-01T10:30:00Z",
+          "seat": "quip",
+          "task": 3,
+          "result": "gate3 cleared",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-01T10:40:00Z",
+          "seat": "quip",
+          "task": 4,
+          "result": "cleared",
+          "missing": [],
+          "source": "events.jsonl",
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-01T10:40:00Z",
+          "seat": "quip",
+          "task": 4,
+          "result": "gate4 cleared",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-01T10:50:00Z",
+          "seat": "quip",
+          "task": 5,
+          "result": "cleared",
+          "missing": [],
+          "source": "events.jsonl",
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-01T10:50:00Z",
+          "seat": "quip",
+          "task": 5,
+          "result": "gate5 cleared",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-01T11:00:00Z",
+          "seat": "quip",
+          "task": 6,
+          "result": "cleared",
+          "missing": [],
+          "source": "events.jsonl",
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-01T11:00:00Z",
+          "seat": "quip",
+          "task": 6,
+          "result": "gate6 cleared",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-02T10:00:00Z",
+          "seat": "quip",
+          "task": null,
+          "result": "start",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-02T10:02:00Z",
+          "seat": "quip",
+          "task": 0,
+          "result": "cleared",
+          "missing": [],
+          "source": "events.jsonl",
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-02T10:02:00Z",
+          "seat": "quip",
+          "task": 0,
+          "result": "gate0 cleared",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-02T10:05:00Z",
+          "seat": "quip",
+          "task": null,
+          "result": "choose",
+          "missing": [],
+          "source": "state.history",
+          "tool": "QuickRename",
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-02T10:10:00Z",
+          "seat": "quip",
+          "task": 1,
+          "result": "cleared",
+          "missing": [],
+          "source": "events.jsonl",
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-02T10:10:00Z",
+          "seat": "quip",
+          "task": 1,
+          "result": "gate1 cleared",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-02T10:25:00Z",
+          "seat": "quip",
+          "task": 2,
+          "result": "cleared",
+          "missing": [],
+          "source": "events.jsonl",
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-02T10:25:00Z",
+          "seat": "quip",
+          "task": 2,
+          "result": "gate2 cleared",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-02T10:40:00Z",
+          "seat": "quip",
+          "task": 3,
+          "result": "cleared",
+          "missing": [],
+          "source": "events.jsonl",
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-02T10:40:00Z",
+          "seat": "quip",
+          "task": 3,
+          "result": "gate3 cleared",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-02T10:55:00Z",
+          "seat": "quip",
+          "task": 4,
+          "result": "cleared",
+          "missing": [],
+          "source": "events.jsonl",
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-02T10:55:00Z",
+          "seat": "quip",
+          "task": 4,
+          "result": "gate4 cleared",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-02T11:10:00Z",
+          "seat": "quip",
+          "task": 5,
+          "result": "cleared",
+          "missing": [],
+          "source": "events.jsonl",
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-02T11:10:00Z",
+          "seat": "quip",
+          "task": 5,
+          "result": "gate5 cleared",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-02T11:30:00Z",
+          "seat": "quip",
+          "task": 6,
+          "result": "cleared",
+          "missing": [],
+          "source": "events.jsonl",
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-02T11:30:00Z",
+          "seat": "quip",
+          "task": 6,
+          "result": "gate6 cleared",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T10:00:00Z",
+          "seat": "quip",
+          "task": null,
+          "result": "start",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T10:04:00Z",
+          "seat": "quip",
+          "task": 0,
+          "result": "cleared",
+          "missing": [],
+          "source": "events.jsonl",
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T10:04:00Z",
+          "seat": "quip",
+          "task": 0,
+          "result": "gate0 cleared",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T10:10:00Z",
+          "seat": "quip",
+          "task": null,
+          "result": "choose",
+          "missing": [],
+          "source": "state.history",
+          "tool": "CognitiveFit",
+          "raw_ok": true
+        }
+      ]
+    }
+  ],
+  "events": [
+    {
+      "at": "2026-09-05T12:20:00Z",
+      "seat": "opus",
+      "task": null,
+      "result": "choose",
+      "missing": [],
+      "source": "state.history",
+      "tool": "DiffPilot",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T12:08:00Z",
+      "seat": "opus",
+      "task": 0,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T12:08:00Z",
+      "seat": "opus",
+      "task": 0,
+      "result": "gate0 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T12:00:00Z",
+      "seat": "opus",
+      "task": null,
+      "result": "start",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T10:10:00Z",
+      "seat": "quip",
+      "task": null,
+      "result": "choose",
+      "missing": [],
+      "source": "state.history",
+      "tool": "CognitiveFit",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T10:04:00Z",
+      "seat": "quip",
+      "task": 0,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T10:04:00Z",
+      "seat": "quip",
+      "task": 0,
+      "result": "gate0 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T10:00:00Z",
+      "seat": "quip",
+      "task": null,
+      "result": "start",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-03T12:00:00Z",
+      "seat": "opus",
+      "task": 6,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-03T12:00:00Z",
+      "seat": "opus",
+      "task": 6,
+      "result": "gate6 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-03T11:40:00Z",
+      "seat": "opus",
+      "task": 5,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-03T11:40:00Z",
+      "seat": "opus",
+      "task": 5,
+      "result": "gate5 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-03T11:20:00Z",
+      "seat": "opus",
+      "task": 4,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-03T11:20:00Z",
+      "seat": "opus",
+      "task": 4,
+      "result": "gate4 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-03T11:00:00Z",
+      "seat": "opus",
+      "task": 4,
+      "result": "refused",
+      "missing": [
+        "GATE TEST: PASS missing"
+      ],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-03T10:50:00Z",
+      "seat": "opus",
+      "task": 3,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-03T10:50:00Z",
+      "seat": "opus",
+      "task": 3,
+      "result": "gate3 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-03T10:20:00Z",
+      "seat": "opus",
+      "task": 2,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-03T10:20:00Z",
+      "seat": "opus",
+      "task": 2,
+      "result": "gate2 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-03T09:40:00Z",
+      "seat": "opus",
+      "task": 1,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-03T09:40:00Z",
+      "seat": "opus",
+      "task": 1,
+      "result": "gate1 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-03T09:20:00Z",
+      "seat": "opus",
+      "task": null,
+      "result": "choose",
+      "missing": [],
+      "source": "state.history",
+      "tool": "AuraLens",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-03T09:10:00Z",
+      "seat": "opus",
+      "task": 0,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-03T09:10:00Z",
+      "seat": "opus",
+      "task": 0,
+      "result": "gate0 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-03T09:00:00Z",
+      "seat": "opus",
+      "task": null,
+      "result": "start",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-02T11:30:00Z",
+      "seat": "quip",
+      "task": 6,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-02T11:30:00Z",
+      "seat": "quip",
+      "task": 6,
+      "result": "gate6 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-02T11:10:00Z",
+      "seat": "quip",
+      "task": 5,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-02T11:10:00Z",
+      "seat": "quip",
+      "task": 5,
+      "result": "gate5 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-02T10:55:00Z",
+      "seat": "quip",
+      "task": 4,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-02T10:55:00Z",
+      "seat": "quip",
+      "task": 4,
+      "result": "gate4 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-02T10:40:00Z",
+      "seat": "quip",
+      "task": 3,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-02T10:40:00Z",
+      "seat": "quip",
+      "task": 3,
+      "result": "gate3 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-02T10:25:00Z",
+      "seat": "quip",
+      "task": 2,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-02T10:25:00Z",
+      "seat": "quip",
+      "task": 2,
+      "result": "gate2 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-02T10:10:00Z",
+      "seat": "quip",
+      "task": 1,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-02T10:10:00Z",
+      "seat": "quip",
+      "task": 1,
+      "result": "gate1 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-02T10:05:00Z",
+      "seat": "quip",
+      "task": null,
+      "result": "choose",
+      "missing": [],
+      "source": "state.history",
+      "tool": "QuickRename",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-02T10:02:00Z",
+      "seat": "quip",
+      "task": 0,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-02T10:02:00Z",
+      "seat": "quip",
+      "task": 0,
+      "result": "gate0 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-02T10:00:00Z",
+      "seat": "quip",
+      "task": null,
+      "result": "start",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-01T11:00:00Z",
+      "seat": "quip",
+      "task": 6,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-01T11:00:00Z",
+      "seat": "quip",
+      "task": 6,
+      "result": "gate6 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-01T10:50:00Z",
+      "seat": "quip",
+      "task": 5,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-01T10:50:00Z",
+      "seat": "quip",
+      "task": 5,
+      "result": "gate5 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-01T10:40:00Z",
+      "seat": "quip",
+      "task": 4,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-01T10:40:00Z",
+      "seat": "quip",
+      "task": 4,
+      "result": "gate4 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-01T10:30:00Z",
+      "seat": "quip",
+      "task": 3,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-01T10:30:00Z",
+      "seat": "quip",
+      "task": 3,
+      "result": "gate3 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-01T10:20:00Z",
+      "seat": "quip",
+      "task": 2,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-01T10:20:00Z",
+      "seat": "quip",
+      "task": 2,
+      "result": "gate2 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-01T10:15:00Z",
+      "seat": "quip",
+      "task": 2,
+      "result": "refused",
+      "missing": [
+        "builds/v1-C missing"
+      ],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-01T10:08:00Z",
+      "seat": "quip",
+      "task": 1,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-01T10:08:00Z",
+      "seat": "quip",
+      "task": 1,
+      "result": "gate1 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-01T10:05:00Z",
+      "seat": "quip",
+      "task": null,
+      "result": "choose",
+      "missing": [],
+      "source": "state.history",
+      "tool": "WindowSnap",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-01T10:02:00Z",
+      "seat": "quip",
+      "task": 0,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-01T10:02:00Z",
+      "seat": "quip",
+      "task": 0,
+      "result": "gate0 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-01T10:00:00Z",
+      "seat": "quip",
+      "task": null,
+      "result": "start",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    }
+  ],
+  "head_to_head": [
+    {
+      "a": "opus",
+      "b": "quip",
+      "grail": {
+        "a": 59.83,
+        "b": 90.74,
+        "lead": "quip"
+      },
+      "shipped": {
+        "a": 1,
+        "b": 2,
+        "lead": "quip"
+      },
+      "first_try": {
+        "a": 0.88,
+        "b": 0.93,
+        "lead": "quip"
+      },
+      "novelty": {
+        "a": 71,
+        "b": 85.5,
+        "lead": "quip"
+      },
+      "speed": {
+        "a": 180,
+        "b": 75,
+        "lead": "quip"
+      }
+    }
+  ],
+  "records": {
+    "highest_grail": {
+      "seat": "quip",
+      "value": 90.74
+    },
+    "most_shipped": {
+      "seat": "quip",
+      "value": 2
+    },
+    "highest_first_try": {
+      "seat": "quip",
+      "value": 0.93
+    },
+    "highest_novelty": {
+      "seat": "quip",
+      "value": 85.5
+    },
+    "fastest_median": {
+      "seat": "quip",
+      "value": 75
+    }
+  },
+  "grail_formula": {
+    "total": "40 shipped (scaled to field max) + 25 first-try + 20 novelty mean + 15 speed (median min/shipped inverted)",
+    "shipped_field_max": 2,
+    "speed_ref_minutes": 240
+  },
+  "watcher": {
+    "pid": 6630,
+    "builtAt": "2026-09-05T15:00:00Z"
+  },
+  "rebuild_ms": 10.36,
+  "etag": "528100bbe25e70fe154931255f4fb65f"
+}

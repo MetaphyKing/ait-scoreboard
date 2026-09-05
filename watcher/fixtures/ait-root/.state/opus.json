@@ -1,0 +1,38 @@
+{
+ "seat": "opus",
+ "tokens": {
+  "novelty": "on",
+  "depth": "deep",
+  "difficulty": "4",
+  "category": "devtool",
+  "audience": "developer",
+  "lang": "python",
+  "combo": "none",
+  "deps": "stdlib",
+  "platform": "xplat",
+  "visibility": "public",
+  "builds": "2",
+  "timebox": "0",
+  "loop": "inf",
+  "seat": "opus"
+ },
+ "task": 2,
+ "tool": "DiffPilot",
+ "stop": false,
+ "loops_done": 1,
+ "started": "2026-09-05T12:00:00Z",
+ "history": [
+  {"at": "2026-09-03T09:00:00Z", "event": "start", "tokens": {"seat": "opus"}},
+  {"at": "2026-09-03T09:10:00Z", "event": "gate0 cleared"},
+  {"at": "2026-09-03T09:20:00Z", "event": "choose", "tool": "AuraLens"},
+  {"at": "2026-09-03T09:40:00Z", "event": "gate1 cleared"},
+  {"at": "2026-09-03T10:20:00Z", "event": "gate2 cleared"},
+  {"at": "2026-09-03T10:50:00Z", "event": "gate3 cleared"},
+  {"at": "2026-09-03T11:20:00Z", "event": "gate4 cleared"},
+  {"at": "2026-09-03T11:40:00Z", "event": "gate5 cleared"},
+  {"at": "2026-09-03T12:00:00Z", "event": "gate6 cleared"},
+  {"at": "2026-09-05T12:00:00Z", "event": "start", "tokens": {"seat": "opus"}},
+  {"at": "2026-09-05T12:08:00Z", "event": "gate0 cleared"},
+  {"at": "2026-09-05T12:20:00Z", "event": "choose", "tool": "DiffPilot"}
+ ]
+}

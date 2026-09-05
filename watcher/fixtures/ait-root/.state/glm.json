@@ -1,0 +1,28 @@
+{
+ "seat": "glm",
+ "tokens": {
+  "novelty": "on",
+  "depth": "standard",
+  "difficulty": "3",
+  "category": "any",
+  "audience": "ai-engineer",
+  "lang": "python",
+  "combo": "none",
+  "deps": "stdlib",
+  "platform": "xplat",
+  "visibility": "public",
+  "builds": "1",
+  "timebox": "0",
+  "loop": "inf",
+  "seat": "glm"
+ },
+ "task": 1,
+ "tool": "BadLog",
+ "stop": false,
+ "loops_done": 0,
+ "started": "2026-09-05T13:00:00Z",
+ "history": [
+  {"at": "2026-09-05T13:00:00Z", "event": "start", "tokens": {"seat": "glm"}},
+  {"at": "2026-09-05T13:01:00Z", "event": "choose", "tool": "BadLog"}
+ ]
+}

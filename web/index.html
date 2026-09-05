@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<!--
+  Copyright 2026 Metaphy LLC
+  SPDX-License-Identifier: Apache-2.0
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIT Scoreboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Syne:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #07080c;
+  --panel: #10131a;
+  --panel-2: #0c0f16;
+  --ink: #e8eaef;
+  --muted: #8b90a0;
+  --cyan: #0e7490;
+  --cyan-dim: rgba(14, 116, 144, 0.22);
+  --violet: #6b4c9a;
+  --violet-dim: rgba(107, 76, 154, 0.22);
+  --gold: #C9A227;
+  --ochre: #c47b2b;
+  --line: rgba(232, 234, 239, 0.08);
+  --mono: "JetBrains Mono", ui-monospace, monospace;
+  --sans: Inter, system-ui, sans-serif;
+  --display: Syne, Inter, sans-serif;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--sans); }
+body { min-height: 100vh; }
+a { color: #5ec8d8; text-decoration: none; }
+a:hover { text-decoration: underline; }
+.wrap { width: min(1200px, calc(100% - 32px)); margin: 0 auto; padding: 28px 0 64px; }
+header.hero { margin-bottom: 22px; }
+header.hero h1 {
+  font-family: var(--display);
+  font-size: clamp(1.7rem, 4vw, 2.4rem);
+  letter-spacing: 0.02em;
+  margin: 0 0 10px;
+  font-weight: 700;
+}
+header.hero .gold-rule {
+  height: 2px;
+  width: 92px;
+  background: var(--gold);
+  border: 0;
+  margin: 0 0 14px;
+}
+.sub { color: var(--muted); font-size: 0.92rem; display: flex; flex-wrap: wrap; gap: 10px 18px; }
+.sub .mono { font-family: var(--mono); font-size: 0.78rem; }
+.tabs { display: flex; gap: 8px; margin: 22px 0 16px; }
+.tabs button {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 7px 14px;
+  font: 500 0.82rem var(--sans);
+  cursor: pointer;
+}
+.tabs button[aria-selected="true"] {
+  color: var(--ink);
+  border-color: var(--cyan);
+  background: var(--cyan-dim);
+}
+.grid { display: grid; gap: 14px; }
+.fleet { grid-template-columns: repeat(4, 1fr); }
+.stand { grid-template-columns: 1.4fr 1fr; }
+.two { grid-template-columns: 1fr 1fr; }
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 16px 16px 14px;
+}
+.panel h2, .panel h3 {
+  font-family: var(--display);
+  font-size: 0.95rem;
+  margin: 0 0 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.stat { font-family: var(--mono); }
+.stat b { display: block; font-size: 1.45rem; font-weight: 500; color: #7ad4e2; }
+.stat span { color: var(--muted); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; }
+table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+th { text-align: left; color: var(--muted); font-weight: 500; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 0 8px 8px 0; }
+td { padding: 8px 8px 8px 0; border-top: 1px solid var(--line); vertical-align: top; }
+.grail-btn {
+  background: transparent;
+  border: 0;
+  color: #7ad4e2;
+  font: 500 0.95rem var(--mono);
+  cursor: pointer;
+  padding: 0;
+}
+.grail-btn:hover { color: var(--ink); }
+.win { color: var(--gold); font-weight: 600; }
+.badge {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: var(--violet-dim);
+  color: #cbb6ea;
+}
+.badge.ok { background: rgba(201, 162, 39, 0.14); color: var(--gold); }
+.badge.warn { background: rgba(196, 123, 43, 0.16); color: var(--ochre); }
+.badge.stale { background: rgba(196, 123, 43, 0.2); color: var(--ochre); }
+.delta { font-family: var(--mono); font-size: 0.68rem; color: var(--muted); }
+.delta.up { color: #7ad4e2; }
+.delta.down { color: var(--ochre); }
+.wait { color: var(--muted); font-size: 0.95rem; padding: 18px 4px; }
+.seat { margin-top: 14px; }
+.seat summary { cursor: pointer; list-style: none; }
+.seat summary::-webkit-details-marker { display: none; }
+.kv { display: grid; grid-template-columns: 140px 1fr; gap: 6px 12px; font-size: 0.84rem; }
+.kv dt { color: var(--muted); }
+.kv dd { margin: 0; font-family: var(--mono); font-size: 0.78rem; word-break: break-word; }
+.events { font-family: var(--mono); font-size: 0.74rem; line-height: 1.45; }
+.events li { margin: 0 0 6px; color: #c7ccd8; }
+.explain {
+  display: none;
+  margin-top: 8px;
+  padding: 10px 12px;
+  background: var(--panel-2);
+  border-left: 2px solid var(--cyan);
+  font-size: 0.8rem;
+  color: #c7ccd8;
+}
+.explain.open, tr.explain-row.open .explain { display: block; }
+pre.raw {
+  margin: 0;
+  padding: 14px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: auto;
+  font: 400 0.72rem/1.5 var(--mono);
+  max-height: 78vh;
+}
+footer { margin-top: 28px; color: var(--muted); font-size: 0.78rem; }
+.hidden { display: none; }
+@media (max-width: 900px) {
+  .fleet, .stand, .two { grid-template-columns: 1fr 1fr; }
+  .kv { grid-template-columns: 1fr; }
+}
+@media (max-width: 520px) {
+  .wrap { width: calc(100% - 24px); padding-top: 20px; }
+  .fleet, .stand, .two { grid-template-columns: 1fr; }
+  table, thead, tbody, th, td, tr { display: block; }
+  thead { display: none; }
+  td { border: 0; padding: 3px 0; }
+  tr { border-top: 1px solid var(--line); padding: 10px 0; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <h1>AIT Scoreboard</h1>
+    <hr class="gold-rule">
+    <div class="sub">
+      <span>Holy Grail loop &middot; all the data</span>
+      <span class="mono" id="stamp">waiting for the first event</span>
+      <span class="mono" id="poll">poll 5s</span>
+      <span class="badge stale hidden" id="stale">stale</span>
+    </div>
+  </header>
+
+  <div class="tabs" role="tablist">
+    <button type="button" id="tab-board" role="tab" aria-selected="true">Board</button>
+    <button type="button" id="tab-raw" role="tab" aria-selected="false">RAW</button>
+  </div>
+
+  <div id="board">
+    <div class="grid fleet" id="fleet"><p class="wait" id="wait">waiting for the first event</p></div>
+    <div class="grid stand" style="margin-top:14px">
+      <section class="panel">
+        <h2>Standings</h2>
+        <div id="standings"></div>
+      </section>
+      <section class="panel">
+        <h2>Records</h2>
+        <div id="records"></div>
+      </section>
+    </div>
+    <section class="panel" style="margin-top:14px">
+      <h2>Head to head</h2>
+      <div id="h2h"></div>
+    </section>
+    <div id="seats"></div>
+  </div>
+
+  <div id="raw" class="hidden">
+    <pre class="raw" id="raw-pre">{}</pre>
+  </div>
+
+  <footer>
+    L_A9 serves <span class="stat">/ait/</span> (relative <span class="stat">./scoreboard.json</span>).
+    GitHub Pages from <span class="stat">/web</span> on main is the public mirror.
+    Builder artifact &mdash; not a Verifier PASS.
+  </footer>
+</div>
+<script>
+(function () {
+  var DATA_URL = "./scoreboard.json";
+  var POLL_MS = 5000;
+  var STALE_MS = 30000;
+  var seenEtag = null;
+  var lastGoodAt = null;
+  var data = null;
+  var showAll = {};
+
+  function $(id) { return document.getElementById(id); }
+  function esc(s) {
+    return String(s == null ? "" : s)
+      .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  }
+  function fmt(n) {
+    if (n == null || n === "") return "—";
+    if (typeof n === "number") return Number.isInteger(n) ? String(n) : n.toFixed(2);
+    return String(n);
+  }
+
+  function grailExplain(seat) {
+    var g = seat.grail || {};
+    var p = g.parts || {};
+    var i = g.inputs || {};
+    return "Grail " + fmt(g.total) + " / 100 = " +
+      fmt(p.shipped) + " shipped (" + fmt(i.shipped) + "/" + fmt(i.shipped_field_max) + " field max, max 40) + " +
+      fmt(p.first_try) + " first-try (" + fmt(i.first_try_clears) + "/" + fmt(i.total_clears) + " clears, max 25) + " +
+      fmt(p.novelty) + " novelty mean " + fmt(i.novelty_mean) + " (max 20) + " +
+      fmt(p.speed) + " speed (median " + fmt(i.median_minutes_per_shipped) + " min/shipped inverted vs " +
+      fmt(i.speed_ref_minutes) + " min, max 15).";
+  }
+
+  function deltaHtml(v) {
+    if (v == null) return "";
+    var cls = v > 0 ? " up" : (v < 0 ? " down" : "");
+    var sign = v > 0 ? "+" : "";
+    return " <span class='delta" + cls + "'>" + sign + fmt(v) + "</span>";
+  }
+
+  function renderFleet(d) {
+    var f = d.fleet || {};
+    var dlt = f.deltas || {};
+    var cells = [
+      ["Seats", f.seats, dlt.seats],
+      ["Readable", f.readable, dlt.readable],
+      ["Unreadable", f.unreadable, dlt.unreadable],
+      ["Shipped", f.shipped, dlt.shipped],
+      ["Mean grail", f.mean_grail, dlt.mean_grail],
+      ["Active loops", f.active_loops, dlt.active_loops],
+      ["Tools on disk", f.tools_on_disk, dlt.tools_on_disk],
+      ["Ledger rows", f.ledger_rows, dlt.ledger_rows],
+      ["Manifest rows", f.manifest_rows, dlt.manifest_rows]
+    ];
+    $("fleet").innerHTML = cells.map(function (c) {
+      return '<div class="panel stat"><b>' + esc(fmt(c[1])) + deltaHtml(c[2]) +
+        '</b><span>' + esc(c[0]) + '</span></div>';
+    }).join("");
+  }
+
+  function renderStandings(d) {
+    var seats = (d.seats || []).slice().sort(function (a, b) {
+      return (b.grail && b.grail.total || 0) - (a.grail && a.grail.total || 0);
+    });
+    var rows = seats.map(function (s, idx) {
+      var g = s.grail || {};
+      var loop = s.loop || {};
+      var idn = s.identity || {};
+      var win = d.records && d.records.highest_grail && d.records.highest_grail.seat === idn.seat;
+      return "<tr>" +
+        "<td>" + (idx + 1) + "</td>" +
+        "<td><strong>" + esc(idn.seat) + "</strong><br><span class='badge'>" + esc(idn.runtime) + "</span>" +
+          (idn.readable ? "" : " <span class='badge warn'>unreadable</span>") + "</td>" +
+        "<td><button type='button' class='grail-btn' data-seat='" + esc(idn.seat) + "' aria-expanded='false'>" +
+          (win ? "<span class='win'>" : "") + fmt(g.total) + (win ? "</span>" : "") + "</button></td>" +
+        "<td>" + fmt(g.inputs && g.inputs.shipped) + "</td>" +
+        "<td>" + fmt(g.inputs && g.inputs.first_try_rate) + "</td>" +
+        "<td>" + fmt(g.inputs && g.inputs.novelty_mean) + "</td>" +
+        "<td>" + fmt(g.inputs && g.inputs.median_minutes_per_shipped) + "</td>" +
+        "<td>T" + fmt(loop.task) + " " + esc(loop.tool || "") + "</td>" +
+        "</tr><tr class='explain-row' id='exrow-" + esc(idn.seat) + "'><td colspan='8'><div class='explain' id='ex-" + esc(idn.seat) + "'>" +
+        esc(grailExplain(s)) + "</div></td></tr>";
+    }).join("");
+    $("standings").innerHTML = "<table><thead><tr><th>#</th><th>Seat</th><th>Grail</th><th>Ship</th><th>1st</th><th>Nov</th><th>Min</th><th>Now</th></tr></thead><tbody>" + rows + "</tbody></table>";
+  }
+
+  function recLine(label, rec, gold) {
+    if (!rec) return "<div>" + esc(label) + ": —</div>";
+    return "<div>" + esc(label) + ": <span class='" + (gold ? "win" : "") + "'>" +
+      esc(rec.seat) + "</span> <span class='stat'>" + esc(fmt(rec.value)) + "</span></div>";
+  }
+
+  function renderRecords(d) {
+    var r = d.records || {};
+    $("records").innerHTML =
+      recLine("Highest grail", r.highest_grail, true) +
+      recLine("Most shipped", r.most_shipped, true) +
+      recLine("Highest first-try", r.highest_first_try, true) +
+      recLine("Highest novelty", r.highest_novelty, true) +
+      recLine("Fastest median min", r.fastest_median, true);
+  }
+
+  function renderH2H(d) {
+    var pairs = d.head_to_head || [];
+    if (!pairs.length) {
+      $("h2h").innerHTML = "<p class='sub'>Need two readable seats.</p>";
+      return;
+    }
+    $("h2h").innerHTML = pairs.map(function (p) {
+      function cell(label, block) {
+        var lead = block.lead ? " <span class='win'>" + esc(block.lead) + "</span>" : "";
+        return "<div><span class='badge'>" + esc(label) + "</span> " +
+          esc(p.a) + " " + fmt(block.a) + " / " + esc(p.b) + " " + fmt(block.b) + lead + "</div>";
+      }
+      return "<div class='panel' style='background:var(--panel-2);margin:0 0 10px'>" +
+        "<h3>" + esc(p.a) + " vs " + esc(p.b) + "</h3>" +
+        cell("grail", p.grail) + cell("shipped", p.shipped) +
+        cell("first-try", p.first_try) + cell("novelty", p.novelty) +
+        cell("speed", p.speed) + "</div>";
+    }).join("");
+  }
+
+  function kv(map) {
+    var html = "<dl class='kv'>";
+    Object.keys(map).forEach(function (k) {
+      var v = map[k];
+      if (v && typeof v === "object") v = JSON.stringify(v);
+      html += "<dt>" + esc(k) + "</dt><dd>" + esc(v == null || v === "" ? "—" : v) + "</dd>";
+    });
+    return html + "</dl>";
+  }
+
+  function renderSeats(d) {
+    $("seats").innerHTML = (d.seats || []).map(function (s) {
+      var idn = s.identity || {};
+      var loop = s.loop || {};
+      var events = s.events || [];
+      var key = idn.seat;
+      var all = !!showAll[key];
+      var shown = all ? events : events.slice(-50);
+      var evHtml = shown.map(function (e) {
+        return "<li>" + esc(e.at || "?") + " T" + esc(e.task) + " " + esc(e.result) +
+          (e.missing && e.missing.length ? " [" + esc(e.missing.join("; ")) + "]" : "") +
+          " <span class='badge'>" + esc(e.source) + "</span></li>";
+      }).join("");
+      var timingRows = "";
+      for (var n = 0; n <= 6; n++) {
+        var t = (s.task_timing || {})[n] || {};
+        timingRows += "<tr><td>T" + n + " " + esc(t.name) + "</td><td>" + esc(t.entered_at || "—") +
+          "</td><td>" + esc(t.cleared_at || "—") + "</td><td>" + fmt(t.minutes) + "</td></tr>";
+      }
+      var taskBlocks = "";
+      for (var i = 0; i <= 6; i++) {
+        var task = (s.tasks || {})[i] || {};
+        taskBlocks += "<h3>Task " + i + " — " + esc(task.name) + "</h3>" + kv(task.fields || {});
+      }
+      var files = (s.file_stats || []).map(function (f) {
+        return "<li>" + esc(f.path) + " " + (f.exists ? f.bytes + "b " + esc(f.mtime) : "missing") + "</li>";
+      }).join("");
+      var attempts = (s.gate_attempts || []).map(function (a) {
+        return "<li>" + esc(a.at) + " T" + a.task + " " + esc(a.result) +
+          (a.missing && a.missing.length ? " [" + esc(a.missing.join("; ")) + "]" : "") +
+          (a.first_try ? " <span class='badge ok'>first try</span>" : "") + "</li>";
+      }).join("");
+      var tools = (s.tools || []).map(function (t) {
+        return "<li>" + esc(t.name) +
+          (t.production_v2 ? " <span class='badge ok'>v2</span>" : "") +
+          (t.novelty_score != null ? " novelty " + fmt(t.novelty_score) : "") + "</li>";
+      }).join("");
+      return "<details class='panel seat' open>" +
+        "<summary><h2 style='display:inline'>" + esc(idn.seat) + "</h2> " +
+        "<span class='badge'>" + esc(idn.runtime) + "</span> " +
+        (idn.readable ? "<span class='win'>" + fmt(s.grail && s.grail.total) + "</span>" :
+          "<span class='badge warn'>unreadable since " + esc(idn.unreadable_since) + "</span>") +
+        "</summary>" +
+        "<h3>Identity</h3>" + kv(idn) +
+        "<h3>Loop</h3>" + kv(loop) +
+        "<h3>Grail</h3><p>" + esc(grailExplain(s)) + "</p>" +
+        "<h3>Task 0-6 timing</h3><table><thead><tr><th>Task</th><th>Entered</th><th>Cleared</th><th>Min</th></tr></thead><tbody>" +
+        timingRows + "</tbody></table>" +
+        "<h3>Gate attempts</h3><ul class='events'>" + attempts + "</ul>" +
+        "<h3>Tools</h3><ul class='events'>" + tools + "</ul>" +
+        taskBlocks +
+        "<h3>File stats</h3><ul class='events'>" + files + "</ul>" +
+        "<h3>Events (" + events.length + ", showing " + shown.length + ")</h3>" +
+        "<ul class='events'>" + evHtml + "</ul>" +
+        (events.length > 50 ? "<button type='button' data-all='" + esc(key) + "'>" +
+          (all ? "Show last 50" : "Show all") + "</button>" : "") +
+        "</details>";
+    }).join("");
+  }
+
+  function render(d) {
+    data = d;
+    $("stamp").textContent = "generated " + (d.generated || d.generated_at || "?") +
+      " · etag " + String(d.etag || "").slice(0, 8);
+    $("raw-pre").textContent = JSON.stringify(d, null, 2);
+    renderFleet(d);
+    renderStandings(d);
+    renderRecords(d);
+    renderH2H(d);
+    renderSeats(d);
+  }
+
+  function markStale(on) {
+    var el = $("stale");
+    if (el) el.classList.toggle("hidden", !on);
+  }
+
+  document.addEventListener("click", function (ev) {
+    var t = ev.target;
+    if (t.closest) {
+      var tab = t.closest("#tab-board, #tab-raw");
+      if (tab) {
+        var raw = tab.id === "tab-raw";
+        $("tab-board").setAttribute("aria-selected", raw ? "false" : "true");
+        $("tab-raw").setAttribute("aria-selected", raw ? "true" : "false");
+        $("board").classList.toggle("hidden", raw);
+        $("raw").classList.toggle("hidden", !raw);
+        return;
+      }
+      var btn = t.closest(".grail-btn");
+      if (btn) {
+        var seat = btn.getAttribute("data-seat");
+        var box = $("ex-" + seat);
+        var row = $("exrow-" + seat);
+        var open = box && !box.classList.contains("open");
+        if (box) box.classList.toggle("open", open);
+        if (row) row.classList.toggle("open", open);
+        btn.setAttribute("aria-expanded", open ? "true" : "false");
+        return;
+      }
+      var allBtn = t.closest("[data-all]");
+      if (allBtn && data) {
+        var k = allBtn.getAttribute("data-all");
+        showAll[k] = !showAll[k];
+        renderSeats(data);
+      }
+    }
+  });
+
+  function pull() {
+    if (lastGoodAt && (Date.now() - lastGoodAt > STALE_MS)) markStale(true);
+    var url = DATA_URL + "?t=" + Date.now();
+    fetch(url, { cache: "no-store", headers: { "Cache-Control": "no-store" } })
+      .then(function (res) {
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        return res.json();
+      })
+      .then(function (json) {
+        lastGoodAt = Date.now();
+        markStale(false);
+        $("poll").textContent = "poll 5s · field etag";
+        if (!json) return;
+        if (json.etag && json.etag === seenEtag) return;
+        seenEtag = json.etag || null;
+        render(json);
+      })
+      .catch(function () {
+        if (!data) {
+          $("stamp").textContent = "waiting for the first event";
+          $("poll").textContent = "poll 5s · waiting";
+        } else if (lastGoodAt && (Date.now() - lastGoodAt > STALE_MS)) {
+          markStale(true);
+          $("poll").textContent = "poll 5s · stale";
+        } else {
+          $("poll").textContent = "poll 5s · retrying";
+        }
+      });
+  }
+
+  pull();
+  setInterval(pull, POLL_MS);
+})();
+</script>
+</body>
+</html>
