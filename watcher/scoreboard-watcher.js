@@ -114,8 +114,10 @@ function safeStat(p) {
   }
 }
 
+const UTF8_REPLACE = new TextDecoder('utf-8', { fatal: false });
+
 function readText(p) {
-  return fs.readFileSync(p, { encoding: 'utf8' });
+  return UTF8_REPLACE.decode(fs.readFileSync(p));
 }
 
 function listDir(p) {
@@ -385,23 +387,57 @@ function parseEvents(text, seat) {
   return events;
 }
 
+function emptyCache() {
+  return { version: 1, first_seen: {}, previous_fleet: null };
+}
+
+function coerceFirstSeen(value) {
+  const out = {};
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return out;
+  const keys = Object.keys(value);
+  for (let i = 0; i < keys.length; i++) {
+    const k = keys[i];
+    const v = value[k];
+    if (typeof v === 'string' && v) out[k] = v;
+  }
+  return out;
+}
+
+function coerceCache(cache) {
+  if (!cache || typeof cache !== 'object' || Array.isArray(cache)) {
+    return emptyCache();
+  }
+  cache.version = Number(cache.version) || 1;
+  cache.first_seen = coerceFirstSeen(cache.first_seen);
+  if (
+    !cache.previous_fleet ||
+    typeof cache.previous_fleet !== 'object' ||
+    Array.isArray(cache.previous_fleet)
+  ) {
+    cache.previous_fleet = null;
+  }
+  return cache;
+}
+
 function loadCache(cachePath) {
-  const empty = { version: 1, first_seen: {}, previous_fleet: null };
   const st = safeStat(cachePath);
-  if (!st) return empty;
+  if (!st) return emptyCache();
   try {
     const parsed = parseJsonSafe(readText(cachePath));
-    if (parsed.ok && parsed.value && typeof parsed.value === 'object') {
-      if (!parsed.value.first_seen) parsed.value.first_seen = {};
-      return parsed.value;
-    }
+    if (parsed.ok) return coerceCache(parsed.value);
   } catch (e) {
     /* ignore */
   }
-  return empty;
+  return emptyCache();
 }
 
 function remember(cache, key, when) {
+  if (!cache || typeof cache !== 'object' || Array.isArray(cache)) {
+    return when || null;
+  }
+  if (!cache.first_seen || typeof cache.first_seen !== 'object' || Array.isArray(cache.first_seen)) {
+    cache.first_seen = {};
+  }
   if (!when) return cache.first_seen[key] || null;
   const prev = cache.first_seen[key];
   if (!prev) {
@@ -1038,7 +1074,7 @@ function applyFieldMax(seats) {
 function buildScoreboard(root, options) {
   const opts = options || {};
   const started = performance.now();
-  const cache = opts.cache || { version: 1, first_seen: {} };
+  const cache = coerceCache(opts.cache);
   const generatedAt = opts.now || nowIso();
 
   let manifest = [];
@@ -1243,6 +1279,9 @@ module.exports = {
   computeGrailScore: computeGrailScore,
   debounce: debounce,
   writeAtomic: writeAtomic,
+  readText: readText,
+  coerceCache: coerceCache,
+  loadCache: loadCache,
   parseJsonSafe: parseJsonSafe,
   parseNoveltyScore: parseNoveltyScore,
   parseBuildLog: parseBuildLog,

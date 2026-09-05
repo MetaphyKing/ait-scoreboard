@@ -76,7 +76,8 @@ node watcher/test-watcher.js
 `watcher`, `events`), atomic write, debounce, Grail Score arithmetic (field
 max), novelty `TOTAL:` parse, fleet deltas, per-seat isolation, and the
 named **invent-seat** test (Stage 10.2: seats come from `.state/*.json`
-only; invented / phantom / nope stay absent).
+only; invented / phantom / nope stay absent), A_B4 string `first_seen`
+coercion, and A_B2 UTF-8 replacement reads.
 
 ## Schema and score
 

@@ -358,3 +358,65 @@ test('fleet deltas compare to the previous payload in cache', () => {
   const third = w.buildScoreboard(FIXTURE, { cache: cache, now: '2026-09-05T16:02:00Z' });
   assert.equal(third.fleet.deltas.shipped, 1);
 });
+
+test('A_B4: string first_seen does not break rebuild', () => {
+  const shapes = ['corrupt-string', 3, true, null, [], 'x'];
+  for (const bad of shapes) {
+    const cache = { version: 1, first_seen: bad, previous_fleet: null };
+    const board = w.buildScoreboard(FIXTURE, { cache: cache, now: '2026-09-05T16:00:00Z' });
+    assert.ok(board);
+    assert.ok(Array.isArray(board.seats));
+    assert.equal(typeof cache.first_seen, 'object');
+    assert.equal(Array.isArray(cache.first_seen), false);
+    assert.ok(seatByName(board, 'quip').identity.readable);
+    assert.ok(seatByName(board, 'opus').identity.readable);
+  }
+
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'ait-ab4-'));
+  try {
+    const cachePath = path.join(dir, 'scoreboard-cache.json');
+    const outPath = path.join(dir, 'scoreboard.json');
+    fs.writeFileSync(
+      cachePath,
+      JSON.stringify({ version: 1, first_seen: 'corrupt-string', previous_fleet: null })
+    );
+    const loaded = w.loadCache(cachePath);
+    assert.deepEqual(loaded.first_seen, {});
+    const board = w.rebuildTo(FIXTURE, outPath, cachePath, {});
+    assert.ok(board, 'rebuildTo must not return null on string first_seen');
+    assert.ok(seatByName(board, 'quip').identity.readable);
+    assert.ok(fs.existsSync(outPath));
+  } finally {
+    fs.rmSync(dir, { recursive: true, force: true });
+  }
+});
+
+test('A_B2: BUILD_LOG stray bytes use UTF-8 replacement', () => {
+  const src = fs.readFileSync(path.join(__dirname, 'scoreboard-watcher.js'), 'utf8');
+  assert.match(src, /TextDecoder\(\s*['"]utf-8['"]\s*,\s*\{\s*fatal:\s*false\s*\}\s*\)/);
+  assert.match(src, /UTF8_REPLACE\.decode\(fs\.readFileSync\(p\)\)/);
+
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'ait-ab2-'));
+  try {
+    const root = path.join(dir, 'ait');
+    fs.cpSync(FIXTURE, root, { recursive: true });
+    const logPath = path.join(root, 'WindowSnap', 'BUILD_LOG.md');
+    const payload = Buffer.concat([
+      Buffer.from('# BUILD_LOG\n\nGATE TEST: PASS\n', 'utf8'),
+      Buffer.from([0xff, 0xfe, 0xc0, 0x80]),
+      Buffer.from('\nGATE DOCUMENTATION: PASS\nGATE EXAMPLES: PASS\n', 'utf8')
+    ]);
+    fs.writeFileSync(logPath, payload);
+    const text = w.readText(logPath);
+    assert.ok(text.includes('\uFFFD'));
+    assert.match(text, /GATE TEST: PASS/);
+    const board = w.buildScoreboard(root);
+    const quip = seatByName(board, 'quip');
+    assert.equal(quip.identity.readable, true);
+    const snap = quip.tools.find((t) => t.name === 'WindowSnap');
+    assert.ok(snap);
+    assert.equal(snap.build_log.gates.TEST, 'PASS');
+  } finally {
+    fs.rmSync(dir, { recursive: true, force: true });
+  }
+});
