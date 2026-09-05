@@ -1,14 +1,14 @@
 {
   "schema_version": 1,
-  "generated": "2026-09-05T21:18:31Z",
-  "generated_at": "2026-09-05T21:18:31Z",
+  "generated": "2026-09-05T21:28:24Z",
+  "generated_at": "2026-09-05T21:28:24Z",
   "root": "C:\\dev\\ait",
   "fleet": {
     "seats": 4,
     "readable": 4,
     "unreadable": 0,
-    "shipped": 2,
-    "mean_grail": 34.6,
+    "shipped": 3,
+    "mean_grail": 40.12,
     "active_loops": 2,
     "tools_on_disk": 4,
     "ledger_rows": 3,
@@ -36,7 +36,7 @@
         "unreadable_error": null
       },
       "loop": {
-        "task": 3,
+        "task": 4,
         "tool": "VariantCollator",
         "stop": true,
         "loops_done": 0,
@@ -57,21 +57,21 @@
           "loop": "inf",
           "seat": "bram"
         },
-        "history_count": 9
+        "history_count": 11
       },
       "grail": {
-        "total": 16.67,
+        "total": 38.75,
         "parts": {
-          "shipped": 0,
-          "first_try": 16.67,
+          "shipped": 20,
+          "first_try": 18.75,
           "novelty": 0,
           "speed": 0
         },
         "inputs": {
-          "shipped": 0,
-          "first_try_clears": 2,
-          "total_clears": 3,
-          "first_try_rate": 0.67,
+          "shipped": 1,
+          "first_try_clears": 3,
+          "total_clears": 4,
+          "first_try_rate": 0.75,
           "novelty_mean": 0,
           "novelty_n": 0,
           "median_minutes_per_shipped": null,
@@ -101,12 +101,12 @@
         "3": {
           "name": "combine_v2",
           "entered_at": "2026-09-05T21:17:11Z",
-          "cleared_at": null,
-          "minutes": null
+          "cleared_at": "2026-09-05T21:25:57Z",
+          "minutes": 8.77
         },
         "4": {
           "name": "quality_gates",
-          "entered_at": null,
+          "entered_at": "2026-09-05T21:25:57Z",
           "cleared_at": null,
           "minutes": null
         },
@@ -157,6 +157,15 @@
           "at": "2026-09-05T21:17:11Z",
           "seat": "bram",
           "task": 2,
+          "result": "cleared",
+          "missing": [],
+          "first_try": true,
+          "loop_index": 0
+        },
+        {
+          "at": "2026-09-05T21:25:56Z",
+          "seat": "bram",
+          "task": 3,
           "result": "cleared",
           "missing": [],
           "first_try": true,
@@ -236,7 +245,7 @@
         "3": {
           "name": "combine_v2",
           "fields": {
-            "production_v2": false,
+            "production_v2": true,
             "score_table": true,
             "pivots": true
           }
@@ -258,7 +267,7 @@
           "name": "publish",
           "fields": {
             "completion_report": false,
-            "readme": false,
+            "readme": true,
             "manifest_row": false,
             "ledger_row": false,
             "repo": ""
@@ -296,9 +305,9 @@
           },
           "novelty_file": "VariantCollator/NOVELTY_SCORE.md",
           "novelty_score": null,
-          "production_v2": false,
+          "production_v2": true,
           "completion_report": false,
-          "readme": false,
+          "readme": true,
           "examples": false,
           "builds": {
             "v1-A": {
@@ -335,9 +344,9 @@
             },
             {
               "path": "VariantCollator/PRODUCTION_V2.md",
-              "exists": false,
-              "bytes": 0,
-              "mtime": null
+              "exists": true,
+              "bytes": 4417,
+              "mtime": "2026-09-05T21:25:46Z"
             },
             {
               "path": "VariantCollator/COMPLETION_REPORT.md",
@@ -347,9 +356,9 @@
             },
             {
               "path": "VariantCollator/README.md",
-              "exists": false,
-              "bytes": 0,
-              "mtime": null
+              "exists": true,
+              "bytes": 8136,
+              "mtime": "2026-09-05T21:25:18Z"
             },
             {
               "path": "VariantCollator/EXAMPLES.md",
@@ -366,14 +375,14 @@
         {
           "path": ".state/bram.json",
           "exists": true,
-          "bytes": 1671,
-          "mtime": "2026-09-05T21:17:32Z"
+          "bytes": 1868,
+          "mtime": "2026-09-05T21:26:17Z"
         },
         {
           "path": ".state/bram.events.jsonl",
           "exists": true,
-          "bytes": 397,
-          "mtime": "2026-09-05T21:17:11Z"
+          "bytes": 477,
+          "mtime": "2026-09-05T21:25:56Z"
         },
         {
           "path": "VariantCollator/BUILD_LOG.md",
@@ -383,9 +392,9 @@
         },
         {
           "path": "VariantCollator/PRODUCTION_V2.md",
-          "exists": false,
-          "bytes": 0,
-          "mtime": null
+          "exists": true,
+          "bytes": 4417,
+          "mtime": "2026-09-05T21:25:46Z"
         },
         {
           "path": "VariantCollator/COMPLETION_REPORT.md",
@@ -395,9 +404,9 @@
         },
         {
           "path": "VariantCollator/README.md",
-          "exists": false,
-          "bytes": 0,
-          "mtime": null
+          "exists": true,
+          "bytes": 8136,
+          "mtime": "2026-09-05T21:25:18Z"
         },
         {
           "path": "VariantCollator/EXAMPLES.md",
@@ -527,6 +536,35 @@
         },
         {
           "at": "2026-09-05T21:17:32Z",
+          "seat": "bram",
+          "task": null,
+          "result": "continue posted",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T21:25:56Z",
+          "seat": "bram",
+          "task": 3,
+          "result": "cleared",
+          "missing": [],
+          "source": "events.jsonl",
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T21:25:57Z",
+          "seat": "bram",
+          "task": 3,
+          "result": "gate3 cleared",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T21:26:17Z",
           "seat": "bram",
           "task": null,
           "result": "continue posted",
@@ -2395,6 +2433,35 @@
   ],
   "events": [
     {
+      "at": "2026-09-05T21:26:17Z",
+      "seat": "bram",
+      "task": null,
+      "result": "continue posted",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T21:25:57Z",
+      "seat": "bram",
+      "task": 3,
+      "result": "gate3 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T21:25:56Z",
+      "seat": "bram",
+      "task": 3,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
       "at": "2026-09-05T21:17:32Z",
       "seat": "bram",
       "task": null,
@@ -3114,17 +3181,17 @@
       "a": "bram",
       "b": "cael",
       "grail": {
-        "a": 16.67,
+        "a": 38.75,
         "b": 78.12,
         "lead": "cael"
       },
       "shipped": {
-        "a": 0,
+        "a": 1,
         "b": 2,
         "lead": "cael"
       },
       "first_try": {
-        "a": 0.67,
+        "a": 0.75,
         "b": 1,
         "lead": "cael"
       },
@@ -3143,17 +3210,17 @@
       "a": "bram",
       "b": "quip",
       "grail": {
-        "a": 16.67,
+        "a": 38.75,
         "b": 18.6,
-        "lead": "quip"
+        "lead": "bram"
       },
       "shipped": {
-        "a": 0,
+        "a": 1,
         "b": 0,
-        "lead": null
+        "lead": "bram"
       },
       "first_try": {
-        "a": 0.67,
+        "a": 0.75,
         "b": 0,
         "lead": "bram"
       },
@@ -3172,17 +3239,17 @@
       "a": "bram",
       "b": "qwen",
       "grail": {
-        "a": 16.67,
+        "a": 38.75,
         "b": 25,
-        "lead": "qwen"
+        "lead": "bram"
       },
       "shipped": {
-        "a": 0,
+        "a": 1,
         "b": 0,
-        "lead": null
+        "lead": "bram"
       },
       "first_try": {
-        "a": 0.67,
+        "a": 0.75,
         "b": 1,
         "lead": "qwen"
       },
@@ -3316,6 +3383,6 @@
     "pid": 31392,
     "builtAt": "2026-09-05T17:16:45Z"
   },
-  "rebuild_ms": 11.46,
-  "etag": "820029b54fda43929a67d1aa7bbb4994"
+  "rebuild_ms": 11.43,
+  "etag": "ff7698ff02b91d293193cda6119f08ab"
 }
