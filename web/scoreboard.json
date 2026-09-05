@@ -1,18 +1,18 @@
 {
   "schema_version": 1,
-  "generated": "2026-09-05T21:03:31Z",
-  "generated_at": "2026-09-05T21:03:31Z",
+  "generated": "2026-09-05T21:08:28Z",
+  "generated_at": "2026-09-05T21:08:28Z",
   "root": "C:\\dev\\ait",
   "fleet": {
     "seats": 4,
     "readable": 4,
     "unreadable": 0,
-    "shipped": 1,
-    "mean_grail": 33.23,
+    "shipped": 2,
+    "mean_grail": 33.56,
     "active_loops": 4,
     "tools_on_disk": 4,
-    "ledger_rows": 2,
-    "manifest_rows": 1,
+    "ledger_rows": 3,
+    "manifest_rows": 3,
     "deltas": {
       "seats": 0,
       "readable": 0,
@@ -75,7 +75,7 @@
           "novelty_mean": 0,
           "novelty_n": 0,
           "median_minutes_per_shipped": null,
-          "shipped_field_max": 1,
+          "shipped_field_max": 2,
           "speed_ref_minutes": 240
         }
       },
@@ -207,10 +207,10 @@
                 "tests": false
               },
               "v1-C": {
-                "exists": false,
+                "exists": true,
                 "production_v1": false,
                 "readme": false,
-                "tests": false
+                "tests": true
               },
               "v1-D": {
                 "exists": false,
@@ -305,10 +305,10 @@
               "tests": false
             },
             "v1-C": {
-              "exists": false,
+              "exists": true,
               "production_v1": false,
               "readme": false,
-              "tests": false
+              "tests": true
             },
             "v1-D": {
               "exists": false,
@@ -321,8 +321,8 @@
             {
               "path": "VariantCollator/BUILD_LOG.md",
               "exists": true,
-              "bytes": 16642,
-              "mtime": "2026-09-05T20:51:10Z"
+              "bytes": 18678,
+              "mtime": "2026-09-05T21:07:21Z"
             },
             {
               "path": "VariantCollator/PRODUCTION_V2.md",
@@ -369,8 +369,8 @@
         {
           "path": "VariantCollator/BUILD_LOG.md",
           "exists": true,
-          "bytes": 16642,
-          "mtime": "2026-09-05T20:51:10Z"
+          "bytes": 18678,
+          "mtime": "2026-09-05T21:07:21Z"
         },
         {
           "path": "VariantCollator/PRODUCTION_V2.md",
@@ -499,10 +499,10 @@
         "unreadable_error": null
       },
       "loop": {
-        "task": 2,
+        "task": 6,
         "tool": "AsWritten",
         "stop": false,
-        "loops_done": 1,
+        "loops_done": 2,
         "started": "2026-09-05T20:58:49Z",
         "tokens": {
           "novelty": "on",
@@ -520,25 +520,25 @@
           "loop": "inf",
           "seat": "cael"
         },
-        "history_count": 21
+        "history_count": 30
       },
       "grail": {
-        "total": 76.8,
+        "total": 78.12,
         "parts": {
           "shipped": 40,
           "first_try": 25,
           "novelty": 0,
-          "speed": 11.8
+          "speed": 13.12
         },
         "inputs": {
-          "shipped": 1,
-          "first_try_clears": 10,
-          "total_clears": 10,
+          "shipped": 2,
+          "first_try_clears": 16,
+          "total_clears": 16,
           "first_try_rate": 1,
           "novelty_mean": 0,
           "novelty_n": 0,
-          "median_minutes_per_shipped": 51.27,
-          "shipped_field_max": 1,
+          "median_minutes_per_shipped": 30.12,
+          "shipped_field_max": 2,
           "speed_ref_minutes": 240
         }
       },
@@ -558,32 +558,32 @@
         "2": {
           "name": "build_v1",
           "entered_at": "2026-09-05T20:14:06Z",
-          "cleared_at": "2026-09-05T20:24:58Z",
-          "minutes": 10.87
+          "cleared_at": "2026-09-05T21:03:15Z",
+          "minutes": 49.15
         },
         "3": {
           "name": "combine_v2",
           "entered_at": "2026-09-05T20:24:58Z",
-          "cleared_at": "2026-09-05T20:48:41Z",
-          "minutes": 23.72
+          "cleared_at": "2026-09-05T21:04:25Z",
+          "minutes": 39.45
         },
         "4": {
           "name": "quality_gates",
           "entered_at": "2026-09-05T20:48:41Z",
-          "cleared_at": "2026-09-05T20:52:55Z",
-          "minutes": 4.23
+          "cleared_at": "2026-09-05T21:05:23Z",
+          "minutes": 16.7
         },
         "5": {
           "name": "publish",
           "entered_at": "2026-09-05T20:52:55Z",
-          "cleared_at": "2026-09-05T20:56:07Z",
-          "minutes": 3.2
+          "cleared_at": "2026-09-05T21:06:38Z",
+          "minutes": 13.72
         },
         "6": {
           "name": "self_report",
           "entered_at": "2026-09-05T20:56:07Z",
-          "cleared_at": "2026-09-05T20:58:42Z",
-          "minutes": 2.58
+          "cleared_at": "2026-09-05T21:07:47Z",
+          "minutes": 11.67
         }
       },
       "gate_attempts": [
@@ -676,6 +676,60 @@
           "missing": [],
           "first_try": true,
           "loop_index": 1
+        },
+        {
+          "at": "2026-09-05T21:03:15Z",
+          "seat": "cael",
+          "task": 2,
+          "result": "cleared",
+          "missing": [],
+          "first_try": true,
+          "loop_index": 1
+        },
+        {
+          "at": "2026-09-05T21:04:25Z",
+          "seat": "cael",
+          "task": 3,
+          "result": "cleared",
+          "missing": [],
+          "first_try": true,
+          "loop_index": 1
+        },
+        {
+          "at": "2026-09-05T21:05:23Z",
+          "seat": "cael",
+          "task": 4,
+          "result": "cleared",
+          "missing": [],
+          "first_try": true,
+          "loop_index": 1
+        },
+        {
+          "at": "2026-09-05T21:06:31Z",
+          "seat": "cael",
+          "task": 5,
+          "result": "cleared",
+          "missing": [],
+          "first_try": true,
+          "loop_index": 1
+        },
+        {
+          "at": "2026-09-05T21:06:38Z",
+          "seat": "cael",
+          "task": 5,
+          "result": "cleared",
+          "missing": [],
+          "first_try": true,
+          "loop_index": 1
+        },
+        {
+          "at": "2026-09-05T21:07:47Z",
+          "seat": "cael",
+          "task": 6,
+          "result": "cleared",
+          "missing": [],
+          "first_try": true,
+          "loop_index": 1
         }
       ],
       "tasks": {
@@ -751,38 +805,38 @@
         "3": {
           "name": "combine_v2",
           "fields": {
-            "production_v2": false,
-            "score_table": false,
-            "pivots": false
+            "production_v2": true,
+            "score_table": true,
+            "pivots": true
           }
         },
         "4": {
           "name": "quality_gates",
           "fields": {
             "gates": {
-              "TEST": null,
-              "DOCUMENTATION": null,
-              "EXAMPLES": null,
-              "ERROR HANDLING": null,
-              "CODE QUALITY": null,
-              "INTEGRATION": null
+              "TEST": "PASS",
+              "DOCUMENTATION": "PASS",
+              "EXAMPLES": "PASS",
+              "ERROR HANDLING": "PASS",
+              "CODE QUALITY": "PASS",
+              "INTEGRATION": "PASS"
             }
           }
         },
         "5": {
           "name": "publish",
           "fields": {
-            "completion_report": false,
-            "readme": false,
-            "manifest_row": false,
-            "ledger_row": false,
-            "repo": ""
+            "completion_report": true,
+            "readme": true,
+            "manifest_row": true,
+            "ledger_row": true,
+            "repo": "https://github.com/MetaphyKing/AsWritten"
           }
         },
         "6": {
           "name": "self_report",
           "fields": {
-            "self_report_id": null,
+            "self_report_id": "m_mtovix49t8l5qr",
             "stop": false
           }
         }
@@ -903,24 +957,24 @@
             "chosen_tool": "AsWritten - a stdlib CLI that treats a \"verbatim\" snippet as a hypothesis: compare it to the file's raw bytes, list C0/C1 controls with offset, and fail certify when sed/diff would have lied.",
             "shoulder_angels_1": true,
             "shoulder_angels_2": true,
-            "score_table": false,
-            "pivots": false,
+            "score_table": true,
+            "pivots": true,
             "gates": {
-              "TEST": null,
-              "DOCUMENTATION": null,
-              "EXAMPLES": null,
-              "ERROR HANDLING": null,
-              "CODE QUALITY": null,
-              "INTEGRATION": null
+              "TEST": "PASS",
+              "DOCUMENTATION": "PASS",
+              "EXAMPLES": "PASS",
+              "ERROR HANDLING": "PASS",
+              "CODE QUALITY": "PASS",
+              "INTEGRATION": "PASS"
             },
-            "self_report_id": null
+            "self_report_id": "m_mtovix49t8l5qr"
           },
           "novelty_file": "AsWritten/novelty_STANDARD.md",
           "novelty_score": null,
-          "production_v2": false,
-          "completion_report": false,
-          "readme": false,
-          "examples": false,
+          "production_v2": true,
+          "completion_report": true,
+          "readme": true,
+          "examples": true,
           "builds": {
             "v1-A": {
               "exists": true,
@@ -951,50 +1005,76 @@
             {
               "path": "AsWritten/BUILD_LOG.md",
               "exists": true,
-              "bytes": 5274,
-              "mtime": "2026-09-05T21:01:46Z"
+              "bytes": 7591,
+              "mtime": "2026-09-05T21:07:47Z"
             },
             {
               "path": "AsWritten/PRODUCTION_V2.md",
-              "exists": false,
-              "bytes": 0,
-              "mtime": null
+              "exists": true,
+              "bytes": 215,
+              "mtime": "2026-09-05T21:04:25Z"
             },
             {
               "path": "AsWritten/COMPLETION_REPORT.md",
-              "exists": false,
-              "bytes": 0,
-              "mtime": null
+              "exists": true,
+              "bytes": 1109,
+              "mtime": "2026-09-05T21:06:26Z"
             },
             {
               "path": "AsWritten/README.md",
-              "exists": false,
-              "bytes": 0,
-              "mtime": null
+              "exists": true,
+              "bytes": 1221,
+              "mtime": "2026-09-05T21:05:10Z"
             },
             {
               "path": "AsWritten/EXAMPLES.md",
-              "exists": false,
-              "bytes": 0,
-              "mtime": null
+              "exists": true,
+              "bytes": 757,
+              "mtime": "2026-09-05T21:05:10Z"
             }
           ],
-          "manifest": [],
-          "ledger": []
+          "manifest": [
+            {
+              "tool": "AsWritten",
+              "repo": "https://github.com/MetaphyKing/AsWritten",
+              "date": "2026-09-05",
+              "purpose": "CLI that certifies a claimed extract against file bytes and lists C0 controls that renderers hide",
+              "status": "In Progress",
+              "builder": "cael"
+            },
+            {
+              "tool": "AsWritten",
+              "repo": "https://github.com/MetaphyKing/AsWritten",
+              "date": "2026-09-05",
+              "purpose": "CLI that certifies a claimed extract against file bytes and lists C0 controls that renderers hide",
+              "status": "Uploaded",
+              "builder": "cael"
+            }
+          ],
+          "ledger": [
+            {
+              "id": "Artifact/AsWritten/a-e91a",
+              "genus": "Artifact",
+              "lemma": "AsWritten",
+              "swatch": "sand",
+              "kind": "ait",
+              "spoken": "AsWritten"
+            }
+          ]
         }
       ],
       "file_stats": [
         {
           "path": ".state/cael.json",
           "exists": true,
-          "bytes": 3146,
-          "mtime": "2026-09-05T21:01:04Z"
+          "bytes": 4008,
+          "mtime": "2026-09-05T21:07:47Z"
         },
         {
           "path": ".state/cael.events.jsonl",
           "exists": true,
-          "bytes": 800,
-          "mtime": "2026-09-05T21:00:44Z"
+          "bytes": 1280,
+          "mtime": "2026-09-05T21:07:47Z"
         },
         {
           "path": "Arrived/BUILD_LOG.md",
@@ -1029,32 +1109,32 @@
         {
           "path": "AsWritten/BUILD_LOG.md",
           "exists": true,
-          "bytes": 5274,
-          "mtime": "2026-09-05T21:01:46Z"
+          "bytes": 7591,
+          "mtime": "2026-09-05T21:07:47Z"
         },
         {
           "path": "AsWritten/PRODUCTION_V2.md",
-          "exists": false,
-          "bytes": 0,
-          "mtime": null
+          "exists": true,
+          "bytes": 215,
+          "mtime": "2026-09-05T21:04:25Z"
         },
         {
           "path": "AsWritten/COMPLETION_REPORT.md",
-          "exists": false,
-          "bytes": 0,
-          "mtime": null
+          "exists": true,
+          "bytes": 1109,
+          "mtime": "2026-09-05T21:06:26Z"
         },
         {
           "path": "AsWritten/README.md",
-          "exists": false,
-          "bytes": 0,
-          "mtime": null
+          "exists": true,
+          "bytes": 1221,
+          "mtime": "2026-09-05T21:05:10Z"
         },
         {
           "path": "AsWritten/EXAMPLES.md",
-          "exists": false,
-          "bytes": 0,
-          "mtime": null
+          "exists": true,
+          "bytes": 757,
+          "mtime": "2026-09-05T21:05:10Z"
         }
       ],
       "events": [
@@ -1357,6 +1437,150 @@
           "source": "state.history",
           "tool": null,
           "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T21:03:15Z",
+          "seat": "cael",
+          "task": 2,
+          "result": "cleared",
+          "missing": [],
+          "source": "events.jsonl",
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T21:03:15Z",
+          "seat": "cael",
+          "task": 2,
+          "result": "gate2 cleared",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T21:03:35Z",
+          "seat": "cael",
+          "task": null,
+          "result": "continue posted",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T21:04:25Z",
+          "seat": "cael",
+          "task": 3,
+          "result": "cleared",
+          "missing": [],
+          "source": "events.jsonl",
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T21:04:25Z",
+          "seat": "cael",
+          "task": 3,
+          "result": "gate3 cleared",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T21:04:46Z",
+          "seat": "cael",
+          "task": null,
+          "result": "continue posted",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T21:05:23Z",
+          "seat": "cael",
+          "task": 4,
+          "result": "cleared",
+          "missing": [],
+          "source": "events.jsonl",
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T21:05:23Z",
+          "seat": "cael",
+          "task": 4,
+          "result": "gate4 cleared",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T21:05:44Z",
+          "seat": "cael",
+          "task": null,
+          "result": "continue posted",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T21:06:31Z",
+          "seat": "cael",
+          "task": 5,
+          "result": "cleared",
+          "missing": [],
+          "source": "events.jsonl",
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T21:06:38Z",
+          "seat": "cael",
+          "task": 5,
+          "result": "cleared",
+          "missing": [],
+          "source": "events.jsonl",
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T21:06:38Z",
+          "seat": "cael",
+          "task": 5,
+          "result": "gate5 cleared",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T21:06:58Z",
+          "seat": "cael",
+          "task": null,
+          "result": "continue posted",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T21:07:47Z",
+          "seat": "cael",
+          "task": 6,
+          "result": "cleared",
+          "missing": [],
+          "source": "events.jsonl",
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T21:07:47Z",
+          "seat": "cael",
+          "task": 6,
+          "result": "gate6 cleared",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
         }
       ]
     },
@@ -1409,7 +1633,7 @@
           "novelty_mean": 93,
           "novelty_n": 1,
           "median_minutes_per_shipped": null,
-          "shipped_field_max": 1,
+          "shipped_field_max": 2,
           "speed_ref_minutes": 240
         }
       },
@@ -1898,7 +2122,7 @@
           "novelty_mean": 0,
           "novelty_n": 0,
           "median_minutes_per_shipped": null,
-          "shipped_field_max": 1,
+          "shipped_field_max": 2,
           "speed_ref_minutes": 240
         }
       },
@@ -2112,6 +2336,150 @@
     }
   ],
   "events": [
+    {
+      "at": "2026-09-05T21:07:47Z",
+      "seat": "cael",
+      "task": 6,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T21:07:47Z",
+      "seat": "cael",
+      "task": 6,
+      "result": "gate6 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T21:06:58Z",
+      "seat": "cael",
+      "task": null,
+      "result": "continue posted",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T21:06:38Z",
+      "seat": "cael",
+      "task": 5,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T21:06:38Z",
+      "seat": "cael",
+      "task": 5,
+      "result": "gate5 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T21:06:31Z",
+      "seat": "cael",
+      "task": 5,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T21:05:44Z",
+      "seat": "cael",
+      "task": null,
+      "result": "continue posted",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T21:05:23Z",
+      "seat": "cael",
+      "task": 4,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T21:05:23Z",
+      "seat": "cael",
+      "task": 4,
+      "result": "gate4 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T21:04:46Z",
+      "seat": "cael",
+      "task": null,
+      "result": "continue posted",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T21:04:25Z",
+      "seat": "cael",
+      "task": 3,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T21:04:25Z",
+      "seat": "cael",
+      "task": 3,
+      "result": "gate3 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T21:03:35Z",
+      "seat": "cael",
+      "task": null,
+      "result": "continue posted",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T21:03:15Z",
+      "seat": "cael",
+      "task": 2,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T21:03:15Z",
+      "seat": "cael",
+      "task": 2,
+      "result": "gate2 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
     {
       "at": "2026-09-05T21:01:04Z",
       "seat": "cael",
@@ -2640,12 +3008,12 @@
       "b": "cael",
       "grail": {
         "a": 12.5,
-        "b": 76.8,
+        "b": 78.12,
         "lead": "cael"
       },
       "shipped": {
         "a": 0,
-        "b": 1,
+        "b": 2,
         "lead": "cael"
       },
       "first_try": {
@@ -2660,7 +3028,7 @@
       },
       "speed": {
         "a": null,
-        "b": 51.27,
+        "b": 30.12,
         "lead": "cael"
       }
     },
@@ -2726,12 +3094,12 @@
       "a": "cael",
       "b": "quip",
       "grail": {
-        "a": 76.8,
+        "a": 78.12,
         "b": 18.6,
         "lead": "cael"
       },
       "shipped": {
-        "a": 1,
+        "a": 2,
         "b": 0,
         "lead": "cael"
       },
@@ -2746,7 +3114,7 @@
         "lead": "quip"
       },
       "speed": {
-        "a": 51.27,
+        "a": 30.12,
         "b": null,
         "lead": "cael"
       }
@@ -2755,12 +3123,12 @@
       "a": "cael",
       "b": "qwen",
       "grail": {
-        "a": 76.8,
+        "a": 78.12,
         "b": 25,
         "lead": "cael"
       },
       "shipped": {
-        "a": 1,
+        "a": 2,
         "b": 0,
         "lead": "cael"
       },
@@ -2775,7 +3143,7 @@
         "lead": null
       },
       "speed": {
-        "a": 51.27,
+        "a": 30.12,
         "b": null,
         "lead": "cael"
       }
@@ -2813,11 +3181,11 @@
   "records": {
     "highest_grail": {
       "seat": "cael",
-      "value": 76.8
+      "value": 78.12
     },
     "most_shipped": {
       "seat": "cael",
-      "value": 1
+      "value": 2
     },
     "highest_first_try": {
       "seat": "cael",
@@ -2829,18 +3197,18 @@
     },
     "fastest_median": {
       "seat": "cael",
-      "value": 51.27
+      "value": 30.12
     }
   },
   "grail_formula": {
     "total": "40 shipped (scaled to field max) + 25 first-try + 20 novelty mean + 15 speed (median min/shipped inverted)",
-    "shipped_field_max": 1,
+    "shipped_field_max": 2,
     "speed_ref_minutes": 240
   },
   "watcher": {
     "pid": 31392,
     "builtAt": "2026-09-05T17:16:45Z"
   },
-  "rebuild_ms": 10.44,
-  "etag": "26443fef872e5fb3df35d5bab9e8c374"
+  "rebuild_ms": 10.61,
+  "etag": "82a82b35c64f2f17f9079f98b670b9c4"
 }
