@@ -2,8 +2,11 @@
 
 Copyright 2026 Metaphy LLC. SPDX-License-Identifier: Apache-2.0.
 
-Watcher output written atomically to `web/scoreboard.json` (or argv[3]).
-`schema_version` is `1`. Unknown fields must be ignored by readers.
+Watcher output written atomically to argv[3] (default `web/scoreboard.json`).
+On L_A9, argv[3] is the live `/ait/` folder (Cloudflare Access tunnel).
+GitHub Pages from `/web` on `main` is the public mirror; a mirror push
+happens on AIT-DONE (Vesper deploy lane). `schema_version` is `1`.
+Unknown fields must be ignored by readers.
 
 ## Root
 
@@ -161,5 +164,6 @@ Quality-gate lines in BUILD_LOG are exactly `GATE TEST: PASS`,
 }
 ```
 
-The committed `web/scoreboard.json` is this fixture snapshot so `/ait/` and the
-Pages mirror have something to poll before a live watcher overwrites it.
+The committed `web/scoreboard.json` is this fixture snapshot so L_A9 `/ait/`
+and the Pages mirror have something to poll before a live watcher overwrites
+it via argv[3].

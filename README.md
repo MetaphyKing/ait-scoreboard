@@ -11,25 +11,27 @@ deliverable for run `ait-scoreboard-20260905`. It is **not** a Verifier PASS.
 
 ## Hosting
 
-**L_A9 serves `/ait/`.** That is the live origin. Copy or bind `web/index.html`
-and the watcher output `scoreboard.json` into the `/ait/` directory on L_A9 so
-the relative `./scoreboard.json` fetch works. GitHub Pages from `/web` on
-`main` is the public **mirror**, not the only host.
+Logan approved **both** hosts (not Pages-only; the board is meant to run on L_A9):
+
+1. **Live:** L_A9 tunnel `/ait/` (Cloudflare Access). The watcher writes
+   `scoreboard.json` into that folder via **argv[3]**. The page stays a
+   relative `./scoreboard.json` fetch so it works under `/ait/`.
+2. **Mirror:** public GitHub Pages from `/web` on `main`.
+   `.github/workflows/pages.yml` is that mirror. A mirror push happens on
+   **AIT-DONE** — Vesper's deploy lane does that push; this repo does not
+   build the push automation.
 
 - `web/index.html` fetches **relative** `./scoreboard.json?t=<now>` with
   `cache: no-store`. It compares the JSON `etag` field (the `/ait/` origin
   sends no HTTP ETag).
-- `.github/workflows/pages.yml` publishes the `web/` folder as the mirror.
-- `web/.nojekyll` keeps the JSON as a raw asset.
-- A mirror push to this repo happens on **AIT-DONE**. Vesper's deploy lane
-  does that push; this repo does not build the push automation.
+- `web/.nojekyll` keeps the JSON as a raw asset on the Pages mirror.
 
 Enable the Pages mirror: repo Settings → Pages → Source = GitHub Actions.
 
 ## Run against `C:\dev\ait`
 
-On L_A9 (default root is the Windows path; write the JSON next to the `/ait/`
-page):
+On L_A9 (argv[2] is the AIT tree; argv[3] is the `/ait/` folder that the
+tunnel serves — write `scoreboard.json` there):
 
 ```bat
 node watcher\scoreboard-watcher.js C:\dev\ait C:\path\to\ait-web\scoreboard.json
