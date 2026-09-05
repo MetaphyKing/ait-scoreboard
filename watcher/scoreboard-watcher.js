@@ -116,7 +116,12 @@ function safeStat(p) {
 
 const UTF8_REPLACE = new TextDecoder('utf-8', { fatal: false });
 
+function isPlainObject(v) {
+  return !!v && typeof v === 'object' && !Array.isArray(v);
+}
+
 function readText(p) {
+  // All AIT text reads: UTF-8 with replacement (U+FFFD). Non-fatal decode.
   return UTF8_REPLACE.decode(fs.readFileSync(p));
 }
 
@@ -393,7 +398,7 @@ function emptyCache() {
 
 function coerceFirstSeen(value) {
   const out = {};
-  if (!value || typeof value !== 'object' || Array.isArray(value)) return out;
+  if (!isPlainObject(value)) return out;
   const keys = Object.keys(value);
   for (let i = 0; i < keys.length; i++) {
     const k = keys[i];
@@ -404,18 +409,12 @@ function coerceFirstSeen(value) {
 }
 
 function coerceCache(cache) {
-  if (!cache || typeof cache !== 'object' || Array.isArray(cache)) {
+  if (!isPlainObject(cache)) {
     return emptyCache();
   }
   cache.version = Number(cache.version) || 1;
   cache.first_seen = coerceFirstSeen(cache.first_seen);
-  if (
-    !cache.previous_fleet ||
-    typeof cache.previous_fleet !== 'object' ||
-    Array.isArray(cache.previous_fleet)
-  ) {
-    cache.previous_fleet = null;
-  }
+  cache.previous_fleet = isPlainObject(cache.previous_fleet) ? cache.previous_fleet : null;
   return cache;
 }
 
@@ -432,10 +431,10 @@ function loadCache(cachePath) {
 }
 
 function remember(cache, key, when) {
-  if (!cache || typeof cache !== 'object' || Array.isArray(cache)) {
+  if (!isPlainObject(cache)) {
     return when || null;
   }
-  if (!cache.first_seen || typeof cache.first_seen !== 'object' || Array.isArray(cache.first_seen)) {
+  if (!isPlainObject(cache.first_seen)) {
     cache.first_seen = {};
   }
   if (!when) return cache.first_seen[key] || null;

@@ -301,7 +301,7 @@ test('invent-seat: board.seats equals .state/*.json only', () => {
   const board = w.buildScoreboard(FIXTURE);
   const seats = board.seats.map((s) => s.identity.seat).sort();
   assert.deepEqual(seats, fromState);
-  for (const name of ['invented', 'phantom', 'nope']) {
+  for (const name of ['invented', 'phantom', 'nope', 'quip.events', 'opus.events']) {
     assert.equal(seats.includes(name), false, name + ' must be absent');
   }
   for (const name of Object.keys(w.SEAT_LABELS)) {
@@ -360,12 +360,13 @@ test('fleet deltas compare to the previous payload in cache', () => {
 });
 
 test('A_B4: string first_seen does not break rebuild', () => {
-  const shapes = ['corrupt-string', 3, true, null, [], 'x'];
+  const shapes = ['oops', 'corrupt-string', 3, true, null, [], 'x'];
   for (const bad of shapes) {
     const cache = { version: 1, first_seen: bad, previous_fleet: null };
     const board = w.buildScoreboard(FIXTURE, { cache: cache, now: '2026-09-05T16:00:00Z' });
     assert.ok(board);
     assert.ok(Array.isArray(board.seats));
+    assert.ok(board.fleet.seats >= 1);
     assert.equal(typeof cache.first_seen, 'object');
     assert.equal(Array.isArray(cache.first_seen), false);
     assert.ok(seatByName(board, 'quip').identity.readable);
@@ -378,14 +379,23 @@ test('A_B4: string first_seen does not break rebuild', () => {
     const outPath = path.join(dir, 'scoreboard.json');
     fs.writeFileSync(
       cachePath,
-      JSON.stringify({ version: 1, first_seen: 'corrupt-string', previous_fleet: null })
+      JSON.stringify({ version: 1, first_seen: 'oops', previous_fleet: null })
     );
     const loaded = w.loadCache(cachePath);
     assert.deepEqual(loaded.first_seen, {});
     const board = w.rebuildTo(FIXTURE, outPath, cachePath, {});
     assert.ok(board, 'rebuildTo must not return null on string first_seen');
+    assert.ok(board.fleet.seats >= 1);
     assert.ok(seatByName(board, 'quip').identity.readable);
     assert.ok(fs.existsSync(outPath));
+
+    const garbagePath = path.join(dir, 'garbage-cache.json');
+    fs.writeFileSync(garbagePath, '{not json');
+    const recovered = w.loadCache(garbagePath);
+    assert.deepEqual(recovered.first_seen, {});
+    const recoveredBoard = w.rebuildTo(FIXTURE, path.join(dir, 'from-garbage.json'), garbagePath, {});
+    assert.ok(recoveredBoard);
+    assert.ok(recoveredBoard.fleet.seats >= 1);
   } finally {
     fs.rmSync(dir, { recursive: true, force: true });
   }
@@ -411,11 +421,16 @@ test('A_B2: BUILD_LOG stray bytes use UTF-8 replacement', () => {
     assert.ok(text.includes('\uFFFD'));
     assert.match(text, /GATE TEST: PASS/);
     const board = w.buildScoreboard(root);
+    assert.ok(board.fleet.seats >= 1);
     const quip = seatByName(board, 'quip');
     assert.equal(quip.identity.readable, true);
     const snap = quip.tools.find((t) => t.name === 'WindowSnap');
     assert.ok(snap);
     assert.equal(snap.build_log.gates.TEST, 'PASS');
+    const rebuilt = w.rebuildTo(root, path.join(dir, 'scoreboard.json'), path.join(dir, 'scoreboard-cache.json'), {});
+    assert.ok(rebuilt, 'rebuild must stay up on stray BUILD_LOG bytes');
+    assert.ok(rebuilt.fleet.seats >= 1);
+    assert.equal(seatByName(rebuilt, 'quip').identity.readable, true);
   } finally {
     fs.rmSync(dir, { recursive: true, force: true });
   }
