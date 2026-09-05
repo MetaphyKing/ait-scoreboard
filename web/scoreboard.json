@@ -1,18 +1,18 @@
 {
   "schema_version": 1,
-  "generated": "2026-09-05T21:33:25Z",
-  "generated_at": "2026-09-05T21:33:25Z",
+  "generated": "2026-09-05T21:38:26Z",
+  "generated_at": "2026-09-05T21:38:26Z",
   "root": "C:\\dev\\ait",
   "fleet": {
     "seats": 4,
     "readable": 4,
     "unreadable": 0,
     "shipped": 3,
-    "mean_grail": 40.43,
+    "mean_grail": 42.27,
     "active_loops": 2,
     "tools_on_disk": 4,
-    "ledger_rows": 3,
-    "manifest_rows": 3,
+    "ledger_rows": 4,
+    "manifest_rows": 4,
     "deltas": {
       "seats": 0,
       "readable": 0,
@@ -36,10 +36,10 @@
         "unreadable_error": null
       },
       "loop": {
-        "task": 5,
+        "task": 6,
         "tool": "VariantCollator",
         "stop": true,
-        "loops_done": 0,
+        "loops_done": 1,
         "started": "2026-09-05T20:09:40Z",
         "tokens": {
           "novelty": "on",
@@ -57,24 +57,24 @@
           "loop": "inf",
           "seat": "bram"
         },
-        "history_count": 13
+        "history_count": 16
       },
       "grail": {
-        "total": 40,
+        "total": 47.37,
         "parts": {
           "shipped": 20,
-          "first_try": 20,
+          "first_try": 17.86,
           "novelty": 0,
-          "speed": 0
+          "speed": 9.51
         },
         "inputs": {
           "shipped": 1,
-          "first_try_clears": 4,
-          "total_clears": 5,
-          "first_try_rate": 0.8,
+          "first_try_clears": 5,
+          "total_clears": 7,
+          "first_try_rate": 0.71,
           "novelty_mean": 0,
           "novelty_n": 0,
-          "median_minutes_per_shipped": null,
+          "median_minutes_per_shipped": 87.85,
           "shipped_field_max": 2,
           "speed_ref_minutes": 240
         }
@@ -113,14 +113,14 @@
         "5": {
           "name": "publish",
           "entered_at": "2026-09-05T21:29:48Z",
-          "cleared_at": null,
-          "minutes": null
+          "cleared_at": "2026-09-05T21:35:26Z",
+          "minutes": 5.63
         },
         "6": {
           "name": "self_report",
-          "entered_at": null,
-          "cleared_at": null,
-          "minutes": null
+          "entered_at": "2026-09-05T21:35:26Z",
+          "cleared_at": "2026-09-05T21:37:31Z",
+          "minutes": 2.08
         }
       },
       "gate_attempts": [
@@ -178,6 +178,35 @@
           "result": "cleared",
           "missing": [],
           "first_try": true,
+          "loop_index": 0
+        },
+        {
+          "at": "2026-09-05T21:35:26Z",
+          "seat": "bram",
+          "task": 5,
+          "result": "cleared",
+          "missing": [],
+          "first_try": true,
+          "loop_index": 0
+        },
+        {
+          "at": "2026-09-05T21:36:58Z",
+          "seat": "bram",
+          "task": 6,
+          "result": "refused",
+          "missing": [
+            "BUILD_LOG.md lacks 'SELF-REPORT: <post id>' line"
+          ],
+          "first_try": false,
+          "loop_index": 0
+        },
+        {
+          "at": "2026-09-05T21:37:31Z",
+          "seat": "bram",
+          "task": 6,
+          "result": "cleared",
+          "missing": [],
+          "first_try": false,
           "loop_index": 0
         }
       ],
@@ -277,15 +306,15 @@
           "fields": {
             "completion_report": true,
             "readme": true,
-            "manifest_row": false,
-            "ledger_row": false,
-            "repo": ""
+            "manifest_row": true,
+            "ledger_row": true,
+            "repo": "https://github.com/MetaphyKing/VariantCollator"
           }
         },
         "6": {
           "name": "self_report",
           "fields": {
-            "self_report_id": null,
+            "self_report_id": "m_mtowk2a4a38w8e",
             "stop": true
           }
         }
@@ -310,7 +339,7 @@
               "CODE QUALITY": "PASS",
               "INTEGRATION": "PASS"
             },
-            "self_report_id": null
+            "self_report_id": "m_mtowk2a4a38w8e"
           },
           "novelty_file": "VariantCollator/NOVELTY_SCORE.md",
           "novelty_score": null,
@@ -348,8 +377,8 @@
             {
               "path": "VariantCollator/BUILD_LOG.md",
               "exists": true,
-              "bytes": 26718,
-              "mtime": "2026-09-05T21:29:38Z"
+              "bytes": 30816,
+              "mtime": "2026-09-05T21:37:22Z"
             },
             {
               "path": "VariantCollator/PRODUCTION_V2.md",
@@ -376,28 +405,46 @@
               "mtime": "2026-09-05T21:29:07Z"
             }
           ],
-          "manifest": [],
-          "ledger": []
+          "manifest": [
+            {
+              "tool": "VariantCollator",
+              "repo": "https://github.com/MetaphyKing/VariantCollator",
+              "date": "2026-09-05",
+              "purpose": "Finds text that looks identical across files and is not, naming the characters that do not render",
+              "status": "Uploaded",
+              "builder": "bram"
+            }
+          ],
+          "ledger": [
+            {
+              "id": "Artifact/VariantCollator/v-cdc9",
+              "genus": "Artifact",
+              "lemma": "VariantCollator",
+              "swatch": "sand",
+              "kind": "ait",
+              "spoken": "VariantCollator"
+            }
+          ]
         }
       ],
       "file_stats": [
         {
           "path": ".state/bram.json",
           "exists": true,
-          "bytes": 2065,
-          "mtime": "2026-09-05T21:30:08Z"
+          "bytes": 2336,
+          "mtime": "2026-09-05T21:37:31Z"
         },
         {
           "path": ".state/bram.events.jsonl",
           "exists": true,
-          "bytes": 557,
-          "mtime": "2026-09-05T21:29:48Z"
+          "bytes": 862,
+          "mtime": "2026-09-05T21:37:31Z"
         },
         {
           "path": "VariantCollator/BUILD_LOG.md",
           "exists": true,
-          "bytes": 26718,
-          "mtime": "2026-09-05T21:29:38Z"
+          "bytes": 30816,
+          "mtime": "2026-09-05T21:37:22Z"
         },
         {
           "path": "VariantCollator/PRODUCTION_V2.md",
@@ -606,6 +653,65 @@
           "seat": "bram",
           "task": null,
           "result": "continue posted",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T21:35:26Z",
+          "seat": "bram",
+          "task": 5,
+          "result": "cleared",
+          "missing": [],
+          "source": "events.jsonl",
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T21:35:26Z",
+          "seat": "bram",
+          "task": 5,
+          "result": "gate5 cleared",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T21:35:46Z",
+          "seat": "bram",
+          "task": null,
+          "result": "continue posted",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T21:36:58Z",
+          "seat": "bram",
+          "task": 6,
+          "result": "refused",
+          "missing": [
+            "BUILD_LOG.md lacks 'SELF-REPORT: <post id>' line"
+          ],
+          "source": "events.jsonl",
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T21:37:31Z",
+          "seat": "bram",
+          "task": 6,
+          "result": "cleared",
+          "missing": [],
+          "source": "events.jsonl",
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T21:37:31Z",
+          "seat": "bram",
+          "task": 6,
+          "result": "gate6 cleared",
           "missing": [],
           "source": "state.history",
           "tool": null,
@@ -2471,6 +2577,65 @@
   ],
   "events": [
     {
+      "at": "2026-09-05T21:37:31Z",
+      "seat": "bram",
+      "task": 6,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T21:37:31Z",
+      "seat": "bram",
+      "task": 6,
+      "result": "gate6 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T21:36:58Z",
+      "seat": "bram",
+      "task": 6,
+      "result": "refused",
+      "missing": [
+        "BUILD_LOG.md lacks 'SELF-REPORT: <post id>' line"
+      ],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T21:35:46Z",
+      "seat": "bram",
+      "task": null,
+      "result": "continue posted",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T21:35:26Z",
+      "seat": "bram",
+      "task": 5,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T21:35:26Z",
+      "seat": "bram",
+      "task": 5,
+      "result": "gate5 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
       "at": "2026-09-05T21:30:08Z",
       "seat": "bram",
       "task": null,
@@ -3248,7 +3413,7 @@
       "a": "bram",
       "b": "cael",
       "grail": {
-        "a": 40,
+        "a": 47.37,
         "b": 78.12,
         "lead": "cael"
       },
@@ -3258,7 +3423,7 @@
         "lead": "cael"
       },
       "first_try": {
-        "a": 0.8,
+        "a": 0.71,
         "b": 1,
         "lead": "cael"
       },
@@ -3268,7 +3433,7 @@
         "lead": null
       },
       "speed": {
-        "a": null,
+        "a": 87.85,
         "b": 30.12,
         "lead": "cael"
       }
@@ -3277,7 +3442,7 @@
       "a": "bram",
       "b": "quip",
       "grail": {
-        "a": 40,
+        "a": 47.37,
         "b": 18.6,
         "lead": "bram"
       },
@@ -3287,7 +3452,7 @@
         "lead": "bram"
       },
       "first_try": {
-        "a": 0.8,
+        "a": 0.71,
         "b": 0,
         "lead": "bram"
       },
@@ -3297,16 +3462,16 @@
         "lead": "quip"
       },
       "speed": {
-        "a": null,
+        "a": 87.85,
         "b": null,
-        "lead": null
+        "lead": "bram"
       }
     },
     {
       "a": "bram",
       "b": "qwen",
       "grail": {
-        "a": 40,
+        "a": 47.37,
         "b": 25,
         "lead": "bram"
       },
@@ -3316,7 +3481,7 @@
         "lead": "bram"
       },
       "first_try": {
-        "a": 0.8,
+        "a": 0.71,
         "b": 1,
         "lead": "qwen"
       },
@@ -3326,9 +3491,9 @@
         "lead": null
       },
       "speed": {
-        "a": null,
+        "a": 87.85,
         "b": null,
-        "lead": null
+        "lead": "bram"
       }
     },
     {
@@ -3450,6 +3615,6 @@
     "pid": 31392,
     "builtAt": "2026-09-05T17:16:45Z"
   },
-  "rebuild_ms": 12.09,
-  "etag": "4890637977fb84e9ac07c28dd2a7c8f8"
+  "rebuild_ms": 10.24,
+  "etag": "08ae5f4f5918e75e70970ccc9fcedf53"
 }
