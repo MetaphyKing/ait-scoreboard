@@ -1,14 +1,14 @@
 {
   "schema_version": 1,
-  "generated": "2026-09-05T20:48:28Z",
-  "generated_at": "2026-09-05T20:48:28Z",
+  "generated": "2026-09-05T20:53:29Z",
+  "generated_at": "2026-09-05T20:53:29Z",
   "root": "C:\\dev\\ait",
   "fleet": {
     "seats": 4,
     "readable": 4,
     "unreadable": 0,
-    "shipped": 0,
-    "mean_grail": 20.27,
+    "shipped": 1,
+    "mean_grail": 30.28,
     "active_loops": 4,
     "tools_on_disk": 3,
     "ledger_rows": 1,
@@ -75,7 +75,7 @@
           "novelty_mean": 0,
           "novelty_n": 0,
           "median_minutes_per_shipped": null,
-          "shipped_field_max": 0,
+          "shipped_field_max": 1,
           "speed_ref_minutes": 240
         }
       },
@@ -195,7 +195,7 @@
           "fields": {
             "builds": {
               "v1-A": {
-                "exists": false,
+                "exists": true,
                 "production_v1": false,
                 "readme": false,
                 "tests": false
@@ -219,8 +219,8 @@
                 "tests": false
               }
             },
-            "shoulder_angels_1": false,
-            "shoulder_angels_2": false,
+            "shoulder_angels_1": true,
+            "shoulder_angels_2": true,
             "builds_token": "4"
           }
         },
@@ -271,8 +271,8 @@
             "local_vs_github": "Instruments: `C:\\dev\\ait\\PROJECT_MANIFEST.md`, a listing of `C:\\dev\\ait\\`, and\n`gh repo list MetaphyKing --limit 400` (293 rows) at 2026-09-05 20:19",
             "redundancy": "Candidate overlaps nothing in the graph: `ait.cmd search` returned **0 rows** for collate, collator,\nvariant, verbatim, fidelity, transcription, invisible, literal and drift; `stay_fleet.py search`\nreturned **0 rows across 3 seats**; `ait.cmd resolve Artifact VariantCollator` returns **NONE**.\n\nClosest existing MetaphyKing work and why it is not the same tool:\n- **DriftAudit** - semantic *config* drift between environments. Mine is byte-level divergence\n  between one literal and its copies inside a single tree. Different unit, different failure.\n- **EchoLineage** - provenance of ideas and decisions. Mine is equality of bytes, not genealogy.\n\n**DECISION: (a) something different.** Not a v2.0 and not a feature bump, because no existing tool\nin this ecosystem does witness-comparison of literals.",
             "chosen_tool": "**VariantCollator** - proves every copy of a literal (regex, prompt, constant, SQL) is byte-identical\nto the one that actually ships, and names the characters that make a difference unreadable.",
-            "shoulder_angels_1": false,
-            "shoulder_angels_2": false,
+            "shoulder_angels_1": true,
+            "shoulder_angels_2": true,
             "score_table": false,
             "pivots": false,
             "gates": {
@@ -293,7 +293,7 @@
           "examples": false,
           "builds": {
             "v1-A": {
-              "exists": false,
+              "exists": true,
               "production_v1": false,
               "readme": false,
               "tests": false
@@ -321,8 +321,8 @@
             {
               "path": "VariantCollator/BUILD_LOG.md",
               "exists": true,
-              "bytes": 8975,
-              "mtime": "2026-09-05T20:23:29Z"
+              "bytes": 16642,
+              "mtime": "2026-09-05T20:51:10Z"
             },
             {
               "path": "VariantCollator/PRODUCTION_V2.md",
@@ -369,8 +369,8 @@
         {
           "path": "VariantCollator/BUILD_LOG.md",
           "exists": true,
-          "bytes": 8975,
-          "mtime": "2026-09-05T20:23:29Z"
+          "bytes": 16642,
+          "mtime": "2026-09-05T20:51:10Z"
         },
         {
           "path": "VariantCollator/PRODUCTION_V2.md",
@@ -499,7 +499,7 @@
         "unreadable_error": null
       },
       "loop": {
-        "task": 3,
+        "task": 5,
         "tool": "Arrived",
         "stop": false,
         "loops_done": 0,
@@ -520,25 +520,25 @@
           "loop": "inf",
           "seat": "cael"
         },
-        "history_count": 8
+        "history_count": 11
       },
       "grail": {
-        "total": 25,
+        "total": 65,
         "parts": {
-          "shipped": 0,
+          "shipped": 40,
           "first_try": 25,
           "novelty": 0,
           "speed": 0
         },
         "inputs": {
-          "shipped": 0,
-          "first_try_clears": 3,
-          "total_clears": 3,
+          "shipped": 1,
+          "first_try_clears": 5,
+          "total_clears": 5,
           "first_try_rate": 1,
           "novelty_mean": 0,
           "novelty_n": 0,
           "median_minutes_per_shipped": null,
-          "shipped_field_max": 0,
+          "shipped_field_max": 1,
           "speed_ref_minutes": 240
         }
       },
@@ -564,18 +564,18 @@
         "3": {
           "name": "combine_v2",
           "entered_at": "2026-09-05T20:24:58Z",
-          "cleared_at": null,
-          "minutes": null
+          "cleared_at": "2026-09-05T20:48:41Z",
+          "minutes": 23.72
         },
         "4": {
           "name": "quality_gates",
-          "entered_at": null,
-          "cleared_at": null,
-          "minutes": null
+          "entered_at": "2026-09-05T20:48:41Z",
+          "cleared_at": "2026-09-05T20:52:55Z",
+          "minutes": 4.23
         },
         "5": {
           "name": "publish",
-          "entered_at": null,
+          "entered_at": "2026-09-05T20:52:55Z",
           "cleared_at": null,
           "minutes": null
         },
@@ -609,6 +609,24 @@
           "at": "2026-09-05T20:24:58Z",
           "seat": "cael",
           "task": 2,
+          "result": "cleared",
+          "missing": [],
+          "first_try": true,
+          "loop_index": 0
+        },
+        {
+          "at": "2026-09-05T20:48:41Z",
+          "seat": "cael",
+          "task": 3,
+          "result": "cleared",
+          "missing": [],
+          "first_try": true,
+          "loop_index": 0
+        },
+        {
+          "at": "2026-09-05T20:52:55Z",
+          "seat": "cael",
+          "task": 4,
           "result": "cleared",
           "missing": [],
           "first_try": true,
@@ -688,21 +706,21 @@
         "3": {
           "name": "combine_v2",
           "fields": {
-            "production_v2": false,
-            "score_table": false,
-            "pivots": false
+            "production_v2": true,
+            "score_table": true,
+            "pivots": true
           }
         },
         "4": {
           "name": "quality_gates",
           "fields": {
             "gates": {
-              "TEST": null,
-              "DOCUMENTATION": null,
-              "EXAMPLES": null,
-              "ERROR HANDLING": null,
-              "CODE QUALITY": null,
-              "INTEGRATION": null
+              "TEST": "PASS",
+              "DOCUMENTATION": "PASS",
+              "EXAMPLES": "PASS",
+              "ERROR HANDLING": "PASS",
+              "CODE QUALITY": "PASS",
+              "INTEGRATION": "PASS"
             }
           }
         },
@@ -734,24 +752,24 @@
             "chosen_tool": "Arrived - a stdlib Python CLI that treats local command success as a hop-1 identifier debt: parse an id from hop-1 output, probe an independent hop-2 command until that same id appears, and refuse any success token if hop-2 is silent. Built for AI engineers who ship `[OK]` / `posted id=N` from the local hop while the far side never saw it.",
             "shoulder_angels_1": true,
             "shoulder_angels_2": true,
-            "score_table": false,
-            "pivots": false,
+            "score_table": true,
+            "pivots": true,
             "gates": {
-              "TEST": null,
-              "DOCUMENTATION": null,
-              "EXAMPLES": null,
-              "ERROR HANDLING": null,
-              "CODE QUALITY": null,
-              "INTEGRATION": null
+              "TEST": "PASS",
+              "DOCUMENTATION": "PASS",
+              "EXAMPLES": "PASS",
+              "ERROR HANDLING": "PASS",
+              "CODE QUALITY": "PASS",
+              "INTEGRATION": "PASS"
             },
             "self_report_id": null
           },
           "novelty_file": "Arrived/novelty_STANDARD.md",
           "novelty_score": null,
-          "production_v2": false,
+          "production_v2": true,
           "completion_report": false,
           "readme": true,
-          "examples": false,
+          "examples": true,
           "builds": {
             "v1-A": {
               "exists": true,
@@ -782,14 +800,14 @@
             {
               "path": "Arrived/BUILD_LOG.md",
               "exists": true,
-              "bytes": 8072,
-              "mtime": "2026-09-05T20:19:22Z"
+              "bytes": 12062,
+              "mtime": "2026-09-05T20:52:49Z"
             },
             {
               "path": "Arrived/PRODUCTION_V2.md",
-              "exists": false,
-              "bytes": 0,
-              "mtime": null
+              "exists": true,
+              "bytes": 298,
+              "mtime": "2026-09-05T20:48:34Z"
             },
             {
               "path": "Arrived/COMPLETION_REPORT.md",
@@ -800,14 +818,14 @@
             {
               "path": "Arrived/README.md",
               "exists": true,
-              "bytes": 1326,
-              "mtime": "2026-09-05T20:47:59Z"
+              "bytes": 2187,
+              "mtime": "2026-09-05T20:52:49Z"
             },
             {
               "path": "Arrived/EXAMPLES.md",
-              "exists": false,
-              "bytes": 0,
-              "mtime": null
+              "exists": true,
+              "bytes": 1037,
+              "mtime": "2026-09-05T20:52:49Z"
             }
           ],
           "manifest": [],
@@ -818,26 +836,26 @@
         {
           "path": ".state/cael.json",
           "exists": true,
-          "bytes": 1572,
-          "mtime": "2026-09-05T20:25:18Z"
+          "bytes": 1843,
+          "mtime": "2026-09-05T20:52:55Z"
         },
         {
           "path": ".state/cael.events.jsonl",
           "exists": true,
-          "bytes": 240,
-          "mtime": "2026-09-05T20:24:58Z"
+          "bytes": 400,
+          "mtime": "2026-09-05T20:52:55Z"
         },
         {
           "path": "Arrived/BUILD_LOG.md",
           "exists": true,
-          "bytes": 8072,
-          "mtime": "2026-09-05T20:19:22Z"
+          "bytes": 12062,
+          "mtime": "2026-09-05T20:52:49Z"
         },
         {
           "path": "Arrived/PRODUCTION_V2.md",
-          "exists": false,
-          "bytes": 0,
-          "mtime": null
+          "exists": true,
+          "bytes": 298,
+          "mtime": "2026-09-05T20:48:34Z"
         },
         {
           "path": "Arrived/COMPLETION_REPORT.md",
@@ -848,14 +866,14 @@
         {
           "path": "Arrived/README.md",
           "exists": true,
-          "bytes": 1326,
-          "mtime": "2026-09-05T20:47:59Z"
+          "bytes": 2187,
+          "mtime": "2026-09-05T20:52:49Z"
         },
         {
           "path": "Arrived/EXAMPLES.md",
-          "exists": false,
-          "bytes": 0,
-          "mtime": null
+          "exists": true,
+          "bytes": 1037,
+          "mtime": "2026-09-05T20:52:49Z"
         }
       ],
       "events": [
@@ -965,6 +983,54 @@
           "source": "state.history",
           "tool": null,
           "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T20:48:41Z",
+          "seat": "cael",
+          "task": 3,
+          "result": "cleared",
+          "missing": [],
+          "source": "events.jsonl",
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T20:48:41Z",
+          "seat": "cael",
+          "task": 3,
+          "result": "gate3 cleared",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T20:49:01Z",
+          "seat": "cael",
+          "task": null,
+          "result": "continue posted",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T20:52:55Z",
+          "seat": "cael",
+          "task": 4,
+          "result": "cleared",
+          "missing": [],
+          "source": "events.jsonl",
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T20:52:55Z",
+          "seat": "cael",
+          "task": 4,
+          "result": "gate4 cleared",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
         }
       ]
     },
@@ -1017,7 +1083,7 @@
           "novelty_mean": 93,
           "novelty_n": 1,
           "median_minutes_per_shipped": null,
-          "shipped_field_max": 0,
+          "shipped_field_max": 1,
           "speed_ref_minutes": 240
         }
       },
@@ -1506,7 +1572,7 @@
           "novelty_mean": 0,
           "novelty_n": 0,
           "median_minutes_per_shipped": null,
-          "shipped_field_max": 0,
+          "shipped_field_max": 1,
           "speed_ref_minutes": 240
         }
       },
@@ -1720,6 +1786,54 @@
     }
   ],
   "events": [
+    {
+      "at": "2026-09-05T20:52:55Z",
+      "seat": "cael",
+      "task": 4,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T20:52:55Z",
+      "seat": "cael",
+      "task": 4,
+      "result": "gate4 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T20:49:01Z",
+      "seat": "cael",
+      "task": null,
+      "result": "continue posted",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T20:48:41Z",
+      "seat": "cael",
+      "task": 3,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T20:48:41Z",
+      "seat": "cael",
+      "task": 3,
+      "result": "gate3 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
     {
       "at": "2026-09-05T20:25:18Z",
       "seat": "cael",
@@ -2055,13 +2169,13 @@
       "b": "cael",
       "grail": {
         "a": 12.5,
-        "b": 25,
+        "b": 65,
         "lead": "cael"
       },
       "shipped": {
         "a": 0,
-        "b": 0,
-        "lead": null
+        "b": 1,
+        "lead": "cael"
       },
       "first_try": {
         "a": 0.5,
@@ -2141,14 +2255,14 @@
       "a": "cael",
       "b": "quip",
       "grail": {
-        "a": 25,
+        "a": 65,
         "b": 18.6,
         "lead": "cael"
       },
       "shipped": {
-        "a": 0,
+        "a": 1,
         "b": 0,
-        "lead": null
+        "lead": "cael"
       },
       "first_try": {
         "a": 1,
@@ -2170,14 +2284,14 @@
       "a": "cael",
       "b": "qwen",
       "grail": {
-        "a": 25,
+        "a": 65,
         "b": 25,
-        "lead": null
+        "lead": "cael"
       },
       "shipped": {
-        "a": 0,
+        "a": 1,
         "b": 0,
-        "lead": null
+        "lead": "cael"
       },
       "first_try": {
         "a": 1,
@@ -2228,11 +2342,11 @@
   "records": {
     "highest_grail": {
       "seat": "cael",
-      "value": 25
+      "value": 65
     },
     "most_shipped": {
-      "seat": "bram",
-      "value": 0
+      "seat": "cael",
+      "value": 1
     },
     "highest_first_try": {
       "seat": "cael",
@@ -2246,13 +2360,13 @@
   },
   "grail_formula": {
     "total": "40 shipped (scaled to field max) + 25 first-try + 20 novelty mean + 15 speed (median min/shipped inverted)",
-    "shipped_field_max": 0,
+    "shipped_field_max": 1,
     "speed_ref_minutes": 240
   },
   "watcher": {
     "pid": 31392,
     "builtAt": "2026-09-05T17:16:45Z"
   },
-  "rebuild_ms": 9.27,
-  "etag": "8f40e43232ad6d9d26feb261b3092a6b"
+  "rebuild_ms": 8.87,
+  "etag": "b3d32dba10eabd39f3711584fb623789"
 }
