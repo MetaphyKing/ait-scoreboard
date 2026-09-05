@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated": "2026-09-05T20:53:29Z",
-  "generated_at": "2026-09-05T20:53:29Z",
+  "generated": "2026-09-05T20:58:25Z",
+  "generated_at": "2026-09-05T20:58:25Z",
   "root": "C:\\dev\\ait",
   "fleet": {
     "seats": 4,
@@ -11,8 +11,8 @@
     "mean_grail": 30.28,
     "active_loops": 4,
     "tools_on_disk": 3,
-    "ledger_rows": 1,
-    "manifest_rows": 0,
+    "ledger_rows": 2,
+    "manifest_rows": 1,
     "deltas": {
       "seats": 0,
       "readable": 0,
@@ -198,7 +198,7 @@
                 "exists": true,
                 "production_v1": false,
                 "readme": false,
-                "tests": false
+                "tests": true
               },
               "v1-B": {
                 "exists": false,
@@ -296,7 +296,7 @@
               "exists": true,
               "production_v1": false,
               "readme": false,
-              "tests": false
+              "tests": true
             },
             "v1-B": {
               "exists": false,
@@ -499,7 +499,7 @@
         "unreadable_error": null
       },
       "loop": {
-        "task": 5,
+        "task": 6,
         "tool": "Arrived",
         "stop": false,
         "loops_done": 0,
@@ -520,7 +520,7 @@
           "loop": "inf",
           "seat": "cael"
         },
-        "history_count": 11
+        "history_count": 14
       },
       "grail": {
         "total": 65,
@@ -532,8 +532,8 @@
         },
         "inputs": {
           "shipped": 1,
-          "first_try_clears": 5,
-          "total_clears": 5,
+          "first_try_clears": 7,
+          "total_clears": 7,
           "first_try_rate": 1,
           "novelty_mean": 0,
           "novelty_n": 0,
@@ -576,12 +576,12 @@
         "5": {
           "name": "publish",
           "entered_at": "2026-09-05T20:52:55Z",
-          "cleared_at": null,
-          "minutes": null
+          "cleared_at": "2026-09-05T20:56:07Z",
+          "minutes": 3.2
         },
         "6": {
           "name": "self_report",
-          "entered_at": null,
+          "entered_at": "2026-09-05T20:56:07Z",
           "cleared_at": null,
           "minutes": null
         }
@@ -627,6 +627,24 @@
           "at": "2026-09-05T20:52:55Z",
           "seat": "cael",
           "task": 4,
+          "result": "cleared",
+          "missing": [],
+          "first_try": true,
+          "loop_index": 0
+        },
+        {
+          "at": "2026-09-05T20:56:03Z",
+          "seat": "cael",
+          "task": 5,
+          "result": "cleared",
+          "missing": [],
+          "first_try": true,
+          "loop_index": 0
+        },
+        {
+          "at": "2026-09-05T20:56:07Z",
+          "seat": "cael",
+          "task": 5,
           "result": "cleared",
           "missing": [],
           "first_try": true,
@@ -727,11 +745,11 @@
         "5": {
           "name": "publish",
           "fields": {
-            "completion_report": false,
+            "completion_report": true,
             "readme": true,
-            "manifest_row": false,
-            "ledger_row": false,
-            "repo": ""
+            "manifest_row": true,
+            "ledger_row": true,
+            "repo": "https://github.com/MetaphyKing/Arrived"
           }
         },
         "6": {
@@ -767,7 +785,7 @@
           "novelty_file": "Arrived/novelty_STANDARD.md",
           "novelty_score": null,
           "production_v2": true,
-          "completion_report": false,
+          "completion_report": true,
           "readme": true,
           "examples": true,
           "builds": {
@@ -800,8 +818,8 @@
             {
               "path": "Arrived/BUILD_LOG.md",
               "exists": true,
-              "bytes": 12062,
-              "mtime": "2026-09-05T20:52:49Z"
+              "bytes": 12538,
+              "mtime": "2026-09-05T20:55:47Z"
             },
             {
               "path": "Arrived/PRODUCTION_V2.md",
@@ -811,9 +829,9 @@
             },
             {
               "path": "Arrived/COMPLETION_REPORT.md",
-              "exists": false,
-              "bytes": 0,
-              "mtime": null
+              "exists": true,
+              "bytes": 1294,
+              "mtime": "2026-09-05T20:55:47Z"
             },
             {
               "path": "Arrived/README.md",
@@ -828,28 +846,46 @@
               "mtime": "2026-09-05T20:52:49Z"
             }
           ],
-          "manifest": [],
-          "ledger": []
+          "manifest": [
+            {
+              "tool": "Arrived",
+              "repo": "https://github.com/MetaphyKing/Arrived",
+              "date": "2026-09-05",
+              "purpose": "Hop-pair CLI: local success mints an id-debt; hop-2 must echo that id; silence is fail",
+              "status": "Uploaded",
+              "builder": "cael"
+            }
+          ],
+          "ledger": [
+            {
+              "id": "Artifact/Arrived/a-8582",
+              "genus": "Artifact",
+              "lemma": "Arrived",
+              "swatch": "sand",
+              "kind": "ait",
+              "spoken": "Arrived"
+            }
+          ]
         }
       ],
       "file_stats": [
         {
           "path": ".state/cael.json",
           "exists": true,
-          "bytes": 1843,
-          "mtime": "2026-09-05T20:52:55Z"
+          "bytes": 2163,
+          "mtime": "2026-09-05T20:56:27Z"
         },
         {
           "path": ".state/cael.events.jsonl",
           "exists": true,
-          "bytes": 400,
-          "mtime": "2026-09-05T20:52:55Z"
+          "bytes": 560,
+          "mtime": "2026-09-05T20:56:07Z"
         },
         {
           "path": "Arrived/BUILD_LOG.md",
           "exists": true,
-          "bytes": 12062,
-          "mtime": "2026-09-05T20:52:49Z"
+          "bytes": 12538,
+          "mtime": "2026-09-05T20:55:47Z"
         },
         {
           "path": "Arrived/PRODUCTION_V2.md",
@@ -859,9 +895,9 @@
         },
         {
           "path": "Arrived/COMPLETION_REPORT.md",
-          "exists": false,
-          "bytes": 0,
-          "mtime": null
+          "exists": true,
+          "bytes": 1294,
+          "mtime": "2026-09-05T20:55:47Z"
         },
         {
           "path": "Arrived/README.md",
@@ -1027,6 +1063,54 @@
           "seat": "cael",
           "task": 4,
           "result": "gate4 cleared",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T20:53:16Z",
+          "seat": "cael",
+          "task": null,
+          "result": "continue posted",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T20:56:03Z",
+          "seat": "cael",
+          "task": 5,
+          "result": "cleared",
+          "missing": [],
+          "source": "events.jsonl",
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T20:56:07Z",
+          "seat": "cael",
+          "task": 5,
+          "result": "cleared",
+          "missing": [],
+          "source": "events.jsonl",
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T20:56:07Z",
+          "seat": "cael",
+          "task": 5,
+          "result": "gate5 cleared",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T20:56:27Z",
+          "seat": "cael",
+          "task": null,
+          "result": "continue posted",
           "missing": [],
           "source": "state.history",
           "tool": null,
@@ -1787,6 +1871,54 @@
   ],
   "events": [
     {
+      "at": "2026-09-05T20:56:27Z",
+      "seat": "cael",
+      "task": null,
+      "result": "continue posted",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T20:56:07Z",
+      "seat": "cael",
+      "task": 5,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T20:56:07Z",
+      "seat": "cael",
+      "task": 5,
+      "result": "gate5 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T20:56:03Z",
+      "seat": "cael",
+      "task": 5,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T20:53:16Z",
+      "seat": "cael",
+      "task": null,
+      "result": "continue posted",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
       "at": "2026-09-05T20:52:55Z",
       "seat": "cael",
       "task": 4,
@@ -2367,6 +2499,6 @@
     "pid": 31392,
     "builtAt": "2026-09-05T17:16:45Z"
   },
-  "rebuild_ms": 8.87,
-  "etag": "b3d32dba10eabd39f3711584fb623789"
+  "rebuild_ms": 9.8,
+  "etag": "5763f28151be212917492d6ff8b2ddcb"
 }
