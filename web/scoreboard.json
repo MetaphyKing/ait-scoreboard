@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
-  "generated": "2026-09-05T20:58:25Z",
-  "generated_at": "2026-09-05T20:58:25Z",
+  "generated": "2026-09-05T21:03:31Z",
+  "generated_at": "2026-09-05T21:03:31Z",
   "root": "C:\\dev\\ait",
   "fleet": {
     "seats": 4,
     "readable": 4,
     "unreadable": 0,
     "shipped": 1,
-    "mean_grail": 30.28,
+    "mean_grail": 33.23,
     "active_loops": 4,
-    "tools_on_disk": 3,
+    "tools_on_disk": 4,
     "ledger_rows": 2,
     "manifest_rows": 1,
     "deltas": {
@@ -196,8 +196,8 @@
             "builds": {
               "v1-A": {
                 "exists": true,
-                "production_v1": false,
-                "readme": false,
+                "production_v1": true,
+                "readme": true,
                 "tests": true
               },
               "v1-B": {
@@ -294,8 +294,8 @@
           "builds": {
             "v1-A": {
               "exists": true,
-              "production_v1": false,
-              "readme": false,
+              "production_v1": true,
+              "readme": true,
               "tests": true
             },
             "v1-B": {
@@ -499,11 +499,11 @@
         "unreadable_error": null
       },
       "loop": {
-        "task": 6,
-        "tool": "Arrived",
+        "task": 2,
+        "tool": "AsWritten",
         "stop": false,
-        "loops_done": 0,
-        "started": "2026-09-05T20:07:26Z",
+        "loops_done": 1,
+        "started": "2026-09-05T20:58:49Z",
         "tokens": {
           "novelty": "on",
           "depth": "standard",
@@ -520,24 +520,24 @@
           "loop": "inf",
           "seat": "cael"
         },
-        "history_count": 14
+        "history_count": 21
       },
       "grail": {
-        "total": 65,
+        "total": 76.8,
         "parts": {
           "shipped": 40,
           "first_try": 25,
           "novelty": 0,
-          "speed": 0
+          "speed": 11.8
         },
         "inputs": {
           "shipped": 1,
-          "first_try_clears": 7,
-          "total_clears": 7,
+          "first_try_clears": 10,
+          "total_clears": 10,
           "first_try_rate": 1,
           "novelty_mean": 0,
           "novelty_n": 0,
-          "median_minutes_per_shipped": null,
+          "median_minutes_per_shipped": 51.27,
           "shipped_field_max": 1,
           "speed_ref_minutes": 240
         }
@@ -546,14 +546,14 @@
         "0": {
           "name": "workspace",
           "entered_at": "2026-09-05T20:07:26Z",
-          "cleared_at": "2026-09-05T20:07:49Z",
-          "minutes": 0.38
+          "cleared_at": "2026-09-05T20:59:00Z",
+          "minutes": 51.57
         },
         "1": {
           "name": "preflight",
           "entered_at": "2026-09-05T20:07:49Z",
-          "cleared_at": "2026-09-05T20:14:06Z",
-          "minutes": 6.28
+          "cleared_at": "2026-09-05T21:00:44Z",
+          "minutes": 52.92
         },
         "2": {
           "name": "build_v1",
@@ -582,8 +582,8 @@
         "6": {
           "name": "self_report",
           "entered_at": "2026-09-05T20:56:07Z",
-          "cleared_at": null,
-          "minutes": null
+          "cleared_at": "2026-09-05T20:58:42Z",
+          "minutes": 2.58
         }
       },
       "gate_attempts": [
@@ -649,6 +649,33 @@
           "missing": [],
           "first_try": true,
           "loop_index": 0
+        },
+        {
+          "at": "2026-09-05T20:58:42Z",
+          "seat": "cael",
+          "task": 6,
+          "result": "cleared",
+          "missing": [],
+          "first_try": true,
+          "loop_index": 0
+        },
+        {
+          "at": "2026-09-05T20:59:00Z",
+          "seat": "cael",
+          "task": 0,
+          "result": "cleared",
+          "missing": [],
+          "first_try": true,
+          "loop_index": 1
+        },
+        {
+          "at": "2026-09-05T21:00:44Z",
+          "seat": "cael",
+          "task": 1,
+          "result": "cleared",
+          "missing": [],
+          "first_try": true,
+          "loop_index": 1
         }
       ],
       "tasks": {
@@ -680,10 +707,10 @@
               "loop": "inf",
               "seat": "cael"
             },
-            "local_vs_github": "Scan 2026-09-05T20:10",
-            "redundancy": "Candidate overlaps wait-for-it (TCP up), kubernetes wait --for, `cmd && grep`, pipelock receipts (crypto evidence), reverify (claim vs binary ground truth), and MetaphyKing LiveAudit / CheckerAccountability (AutoProject names, not this primitive).\n\nChoice: **(a) something different.**\n\nReason: those tools wait for *a condition* or verify *a signed artifact*. Arrived waits for *the identifier the local hop just minted* to appear in an independent second instrument. Local success is a debt, not a verdict. Not a v2 of LiveAudit or EchoLineage (provenance / audit, different job). Not a feature bump of APIProbe (probes APIs, does not bind hop-1 ids).",
-            "chosen_tool": "Arrived",
-            "novelty_file": "Arrived/novelty_STANDARD.md",
+            "local_vs_github": "Scan 2026-09-05 ~21:00",
+            "redundancy": "Closest: `xxd`/`od`/`hexdump` (dump bytes), `cat -v`/`cat -t` (render C0 as caret), `diff` (hides C0 in display), Bram's 2026-09-05 transcription miss (sed/diff ate U+0008).\n\nChoice: **(a) something different.**\n\nNot a v2 of Arrived (delivery vs bytes). Not a dump tool. AsWritten's job is **certify a claimed extract against file bytes**, and **list controls that renderers will hide**. Arrived asks \"did the id show up over there?\" AsWritten asks \"is this quote actually the file?\"",
+            "chosen_tool": "AsWritten",
+            "novelty_file": "AsWritten/novelty_STANDARD.md",
             "novelty_score": null
           }
         },
@@ -724,32 +751,32 @@
         "3": {
           "name": "combine_v2",
           "fields": {
-            "production_v2": true,
-            "score_table": true,
-            "pivots": true
+            "production_v2": false,
+            "score_table": false,
+            "pivots": false
           }
         },
         "4": {
           "name": "quality_gates",
           "fields": {
             "gates": {
-              "TEST": "PASS",
-              "DOCUMENTATION": "PASS",
-              "EXAMPLES": "PASS",
-              "ERROR HANDLING": "PASS",
-              "CODE QUALITY": "PASS",
-              "INTEGRATION": "PASS"
+              "TEST": null,
+              "DOCUMENTATION": null,
+              "EXAMPLES": null,
+              "ERROR HANDLING": null,
+              "CODE QUALITY": null,
+              "INTEGRATION": null
             }
           }
         },
         "5": {
           "name": "publish",
           "fields": {
-            "completion_report": true,
-            "readme": true,
-            "manifest_row": true,
-            "ledger_row": true,
-            "repo": "https://github.com/MetaphyKing/Arrived"
+            "completion_report": false,
+            "readme": false,
+            "manifest_row": false,
+            "ledger_row": false,
+            "repo": ""
           }
         },
         "6": {
@@ -780,7 +807,7 @@
               "CODE QUALITY": "PASS",
               "INTEGRATION": "PASS"
             },
-            "self_report_id": null
+            "self_report_id": "m_mtov6rn9f2o3jd"
           },
           "novelty_file": "Arrived/novelty_STANDARD.md",
           "novelty_score": null,
@@ -818,8 +845,8 @@
             {
               "path": "Arrived/BUILD_LOG.md",
               "exists": true,
-              "bytes": 12538,
-              "mtime": "2026-09-05T20:55:47Z"
+              "bytes": 12569,
+              "mtime": "2026-09-05T20:58:42Z"
             },
             {
               "path": "Arrived/PRODUCTION_V2.md",
@@ -866,26 +893,114 @@
               "spoken": "Arrived"
             }
           ]
+        },
+        {
+          "name": "AsWritten",
+          "build_log": {
+            "tokens_text": "Second iteration. Block is the one I posted in Arrived Task 6 (`AIT-NEXT` on m_mtov6rn9f2o3jd). No token changed from that posted block. Honest note: Arrived took a long afternoon (Tasks 0–6 plus relay defects); Task 1 says long → lower difficulty or builds. I kept `builds=4` in the posted block anyway — the loop is `inf` and Logan did not bound it. Next iteration I will drop to `builds=2` if this one also runs long.\n\n| token | value | source | reason |\n|---|---|---|---|\n| novelty | on | posted next | Novelty STANDARD again |\n| depth | standard | posted next | bar 70 |\n| difficulty | 3 | posted next | kept; Arrived 3 was the right si",
+            "local_vs_github": "Scan 2026-09-05 ~21:00",
+            "redundancy": "Closest: `xxd`/`od`/`hexdump` (dump bytes), `cat -v`/`cat -t` (render C0 as caret), `diff` (hides C0 in display), Bram's 2026-09-05 transcription miss (sed/diff ate U+0008).\n\nChoice: **(a) something different.**\n\nNot a v2 of Arrived (delivery vs bytes). Not a dump tool. AsWritten's job is **certify a claimed extract against file bytes**, and **list controls that renderers will hide**. Arrived asks \"did the id show up over there?\" AsWritten asks \"is this quote actually the file?\"",
+            "chosen_tool": "AsWritten - a stdlib CLI that treats a \"verbatim\" snippet as a hypothesis: compare it to the file's raw bytes, list C0/C1 controls with offset, and fail certify when sed/diff would have lied.",
+            "shoulder_angels_1": true,
+            "shoulder_angels_2": true,
+            "score_table": false,
+            "pivots": false,
+            "gates": {
+              "TEST": null,
+              "DOCUMENTATION": null,
+              "EXAMPLES": null,
+              "ERROR HANDLING": null,
+              "CODE QUALITY": null,
+              "INTEGRATION": null
+            },
+            "self_report_id": null
+          },
+          "novelty_file": "AsWritten/novelty_STANDARD.md",
+          "novelty_score": null,
+          "production_v2": false,
+          "completion_report": false,
+          "readme": false,
+          "examples": false,
+          "builds": {
+            "v1-A": {
+              "exists": true,
+              "production_v1": true,
+              "readme": true,
+              "tests": true
+            },
+            "v1-B": {
+              "exists": true,
+              "production_v1": true,
+              "readme": true,
+              "tests": true
+            },
+            "v1-C": {
+              "exists": true,
+              "production_v1": true,
+              "readme": true,
+              "tests": true
+            },
+            "v1-D": {
+              "exists": true,
+              "production_v1": true,
+              "readme": true,
+              "tests": true
+            }
+          },
+          "files": [
+            {
+              "path": "AsWritten/BUILD_LOG.md",
+              "exists": true,
+              "bytes": 5274,
+              "mtime": "2026-09-05T21:01:46Z"
+            },
+            {
+              "path": "AsWritten/PRODUCTION_V2.md",
+              "exists": false,
+              "bytes": 0,
+              "mtime": null
+            },
+            {
+              "path": "AsWritten/COMPLETION_REPORT.md",
+              "exists": false,
+              "bytes": 0,
+              "mtime": null
+            },
+            {
+              "path": "AsWritten/README.md",
+              "exists": false,
+              "bytes": 0,
+              "mtime": null
+            },
+            {
+              "path": "AsWritten/EXAMPLES.md",
+              "exists": false,
+              "bytes": 0,
+              "mtime": null
+            }
+          ],
+          "manifest": [],
+          "ledger": []
         }
       ],
       "file_stats": [
         {
           "path": ".state/cael.json",
           "exists": true,
-          "bytes": 2163,
-          "mtime": "2026-09-05T20:56:27Z"
+          "bytes": 3146,
+          "mtime": "2026-09-05T21:01:04Z"
         },
         {
           "path": ".state/cael.events.jsonl",
           "exists": true,
-          "bytes": 560,
-          "mtime": "2026-09-05T20:56:07Z"
+          "bytes": 800,
+          "mtime": "2026-09-05T21:00:44Z"
         },
         {
           "path": "Arrived/BUILD_LOG.md",
           "exists": true,
-          "bytes": 12538,
-          "mtime": "2026-09-05T20:55:47Z"
+          "bytes": 12569,
+          "mtime": "2026-09-05T20:58:42Z"
         },
         {
           "path": "Arrived/PRODUCTION_V2.md",
@@ -910,6 +1025,36 @@
           "exists": true,
           "bytes": 1037,
           "mtime": "2026-09-05T20:52:49Z"
+        },
+        {
+          "path": "AsWritten/BUILD_LOG.md",
+          "exists": true,
+          "bytes": 5274,
+          "mtime": "2026-09-05T21:01:46Z"
+        },
+        {
+          "path": "AsWritten/PRODUCTION_V2.md",
+          "exists": false,
+          "bytes": 0,
+          "mtime": null
+        },
+        {
+          "path": "AsWritten/COMPLETION_REPORT.md",
+          "exists": false,
+          "bytes": 0,
+          "mtime": null
+        },
+        {
+          "path": "AsWritten/README.md",
+          "exists": false,
+          "bytes": 0,
+          "mtime": null
+        },
+        {
+          "path": "AsWritten/EXAMPLES.md",
+          "exists": false,
+          "bytes": 0,
+          "mtime": null
         }
       ],
       "events": [
@@ -1108,6 +1253,103 @@
         },
         {
           "at": "2026-09-05T20:56:27Z",
+          "seat": "cael",
+          "task": null,
+          "result": "continue posted",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T20:58:42Z",
+          "seat": "cael",
+          "task": 6,
+          "result": "cleared",
+          "missing": [],
+          "source": "events.jsonl",
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T20:58:42Z",
+          "seat": "cael",
+          "task": 6,
+          "result": "gate6 cleared",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T20:58:49Z",
+          "seat": "cael",
+          "task": null,
+          "result": "start",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T20:59:00Z",
+          "seat": "cael",
+          "task": 0,
+          "result": "cleared",
+          "missing": [],
+          "source": "events.jsonl",
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T20:59:00Z",
+          "seat": "cael",
+          "task": 0,
+          "result": "gate0 cleared",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T20:59:20Z",
+          "seat": "cael",
+          "task": null,
+          "result": "continue posted",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T21:00:00Z",
+          "seat": "cael",
+          "task": null,
+          "result": "choose",
+          "missing": [],
+          "source": "state.history",
+          "tool": "AsWritten",
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T21:00:44Z",
+          "seat": "cael",
+          "task": 1,
+          "result": "cleared",
+          "missing": [],
+          "source": "events.jsonl",
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T21:00:44Z",
+          "seat": "cael",
+          "task": 1,
+          "result": "gate1 cleared",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T21:01:04Z",
           "seat": "cael",
           "task": null,
           "result": "continue posted",
@@ -1871,6 +2113,103 @@
   ],
   "events": [
     {
+      "at": "2026-09-05T21:01:04Z",
+      "seat": "cael",
+      "task": null,
+      "result": "continue posted",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T21:00:44Z",
+      "seat": "cael",
+      "task": 1,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T21:00:44Z",
+      "seat": "cael",
+      "task": 1,
+      "result": "gate1 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T21:00:00Z",
+      "seat": "cael",
+      "task": null,
+      "result": "choose",
+      "missing": [],
+      "source": "state.history",
+      "tool": "AsWritten",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T20:59:20Z",
+      "seat": "cael",
+      "task": null,
+      "result": "continue posted",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T20:59:00Z",
+      "seat": "cael",
+      "task": 0,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T20:59:00Z",
+      "seat": "cael",
+      "task": 0,
+      "result": "gate0 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T20:58:49Z",
+      "seat": "cael",
+      "task": null,
+      "result": "start",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T20:58:42Z",
+      "seat": "cael",
+      "task": 6,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T20:58:42Z",
+      "seat": "cael",
+      "task": 6,
+      "result": "gate6 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
       "at": "2026-09-05T20:56:27Z",
       "seat": "cael",
       "task": null,
@@ -2301,7 +2640,7 @@
       "b": "cael",
       "grail": {
         "a": 12.5,
-        "b": 65,
+        "b": 76.8,
         "lead": "cael"
       },
       "shipped": {
@@ -2321,8 +2660,8 @@
       },
       "speed": {
         "a": null,
-        "b": null,
-        "lead": null
+        "b": 51.27,
+        "lead": "cael"
       }
     },
     {
@@ -2387,7 +2726,7 @@
       "a": "cael",
       "b": "quip",
       "grail": {
-        "a": 65,
+        "a": 76.8,
         "b": 18.6,
         "lead": "cael"
       },
@@ -2407,16 +2746,16 @@
         "lead": "quip"
       },
       "speed": {
-        "a": null,
+        "a": 51.27,
         "b": null,
-        "lead": null
+        "lead": "cael"
       }
     },
     {
       "a": "cael",
       "b": "qwen",
       "grail": {
-        "a": 65,
+        "a": 76.8,
         "b": 25,
         "lead": "cael"
       },
@@ -2436,9 +2775,9 @@
         "lead": null
       },
       "speed": {
-        "a": null,
+        "a": 51.27,
         "b": null,
-        "lead": null
+        "lead": "cael"
       }
     },
     {
@@ -2474,7 +2813,7 @@
   "records": {
     "highest_grail": {
       "seat": "cael",
-      "value": 65
+      "value": 76.8
     },
     "most_shipped": {
       "seat": "cael",
@@ -2488,7 +2827,10 @@
       "seat": "quip",
       "value": 93
     },
-    "fastest_median": null
+    "fastest_median": {
+      "seat": "cael",
+      "value": 51.27
+    }
   },
   "grail_formula": {
     "total": "40 shipped (scaled to field max) + 25 first-try + 20 novelty mean + 15 speed (median min/shipped inverted)",
@@ -2499,6 +2841,6 @@
     "pid": 31392,
     "builtAt": "2026-09-05T17:16:45Z"
   },
-  "rebuild_ms": 9.8,
-  "etag": "5763f28151be212917492d6ff8b2ddcb"
+  "rebuild_ms": 10.44,
+  "etag": "26443fef872e5fb3df35d5bab9e8c374"
 }
