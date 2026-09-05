@@ -50,6 +50,54 @@ test('novelty parses ONLY TOTAL: n/100 from novelty sheets', () => {
   assert.equal(log.novelty_score, undefined);
 });
 
+test('sectionBody last ## heading keeps a non-empty body', () => {
+  const md = [
+    '# BUILD_LOG',
+    '',
+    '## Tokens',
+    'mid-file tokens stay captured',
+    '',
+    '## Local vs GitHub',
+    'mid-file scan stays captured',
+    '',
+    '## Redundancy',
+    'mid-file redundancy stays captured',
+    '',
+    '## Chosen tool',
+    'LAST SECTION BODY MUST PARSE'
+  ].join('\n');
+  const log = w.parseBuildLog(md);
+  assert.equal(log.tokens_text, 'mid-file tokens stay captured');
+  assert.equal(log.local_vs_github, 'mid-file scan stays captured');
+  assert.equal(log.redundancy, 'mid-file redundancy stays captured');
+  assert.ok(log.chosen_tool, 'last ## section body must be non-empty');
+  assert.equal(log.chosen_tool, 'LAST SECTION BODY MUST PARSE');
+
+  const diffPilot = w.parseBuildLog(
+    fs.readFileSync(path.join(FIXTURE, 'DiffPilot', 'BUILD_LOG.md'), 'utf8')
+  );
+  assert.equal(diffPilot.tokens_text, 'seat=opus builds=2');
+  assert.equal(diffPilot.local_vs_github, 'in progress');
+  assert.equal(diffPilot.redundancy, 'pending');
+  assert.ok(diffPilot.chosen_tool, 'DiffPilot last ## Chosen tool must parse');
+  assert.equal(diffPilot.chosen_tool, 'DiffPilot - Guided diff walkthroughs.');
+
+  const cognitive = w.parseBuildLog(
+    fs.readFileSync(path.join(FIXTURE, 'CognitiveFit', 'BUILD_LOG.md'), 'utf8')
+  );
+  assert.match(cognitive.tokens_text, /novelty=on depth=standard/);
+  assert.match(cognitive.local_vs_github, /Local-only/);
+  assert.match(cognitive.redundancy, /something different/);
+  assert.equal(cognitive.chosen_tool, 'CognitiveFit - Measure architectural cognitive fit.');
+
+  const board = w.buildScoreboard(FIXTURE);
+  const opus = seatByName(board, 'opus');
+  const bag = opus.tools.find((t) => t.name === 'DiffPilot');
+  assert.ok(bag);
+  assert.ok(bag.build_log.chosen_tool);
+  assert.equal(bag.build_log.chosen_tool, 'DiffPilot - Guided diff walkthroughs.');
+});
+
 test('JSON shape from fixture tree includes contract fields', () => {
   const board = w.buildScoreboard(FIXTURE, { now: '2026-09-05T16:00:00Z' });
   assert.equal(board.schema_version, 1);
