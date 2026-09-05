@@ -74,7 +74,9 @@ node watcher/test-watcher.js
 `watcher/test-watcher.js` uses `node:test` and the tree under
 `watcher/fixtures/`. It asserts JSON shape (including `generated`, `etag`,
 `watcher`, `events`), atomic write, debounce, Grail Score arithmetic (field
-max), novelty `TOTAL:` parse, fleet deltas, and per-seat isolation.
+max), novelty `TOTAL:` parse, fleet deltas, per-seat isolation, and the
+named **invent-seat** test (Stage 10.2: seats come from `.state/*.json`
+only; invented / phantom / nope stay absent).
 
 ## Schema and score
 

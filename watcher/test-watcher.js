@@ -289,6 +289,53 @@ test('page waits, marks stale, busts cache, compares JSON etag field', () => {
   assert.doesNotMatch(html, /headers\.get\(\s*["']etag["']/i);
 });
 
+test('invent-seat: board.seats equals .state/*.json only', () => {
+  const stateDir = path.join(FIXTURE, '.state');
+  const fromState = fs
+    .readdirSync(stateDir)
+    .filter((n) => n.endsWith('.json') && !n.endsWith('.events.json'))
+    .map((n) => n.slice(0, -5))
+    .sort();
+  assert.deepEqual(w.discoverSeats(FIXTURE), fromState);
+
+  const board = w.buildScoreboard(FIXTURE);
+  const seats = board.seats.map((s) => s.identity.seat).sort();
+  assert.deepEqual(seats, fromState);
+  for (const name of ['invented', 'phantom', 'nope']) {
+    assert.equal(seats.includes(name), false, name + ' must be absent');
+  }
+  for (const name of Object.keys(w.SEAT_LABELS)) {
+    if (!fromState.includes(name)) {
+      assert.equal(seats.includes(name), false, 'label without state: ' + name);
+    }
+  }
+
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'ait-invent-seat-'));
+  try {
+    const root = path.join(dir, 'ait');
+    fs.cpSync(FIXTURE, root, { recursive: true });
+    fs.appendFileSync(
+      path.join(root, 'PROJECT_MANIFEST.md'),
+      '| PhantomTool | | 2026-09-05 | invented seat probe | Uploaded | invented |\n' +
+        '| NopeTool | | 2026-09-05 | invented seat probe | Uploaded | phantom |\n' +
+        '| GhostTool | | 2026-09-05 | invented seat probe | Uploaded | nope |\n'
+    );
+    fs.appendFileSync(
+      path.join(root, 'encyclopedia', 'ids', 'ledger.jsonl'),
+      '{"id":"Artifact/PhantomTool/p-001","lemma":"PhantomTool","kind":"ait","builder":"invented"}\n'
+    );
+    const probed = w.buildScoreboard(root);
+    const probedSeats = probed.seats.map((s) => s.identity.seat).sort();
+    assert.deepEqual(probedSeats, fromState);
+    assert.deepEqual(probedSeats, w.discoverSeats(root));
+    for (const name of ['invented', 'phantom', 'nope']) {
+      assert.equal(probedSeats.includes(name), false, 'invented via manifest: ' + name);
+    }
+  } finally {
+    fs.rmSync(dir, { recursive: true, force: true });
+  }
+});
+
 test('fleet deltas compare to the previous payload in cache', () => {
   const cache = { version: 1, first_seen: {}, previous_fleet: null };
   const first = w.buildScoreboard(FIXTURE, { cache: cache, now: '2026-09-05T16:00:00Z' });
