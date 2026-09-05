@@ -1,14 +1,14 @@
 {
   "schema_version": 1,
-  "generated": "2026-09-05T21:13:24Z",
-  "generated_at": "2026-09-05T21:13:24Z",
+  "generated": "2026-09-05T21:18:31Z",
+  "generated_at": "2026-09-05T21:18:31Z",
   "root": "C:\\dev\\ait",
   "fleet": {
     "seats": 4,
     "readable": 4,
     "unreadable": 0,
     "shipped": 2,
-    "mean_grail": 33.56,
+    "mean_grail": 34.6,
     "active_loops": 2,
     "tools_on_disk": 4,
     "ledger_rows": 3,
@@ -36,7 +36,7 @@
         "unreadable_error": null
       },
       "loop": {
-        "task": 2,
+        "task": 3,
         "tool": "VariantCollator",
         "stop": true,
         "loops_done": 0,
@@ -57,21 +57,21 @@
           "loop": "inf",
           "seat": "bram"
         },
-        "history_count": 7
+        "history_count": 9
       },
       "grail": {
-        "total": 12.5,
+        "total": 16.67,
         "parts": {
           "shipped": 0,
-          "first_try": 12.5,
+          "first_try": 16.67,
           "novelty": 0,
           "speed": 0
         },
         "inputs": {
           "shipped": 0,
-          "first_try_clears": 1,
-          "total_clears": 2,
-          "first_try_rate": 0.5,
+          "first_try_clears": 2,
+          "total_clears": 3,
+          "first_try_rate": 0.67,
           "novelty_mean": 0,
           "novelty_n": 0,
           "median_minutes_per_shipped": null,
@@ -95,12 +95,12 @@
         "2": {
           "name": "build_v1",
           "entered_at": "2026-09-05T20:24:32Z",
-          "cleared_at": null,
-          "minutes": null
+          "cleared_at": "2026-09-05T21:17:11Z",
+          "minutes": 52.65
         },
         "3": {
           "name": "combine_v2",
-          "entered_at": null,
+          "entered_at": "2026-09-05T21:17:11Z",
           "cleared_at": null,
           "minutes": null
         },
@@ -152,6 +152,15 @@
           "missing": [],
           "first_try": false,
           "loop_index": 0
+        },
+        {
+          "at": "2026-09-05T21:17:11Z",
+          "seat": "bram",
+          "task": 2,
+          "result": "cleared",
+          "missing": [],
+          "first_try": true,
+          "loop_index": 0
         }
       ],
       "tasks": {
@@ -202,8 +211,8 @@
               },
               "v1-B": {
                 "exists": true,
-                "production_v1": false,
-                "readme": false,
+                "production_v1": true,
+                "readme": true,
                 "tests": true
               },
               "v1-C": {
@@ -213,10 +222,10 @@
                 "tests": true
               },
               "v1-D": {
-                "exists": false,
-                "production_v1": false,
-                "readme": false,
-                "tests": false
+                "exists": true,
+                "production_v1": true,
+                "readme": true,
+                "tests": true
               }
             },
             "shoulder_angels_1": true,
@@ -228,8 +237,8 @@
           "name": "combine_v2",
           "fields": {
             "production_v2": false,
-            "score_table": false,
-            "pivots": false
+            "score_table": true,
+            "pivots": true
           }
         },
         "4": {
@@ -273,8 +282,8 @@
             "chosen_tool": "**VariantCollator** - proves every copy of a literal (regex, prompt, constant, SQL) is byte-identical\nto the one that actually ships, and names the characters that make a difference unreadable.",
             "shoulder_angels_1": true,
             "shoulder_angels_2": true,
-            "score_table": false,
-            "pivots": false,
+            "score_table": true,
+            "pivots": true,
             "gates": {
               "TEST": null,
               "DOCUMENTATION": null,
@@ -300,8 +309,8 @@
             },
             "v1-B": {
               "exists": true,
-              "production_v1": false,
-              "readme": false,
+              "production_v1": true,
+              "readme": true,
               "tests": true
             },
             "v1-C": {
@@ -311,18 +320,18 @@
               "tests": true
             },
             "v1-D": {
-              "exists": false,
-              "production_v1": false,
-              "readme": false,
-              "tests": false
+              "exists": true,
+              "production_v1": true,
+              "readme": true,
+              "tests": true
             }
           },
           "files": [
             {
               "path": "VariantCollator/BUILD_LOG.md",
               "exists": true,
-              "bytes": 18678,
-              "mtime": "2026-09-05T21:07:21Z"
+              "bytes": 22155,
+              "mtime": "2026-09-05T21:18:11Z"
             },
             {
               "path": "VariantCollator/PRODUCTION_V2.md",
@@ -357,20 +366,20 @@
         {
           "path": ".state/bram.json",
           "exists": true,
-          "bytes": 1474,
-          "mtime": "2026-09-05T21:09:42Z"
+          "bytes": 1671,
+          "mtime": "2026-09-05T21:17:32Z"
         },
         {
           "path": ".state/bram.events.jsonl",
           "exists": true,
-          "bytes": 317,
-          "mtime": "2026-09-05T20:24:32Z"
+          "bytes": 397,
+          "mtime": "2026-09-05T21:17:11Z"
         },
         {
           "path": "VariantCollator/BUILD_LOG.md",
           "exists": true,
-          "bytes": 18678,
-          "mtime": "2026-09-05T21:07:21Z"
+          "bytes": 22155,
+          "mtime": "2026-09-05T21:18:11Z"
         },
         {
           "path": "VariantCollator/PRODUCTION_V2.md",
@@ -492,6 +501,35 @@
           "seat": "bram",
           "task": null,
           "result": "stop received (OmniLad)",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T21:17:11Z",
+          "seat": "bram",
+          "task": 2,
+          "result": "cleared",
+          "missing": [],
+          "source": "events.jsonl",
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T21:17:11Z",
+          "seat": "bram",
+          "task": 2,
+          "result": "gate2 cleared",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T21:17:32Z",
+          "seat": "bram",
+          "task": null,
+          "result": "continue posted",
           "missing": [],
           "source": "state.history",
           "tool": null,
@@ -2357,6 +2395,35 @@
   ],
   "events": [
     {
+      "at": "2026-09-05T21:17:32Z",
+      "seat": "bram",
+      "task": null,
+      "result": "continue posted",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T21:17:11Z",
+      "seat": "bram",
+      "task": 2,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T21:17:11Z",
+      "seat": "bram",
+      "task": 2,
+      "result": "gate2 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
       "at": "2026-09-05T21:09:42Z",
       "seat": "bram",
       "task": null,
@@ -3047,7 +3114,7 @@
       "a": "bram",
       "b": "cael",
       "grail": {
-        "a": 12.5,
+        "a": 16.67,
         "b": 78.12,
         "lead": "cael"
       },
@@ -3057,7 +3124,7 @@
         "lead": "cael"
       },
       "first_try": {
-        "a": 0.5,
+        "a": 0.67,
         "b": 1,
         "lead": "cael"
       },
@@ -3076,7 +3143,7 @@
       "a": "bram",
       "b": "quip",
       "grail": {
-        "a": 12.5,
+        "a": 16.67,
         "b": 18.6,
         "lead": "quip"
       },
@@ -3086,7 +3153,7 @@
         "lead": null
       },
       "first_try": {
-        "a": 0.5,
+        "a": 0.67,
         "b": 0,
         "lead": "bram"
       },
@@ -3105,7 +3172,7 @@
       "a": "bram",
       "b": "qwen",
       "grail": {
-        "a": 12.5,
+        "a": 16.67,
         "b": 25,
         "lead": "qwen"
       },
@@ -3115,7 +3182,7 @@
         "lead": null
       },
       "first_try": {
-        "a": 0.5,
+        "a": 0.67,
         "b": 1,
         "lead": "qwen"
       },
@@ -3249,6 +3316,6 @@
     "pid": 31392,
     "builtAt": "2026-09-05T17:16:45Z"
   },
-  "rebuild_ms": 12.21,
-  "etag": "cff54e760970060eaa7bfd63fd2a9612"
+  "rebuild_ms": 11.46,
+  "etag": "820029b54fda43929a67d1aa7bbb4994"
 }
