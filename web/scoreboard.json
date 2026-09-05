@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated": "2026-09-05T20:21:04Z",
-  "generated_at": "2026-09-05T20:21:04Z",
+  "generated": "2026-09-05T20:23:30Z",
+  "generated_at": "2026-09-05T20:23:30Z",
   "root": "C:\\dev\\ait",
   "fleet": {
     "seats": 4,
@@ -10,7 +10,7 @@
     "shipped": 0,
     "mean_grail": 23.4,
     "active_loops": 4,
-    "tools_on_disk": 2,
+    "tools_on_disk": 3,
     "ledger_rows": 1,
     "manifest_rows": 0,
     "deltas": {
@@ -37,7 +37,7 @@
       },
       "loop": {
         "task": 1,
-        "tool": null,
+        "tool": "VariantCollator",
         "stop": false,
         "loops_done": 0,
         "started": "2026-09-05T20:09:40Z",
@@ -57,7 +57,7 @@
           "loop": "inf",
           "seat": "bram"
         },
-        "history_count": 3
+        "history_count": 4
       },
       "grail": {
         "total": 25,
@@ -165,7 +165,7 @@
             },
             "local_vs_github": "",
             "redundancy": "",
-            "chosen_tool": null,
+            "chosen_tool": "VariantCollator",
             "novelty_file": null,
             "novelty_score": null
           }
@@ -173,7 +173,32 @@
         "2": {
           "name": "build_v1",
           "fields": {
-            "builds": {},
+            "builds": {
+              "v1-A": {
+                "exists": false,
+                "production_v1": false,
+                "readme": false,
+                "tests": false
+              },
+              "v1-B": {
+                "exists": false,
+                "production_v1": false,
+                "readme": false,
+                "tests": false
+              },
+              "v1-C": {
+                "exists": false,
+                "production_v1": false,
+                "readme": false,
+                "tests": false
+              },
+              "v1-D": {
+                "exists": false,
+                "production_v1": false,
+                "readme": false,
+                "tests": false
+              }
+            },
             "shoulder_angels_1": false,
             "shoulder_angels_2": false,
             "builds_token": "4"
@@ -218,19 +243,138 @@
           }
         }
       },
-      "tools": [],
+      "tools": [
+        {
+          "name": "VariantCollator",
+          "build_log": {
+            "tokens_text": "{\"novelty\": \"on\", \"depth\": \"standard\", \"difficulty\": \"3\", \"category\": \"any\", \"audience\": \"ai-engineer\", \"lang\": \"python\", \"combo\": \"none\", \"deps\": \"stdlib\", \"platform\": \"xplat\", \"visibility\": \"public\", \"builds\": \"4\", \"timebox\": \"0\", \"loop\": \"inf\", \"seat\": \"bram\"}",
+            "local_vs_github": "",
+            "redundancy": "",
+            "chosen_tool": "",
+            "shoulder_angels_1": false,
+            "shoulder_angels_2": false,
+            "score_table": false,
+            "pivots": false,
+            "gates": {
+              "TEST": null,
+              "DOCUMENTATION": null,
+              "EXAMPLES": null,
+              "ERROR HANDLING": null,
+              "CODE QUALITY": null,
+              "INTEGRATION": null
+            },
+            "self_report_id": null
+          },
+          "novelty_file": null,
+          "novelty_score": null,
+          "production_v2": false,
+          "completion_report": false,
+          "readme": false,
+          "examples": false,
+          "builds": {
+            "v1-A": {
+              "exists": false,
+              "production_v1": false,
+              "readme": false,
+              "tests": false
+            },
+            "v1-B": {
+              "exists": false,
+              "production_v1": false,
+              "readme": false,
+              "tests": false
+            },
+            "v1-C": {
+              "exists": false,
+              "production_v1": false,
+              "readme": false,
+              "tests": false
+            },
+            "v1-D": {
+              "exists": false,
+              "production_v1": false,
+              "readme": false,
+              "tests": false
+            }
+          },
+          "files": [
+            {
+              "path": "VariantCollator/BUILD_LOG.md",
+              "exists": true,
+              "bytes": 432,
+              "mtime": "2026-09-05T20:21:12Z"
+            },
+            {
+              "path": "VariantCollator/PRODUCTION_V2.md",
+              "exists": false,
+              "bytes": 0,
+              "mtime": null
+            },
+            {
+              "path": "VariantCollator/COMPLETION_REPORT.md",
+              "exists": false,
+              "bytes": 0,
+              "mtime": null
+            },
+            {
+              "path": "VariantCollator/README.md",
+              "exists": false,
+              "bytes": 0,
+              "mtime": null
+            },
+            {
+              "path": "VariantCollator/EXAMPLES.md",
+              "exists": false,
+              "bytes": 0,
+              "mtime": null
+            }
+          ],
+          "manifest": [],
+          "ledger": []
+        }
+      ],
       "file_stats": [
         {
           "path": ".state/bram.json",
           "exists": true,
-          "bytes": 1083,
-          "mtime": "2026-09-05T20:10:35Z"
+          "bytes": 1194,
+          "mtime": "2026-09-05T20:21:12Z"
         },
         {
           "path": ".state/bram.events.jsonl",
           "exists": true,
           "bytes": 80,
           "mtime": "2026-09-05T20:10:15Z"
+        },
+        {
+          "path": "VariantCollator/BUILD_LOG.md",
+          "exists": true,
+          "bytes": 432,
+          "mtime": "2026-09-05T20:21:12Z"
+        },
+        {
+          "path": "VariantCollator/PRODUCTION_V2.md",
+          "exists": false,
+          "bytes": 0,
+          "mtime": null
+        },
+        {
+          "path": "VariantCollator/COMPLETION_REPORT.md",
+          "exists": false,
+          "bytes": 0,
+          "mtime": null
+        },
+        {
+          "path": "VariantCollator/README.md",
+          "exists": false,
+          "bytes": 0,
+          "mtime": null
+        },
+        {
+          "path": "VariantCollator/EXAMPLES.md",
+          "exists": false,
+          "bytes": 0,
+          "mtime": null
         }
       ],
       "events": [
@@ -271,6 +415,16 @@
           "missing": [],
           "source": "state.history",
           "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T20:21:12Z",
+          "seat": "bram",
+          "task": null,
+          "result": "choose",
+          "missing": [],
+          "source": "state.history",
+          "tool": "VariantCollator",
           "raw_ok": true
         }
       ]
@@ -433,28 +587,28 @@
           "fields": {
             "builds": {
               "v1-A": {
-                "exists": false,
+                "exists": true,
                 "production_v1": false,
-                "readme": false,
-                "tests": false
+                "readme": true,
+                "tests": true
               },
               "v1-B": {
-                "exists": false,
+                "exists": true,
                 "production_v1": false,
-                "readme": false,
-                "tests": false
+                "readme": true,
+                "tests": true
               },
               "v1-C": {
-                "exists": false,
+                "exists": true,
                 "production_v1": false,
-                "readme": false,
-                "tests": false
+                "readme": true,
+                "tests": true
               },
               "v1-D": {
-                "exists": false,
+                "exists": true,
                 "production_v1": false,
-                "readme": false,
-                "tests": false
+                "readme": true,
+                "tests": true
               }
             },
             "shoulder_angels_1": true,
@@ -531,28 +685,28 @@
           "examples": false,
           "builds": {
             "v1-A": {
-              "exists": false,
+              "exists": true,
               "production_v1": false,
-              "readme": false,
-              "tests": false
+              "readme": true,
+              "tests": true
             },
             "v1-B": {
-              "exists": false,
+              "exists": true,
               "production_v1": false,
-              "readme": false,
-              "tests": false
+              "readme": true,
+              "tests": true
             },
             "v1-C": {
-              "exists": false,
+              "exists": true,
               "production_v1": false,
-              "readme": false,
-              "tests": false
+              "readme": true,
+              "tests": true
             },
             "v1-D": {
-              "exists": false,
+              "exists": true,
               "production_v1": false,
-              "readme": false,
-              "tests": false
+              "readme": true,
+              "tests": true
             }
           },
           "files": [
@@ -1469,6 +1623,16 @@
   ],
   "events": [
     {
+      "at": "2026-09-05T20:21:12Z",
+      "seat": "bram",
+      "task": null,
+      "result": "choose",
+      "missing": [],
+      "source": "state.history",
+      "tool": "VariantCollator",
+      "raw_ok": true
+    },
+    {
       "at": "2026-09-05T20:14:26Z",
       "seat": "cael",
       "task": null,
@@ -1922,6 +2086,6 @@
     "pid": 31392,
     "builtAt": "2026-09-05T17:16:45Z"
   },
-  "rebuild_ms": 7.56,
-  "etag": "10a68e1d0d74907292b74e52f0c3dd46"
+  "rebuild_ms": 9.31,
+  "etag": "6251c5442a95bb4370c9ff5e543ac10e"
 }
