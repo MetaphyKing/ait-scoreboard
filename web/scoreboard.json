@@ -1,14 +1,14 @@
 {
   "schema_version": 1,
-  "generated": "2026-09-05T20:23:30Z",
-  "generated_at": "2026-09-05T20:23:30Z",
+  "generated": "2026-09-05T20:28:24Z",
+  "generated_at": "2026-09-05T20:28:24Z",
   "root": "C:\\dev\\ait",
   "fleet": {
     "seats": 4,
     "readable": 4,
     "unreadable": 0,
     "shipped": 0,
-    "mean_grail": 23.4,
+    "mean_grail": 20.27,
     "active_loops": 4,
     "tools_on_disk": 3,
     "ledger_rows": 1,
@@ -36,7 +36,7 @@
         "unreadable_error": null
       },
       "loop": {
-        "task": 1,
+        "task": 2,
         "tool": "VariantCollator",
         "stop": false,
         "loops_done": 0,
@@ -57,21 +57,21 @@
           "loop": "inf",
           "seat": "bram"
         },
-        "history_count": 4
+        "history_count": 6
       },
       "grail": {
-        "total": 25,
+        "total": 12.5,
         "parts": {
           "shipped": 0,
-          "first_try": 25,
+          "first_try": 12.5,
           "novelty": 0,
           "speed": 0
         },
         "inputs": {
           "shipped": 0,
           "first_try_clears": 1,
-          "total_clears": 1,
-          "first_try_rate": 1,
+          "total_clears": 2,
+          "first_try_rate": 0.5,
           "novelty_mean": 0,
           "novelty_n": 0,
           "median_minutes_per_shipped": null,
@@ -89,12 +89,12 @@
         "1": {
           "name": "preflight",
           "entered_at": "2026-09-05T20:10:15Z",
-          "cleared_at": null,
-          "minutes": null
+          "cleared_at": "2026-09-05T20:24:32Z",
+          "minutes": 14.28
         },
         "2": {
           "name": "build_v1",
-          "entered_at": null,
+          "entered_at": "2026-09-05T20:24:32Z",
           "cleared_at": null,
           "minutes": null
         },
@@ -132,6 +132,26 @@
           "missing": [],
           "first_try": true,
           "loop_index": 0
+        },
+        {
+          "at": "2026-09-05T20:23:38Z",
+          "seat": "bram",
+          "task": 1,
+          "result": "refused",
+          "missing": [
+            "novelty=on but no novelty*.md score sheet in the tool folder"
+          ],
+          "first_try": false,
+          "loop_index": 0
+        },
+        {
+          "at": "2026-09-05T20:24:32Z",
+          "seat": "bram",
+          "task": 1,
+          "result": "cleared",
+          "missing": [],
+          "first_try": false,
+          "loop_index": 0
         }
       ],
       "tasks": {
@@ -163,10 +183,10 @@
               "loop": "inf",
               "seat": "bram"
             },
-            "local_vs_github": "",
-            "redundancy": "",
+            "local_vs_github": "Instruments: `C:\\dev\\ait\\PROJECT_MANIFEST.md`, a listing of `C:\\dev\\ait\\`, and\n`gh repo list MetaphyKing --limit 400` (293 rows) at 2026-09-05 20:19",
+            "redundancy": "Candidate overlaps nothing in the graph: `ait.cmd search` returned **0 rows** for collate, collator,\nvariant, verbatim, fidelity, transcription, invisible, literal and drift; `stay_fleet.py search`\nreturned **0 rows across 3 seats**; `ait.cmd resolve Artifact VariantCollator` returns **NONE**.\n\nClosest existing MetaphyKing work and why it is not the same tool:\n- **DriftAudit** - semantic *config* drift between environments. Mine is byte-level divergence\n  between one literal and its copies inside a single tree. Different unit, different failure.\n- **EchoLineage** - provenance of ideas and decisions. Mine is equality of bytes, not genealogy.\n\n**DECISION: (a) something different.** Not a v2.0 and not a feature bump, because no existing tool\nin this ecosystem does witness-comparison of literals.",
             "chosen_tool": "VariantCollator",
-            "novelty_file": null,
+            "novelty_file": "VariantCollator/NOVELTY_SCORE.md",
             "novelty_score": null
           }
         },
@@ -247,10 +267,10 @@
         {
           "name": "VariantCollator",
           "build_log": {
-            "tokens_text": "{\"novelty\": \"on\", \"depth\": \"standard\", \"difficulty\": \"3\", \"category\": \"any\", \"audience\": \"ai-engineer\", \"lang\": \"python\", \"combo\": \"none\", \"deps\": \"stdlib\", \"platform\": \"xplat\", \"visibility\": \"public\", \"builds\": \"4\", \"timebox\": \"0\", \"loop\": \"inf\", \"seat\": \"bram\"}",
-            "local_vs_github": "",
-            "redundancy": "",
-            "chosen_tool": "",
+            "tokens_text": "{\"novelty\": \"on\", \"depth\": \"standard\", \"difficulty\": \"3\", \"category\": \"any\", \"audience\": \"ai-engineer\", \"lang\": \"python\", \"combo\": \"none\", \"deps\": \"stdlib\", \"platform\": \"xplat\", \"visibility\": \"public\", \"builds\": \"4\", \"timebox\": \"0\", \"loop\": \"inf\", \"seat\": \"bram\"}\n\nAll defaults; the start block was `[AIT seat=bram]` and set nothing else. Recorded, not chosen by me.\nFLAGGED TO @logan: `loop=inf` is the default and the only other terminator is OmniLad's stop token.",
+            "local_vs_github": "Instruments: `C:\\dev\\ait\\PROJECT_MANIFEST.md`, a listing of `C:\\dev\\ait\\`, and\n`gh repo list MetaphyKing --limit 400` (293 rows) at 2026-09-05 20:19",
+            "redundancy": "Candidate overlaps nothing in the graph: `ait.cmd search` returned **0 rows** for collate, collator,\nvariant, verbatim, fidelity, transcription, invisible, literal and drift; `stay_fleet.py search`\nreturned **0 rows across 3 seats**; `ait.cmd resolve Artifact VariantCollator` returns **NONE**.\n\nClosest existing MetaphyKing work and why it is not the same tool:\n- **DriftAudit** - semantic *config* drift between environments. Mine is byte-level divergence\n  between one literal and its copies inside a single tree. Different unit, different failure.\n- **EchoLineage** - provenance of ideas and decisions. Mine is equality of bytes, not genealogy.\n\n**DECISION: (a) something different.** Not a v2.0 and not a feature bump, because no existing tool\nin this ecosystem does witness-comparison of literals.",
+            "chosen_tool": "**VariantCollator** - proves every copy of a literal (regex, prompt, constant, SQL) is byte-identical\nto the one that actually ships, and names the characters that make a difference unreadable.",
             "shoulder_angels_1": false,
             "shoulder_angels_2": false,
             "score_table": false,
@@ -265,7 +285,7 @@
             },
             "self_report_id": null
           },
-          "novelty_file": null,
+          "novelty_file": "VariantCollator/NOVELTY_SCORE.md",
           "novelty_score": null,
           "production_v2": false,
           "completion_report": false,
@@ -301,8 +321,8 @@
             {
               "path": "VariantCollator/BUILD_LOG.md",
               "exists": true,
-              "bytes": 432,
-              "mtime": "2026-09-05T20:21:12Z"
+              "bytes": 8975,
+              "mtime": "2026-09-05T20:23:29Z"
             },
             {
               "path": "VariantCollator/PRODUCTION_V2.md",
@@ -337,20 +357,20 @@
         {
           "path": ".state/bram.json",
           "exists": true,
-          "bytes": 1194,
-          "mtime": "2026-09-05T20:21:12Z"
+          "bytes": 1391,
+          "mtime": "2026-09-05T20:24:53Z"
         },
         {
           "path": ".state/bram.events.jsonl",
           "exists": true,
-          "bytes": 80,
-          "mtime": "2026-09-05T20:10:15Z"
+          "bytes": 317,
+          "mtime": "2026-09-05T20:24:32Z"
         },
         {
           "path": "VariantCollator/BUILD_LOG.md",
           "exists": true,
-          "bytes": 432,
-          "mtime": "2026-09-05T20:21:12Z"
+          "bytes": 8975,
+          "mtime": "2026-09-05T20:23:29Z"
         },
         {
           "path": "VariantCollator/PRODUCTION_V2.md",
@@ -426,6 +446,46 @@
           "source": "state.history",
           "tool": "VariantCollator",
           "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T20:23:38Z",
+          "seat": "bram",
+          "task": 1,
+          "result": "refused",
+          "missing": [
+            "novelty=on but no novelty*.md score sheet in the tool folder"
+          ],
+          "source": "events.jsonl",
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T20:24:32Z",
+          "seat": "bram",
+          "task": 1,
+          "result": "cleared",
+          "missing": [],
+          "source": "events.jsonl",
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T20:24:32Z",
+          "seat": "bram",
+          "task": 1,
+          "result": "gate1 cleared",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T20:24:53Z",
+          "seat": "bram",
+          "task": null,
+          "result": "continue posted",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
         }
       ]
     },
@@ -439,7 +499,7 @@
         "unreadable_error": null
       },
       "loop": {
-        "task": 2,
+        "task": 3,
         "tool": "Arrived",
         "stop": false,
         "loops_done": 0,
@@ -460,7 +520,7 @@
           "loop": "inf",
           "seat": "cael"
         },
-        "history_count": 6
+        "history_count": 8
       },
       "grail": {
         "total": 25,
@@ -472,8 +532,8 @@
         },
         "inputs": {
           "shipped": 0,
-          "first_try_clears": 2,
-          "total_clears": 2,
+          "first_try_clears": 3,
+          "total_clears": 3,
           "first_try_rate": 1,
           "novelty_mean": 0,
           "novelty_n": 0,
@@ -498,12 +558,12 @@
         "2": {
           "name": "build_v1",
           "entered_at": "2026-09-05T20:14:06Z",
-          "cleared_at": null,
-          "minutes": null
+          "cleared_at": "2026-09-05T20:24:58Z",
+          "minutes": 10.87
         },
         "3": {
           "name": "combine_v2",
-          "entered_at": null,
+          "entered_at": "2026-09-05T20:24:58Z",
           "cleared_at": null,
           "minutes": null
         },
@@ -540,6 +600,15 @@
           "at": "2026-09-05T20:14:06Z",
           "seat": "cael",
           "task": 1,
+          "result": "cleared",
+          "missing": [],
+          "first_try": true,
+          "loop_index": 0
+        },
+        {
+          "at": "2026-09-05T20:24:58Z",
+          "seat": "cael",
+          "task": 2,
           "result": "cleared",
           "missing": [],
           "first_try": true,
@@ -588,25 +657,25 @@
             "builds": {
               "v1-A": {
                 "exists": true,
-                "production_v1": false,
+                "production_v1": true,
                 "readme": true,
                 "tests": true
               },
               "v1-B": {
                 "exists": true,
-                "production_v1": false,
+                "production_v1": true,
                 "readme": true,
                 "tests": true
               },
               "v1-C": {
                 "exists": true,
-                "production_v1": false,
+                "production_v1": true,
                 "readme": true,
                 "tests": true
               },
               "v1-D": {
                 "exists": true,
-                "production_v1": false,
+                "production_v1": true,
                 "readme": true,
                 "tests": true
               }
@@ -686,25 +755,25 @@
           "builds": {
             "v1-A": {
               "exists": true,
-              "production_v1": false,
+              "production_v1": true,
               "readme": true,
               "tests": true
             },
             "v1-B": {
               "exists": true,
-              "production_v1": false,
+              "production_v1": true,
               "readme": true,
               "tests": true
             },
             "v1-C": {
               "exists": true,
-              "production_v1": false,
+              "production_v1": true,
               "readme": true,
               "tests": true
             },
             "v1-D": {
               "exists": true,
-              "production_v1": false,
+              "production_v1": true,
               "readme": true,
               "tests": true
             }
@@ -749,14 +818,14 @@
         {
           "path": ".state/cael.json",
           "exists": true,
-          "bytes": 1375,
-          "mtime": "2026-09-05T20:14:26Z"
+          "bytes": 1572,
+          "mtime": "2026-09-05T20:25:18Z"
         },
         {
           "path": ".state/cael.events.jsonl",
           "exists": true,
-          "bytes": 160,
-          "mtime": "2026-09-05T20:14:06Z"
+          "bytes": 240,
+          "mtime": "2026-09-05T20:24:58Z"
         },
         {
           "path": "Arrived/BUILD_LOG.md",
@@ -860,6 +929,35 @@
         },
         {
           "at": "2026-09-05T20:14:26Z",
+          "seat": "cael",
+          "task": null,
+          "result": "continue posted",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T20:24:58Z",
+          "seat": "cael",
+          "task": 2,
+          "result": "cleared",
+          "missing": [],
+          "source": "events.jsonl",
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T20:24:58Z",
+          "seat": "cael",
+          "task": 2,
+          "result": "gate2 cleared",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T20:25:18Z",
           "seat": "cael",
           "task": null,
           "result": "continue posted",
@@ -1623,6 +1721,75 @@
   ],
   "events": [
     {
+      "at": "2026-09-05T20:25:18Z",
+      "seat": "cael",
+      "task": null,
+      "result": "continue posted",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T20:24:58Z",
+      "seat": "cael",
+      "task": 2,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T20:24:58Z",
+      "seat": "cael",
+      "task": 2,
+      "result": "gate2 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T20:24:53Z",
+      "seat": "bram",
+      "task": null,
+      "result": "continue posted",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T20:24:32Z",
+      "seat": "bram",
+      "task": 1,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T20:24:32Z",
+      "seat": "bram",
+      "task": 1,
+      "result": "gate1 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T20:23:38Z",
+      "seat": "bram",
+      "task": 1,
+      "result": "refused",
+      "missing": [
+        "novelty=on but no novelty*.md score sheet in the tool folder"
+      ],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
       "at": "2026-09-05T20:21:12Z",
       "seat": "bram",
       "task": null,
@@ -1887,9 +2054,9 @@
       "a": "bram",
       "b": "cael",
       "grail": {
-        "a": 25,
+        "a": 12.5,
         "b": 25,
-        "lead": null
+        "lead": "cael"
       },
       "shipped": {
         "a": 0,
@@ -1897,9 +2064,9 @@
         "lead": null
       },
       "first_try": {
-        "a": 1,
+        "a": 0.5,
         "b": 1,
-        "lead": null
+        "lead": "cael"
       },
       "novelty": {
         "a": 0,
@@ -1916,9 +2083,9 @@
       "a": "bram",
       "b": "quip",
       "grail": {
-        "a": 25,
+        "a": 12.5,
         "b": 18.6,
-        "lead": "bram"
+        "lead": "quip"
       },
       "shipped": {
         "a": 0,
@@ -1926,7 +2093,7 @@
         "lead": null
       },
       "first_try": {
-        "a": 1,
+        "a": 0.5,
         "b": 0,
         "lead": "bram"
       },
@@ -1945,9 +2112,9 @@
       "a": "bram",
       "b": "qwen",
       "grail": {
-        "a": 25,
+        "a": 12.5,
         "b": 25,
-        "lead": null
+        "lead": "qwen"
       },
       "shipped": {
         "a": 0,
@@ -1955,9 +2122,9 @@
         "lead": null
       },
       "first_try": {
-        "a": 1,
+        "a": 0.5,
         "b": 1,
-        "lead": null
+        "lead": "qwen"
       },
       "novelty": {
         "a": 0,
@@ -2060,7 +2227,7 @@
   ],
   "records": {
     "highest_grail": {
-      "seat": "bram",
+      "seat": "cael",
       "value": 25
     },
     "most_shipped": {
@@ -2068,7 +2235,7 @@
       "value": 0
     },
     "highest_first_try": {
-      "seat": "bram",
+      "seat": "cael",
       "value": 1
     },
     "highest_novelty": {
@@ -2086,6 +2253,6 @@
     "pid": 31392,
     "builtAt": "2026-09-05T17:16:45Z"
   },
-  "rebuild_ms": 9.31,
-  "etag": "6251c5442a95bb4370c9ff5e543ac10e"
+  "rebuild_ms": 9.98,
+  "etag": "faf60fec3a20c9eda9ead8add123da23"
 }
