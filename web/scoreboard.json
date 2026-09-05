@@ -1,14 +1,14 @@
 {
   "schema_version": 1,
-  "generated": "2026-09-05T21:28:24Z",
-  "generated_at": "2026-09-05T21:28:24Z",
+  "generated": "2026-09-05T21:33:25Z",
+  "generated_at": "2026-09-05T21:33:25Z",
   "root": "C:\\dev\\ait",
   "fleet": {
     "seats": 4,
     "readable": 4,
     "unreadable": 0,
     "shipped": 3,
-    "mean_grail": 40.12,
+    "mean_grail": 40.43,
     "active_loops": 2,
     "tools_on_disk": 4,
     "ledger_rows": 3,
@@ -36,7 +36,7 @@
         "unreadable_error": null
       },
       "loop": {
-        "task": 4,
+        "task": 5,
         "tool": "VariantCollator",
         "stop": true,
         "loops_done": 0,
@@ -57,21 +57,21 @@
           "loop": "inf",
           "seat": "bram"
         },
-        "history_count": 11
+        "history_count": 13
       },
       "grail": {
-        "total": 38.75,
+        "total": 40,
         "parts": {
           "shipped": 20,
-          "first_try": 18.75,
+          "first_try": 20,
           "novelty": 0,
           "speed": 0
         },
         "inputs": {
           "shipped": 1,
-          "first_try_clears": 3,
-          "total_clears": 4,
-          "first_try_rate": 0.75,
+          "first_try_clears": 4,
+          "total_clears": 5,
+          "first_try_rate": 0.8,
           "novelty_mean": 0,
           "novelty_n": 0,
           "median_minutes_per_shipped": null,
@@ -107,12 +107,12 @@
         "4": {
           "name": "quality_gates",
           "entered_at": "2026-09-05T21:25:57Z",
-          "cleared_at": null,
-          "minutes": null
+          "cleared_at": "2026-09-05T21:29:48Z",
+          "minutes": 3.85
         },
         "5": {
           "name": "publish",
-          "entered_at": null,
+          "entered_at": "2026-09-05T21:29:48Z",
           "cleared_at": null,
           "minutes": null
         },
@@ -166,6 +166,15 @@
           "at": "2026-09-05T21:25:56Z",
           "seat": "bram",
           "task": 3,
+          "result": "cleared",
+          "missing": [],
+          "first_try": true,
+          "loop_index": 0
+        },
+        {
+          "at": "2026-09-05T21:29:48Z",
+          "seat": "bram",
+          "task": 4,
           "result": "cleared",
           "missing": [],
           "first_try": true,
@@ -254,19 +263,19 @@
           "name": "quality_gates",
           "fields": {
             "gates": {
-              "TEST": null,
-              "DOCUMENTATION": null,
-              "EXAMPLES": null,
-              "ERROR HANDLING": null,
-              "CODE QUALITY": null,
-              "INTEGRATION": null
+              "TEST": "PASS",
+              "DOCUMENTATION": "PASS",
+              "EXAMPLES": "PASS",
+              "ERROR HANDLING": "PASS",
+              "CODE QUALITY": "PASS",
+              "INTEGRATION": "PASS"
             }
           }
         },
         "5": {
           "name": "publish",
           "fields": {
-            "completion_report": false,
+            "completion_report": true,
             "readme": true,
             "manifest_row": false,
             "ledger_row": false,
@@ -294,21 +303,21 @@
             "score_table": true,
             "pivots": true,
             "gates": {
-              "TEST": null,
-              "DOCUMENTATION": null,
-              "EXAMPLES": null,
-              "ERROR HANDLING": null,
-              "CODE QUALITY": null,
-              "INTEGRATION": null
+              "TEST": "PASS",
+              "DOCUMENTATION": "PASS",
+              "EXAMPLES": "PASS",
+              "ERROR HANDLING": "PASS",
+              "CODE QUALITY": "PASS",
+              "INTEGRATION": "PASS"
             },
             "self_report_id": null
           },
           "novelty_file": "VariantCollator/NOVELTY_SCORE.md",
           "novelty_score": null,
           "production_v2": true,
-          "completion_report": false,
+          "completion_report": true,
           "readme": true,
-          "examples": false,
+          "examples": true,
           "builds": {
             "v1-A": {
               "exists": true,
@@ -339,8 +348,8 @@
             {
               "path": "VariantCollator/BUILD_LOG.md",
               "exists": true,
-              "bytes": 22155,
-              "mtime": "2026-09-05T21:18:11Z"
+              "bytes": 26718,
+              "mtime": "2026-09-05T21:29:38Z"
             },
             {
               "path": "VariantCollator/PRODUCTION_V2.md",
@@ -350,9 +359,9 @@
             },
             {
               "path": "VariantCollator/COMPLETION_REPORT.md",
-              "exists": false,
-              "bytes": 0,
-              "mtime": null
+              "exists": true,
+              "bytes": 5997,
+              "mtime": "2026-09-05T21:32:20Z"
             },
             {
               "path": "VariantCollator/README.md",
@@ -362,9 +371,9 @@
             },
             {
               "path": "VariantCollator/EXAMPLES.md",
-              "exists": false,
-              "bytes": 0,
-              "mtime": null
+              "exists": true,
+              "bytes": 4623,
+              "mtime": "2026-09-05T21:29:07Z"
             }
           ],
           "manifest": [],
@@ -375,20 +384,20 @@
         {
           "path": ".state/bram.json",
           "exists": true,
-          "bytes": 1868,
-          "mtime": "2026-09-05T21:26:17Z"
+          "bytes": 2065,
+          "mtime": "2026-09-05T21:30:08Z"
         },
         {
           "path": ".state/bram.events.jsonl",
           "exists": true,
-          "bytes": 477,
-          "mtime": "2026-09-05T21:25:56Z"
+          "bytes": 557,
+          "mtime": "2026-09-05T21:29:48Z"
         },
         {
           "path": "VariantCollator/BUILD_LOG.md",
           "exists": true,
-          "bytes": 22155,
-          "mtime": "2026-09-05T21:18:11Z"
+          "bytes": 26718,
+          "mtime": "2026-09-05T21:29:38Z"
         },
         {
           "path": "VariantCollator/PRODUCTION_V2.md",
@@ -398,9 +407,9 @@
         },
         {
           "path": "VariantCollator/COMPLETION_REPORT.md",
-          "exists": false,
-          "bytes": 0,
-          "mtime": null
+          "exists": true,
+          "bytes": 5997,
+          "mtime": "2026-09-05T21:32:20Z"
         },
         {
           "path": "VariantCollator/README.md",
@@ -410,9 +419,9 @@
         },
         {
           "path": "VariantCollator/EXAMPLES.md",
-          "exists": false,
-          "bytes": 0,
-          "mtime": null
+          "exists": true,
+          "bytes": 4623,
+          "mtime": "2026-09-05T21:29:07Z"
         }
       ],
       "events": [
@@ -565,6 +574,35 @@
         },
         {
           "at": "2026-09-05T21:26:17Z",
+          "seat": "bram",
+          "task": null,
+          "result": "continue posted",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T21:29:48Z",
+          "seat": "bram",
+          "task": 4,
+          "result": "cleared",
+          "missing": [],
+          "source": "events.jsonl",
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T21:29:48Z",
+          "seat": "bram",
+          "task": 4,
+          "result": "gate4 cleared",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T21:30:08Z",
           "seat": "bram",
           "task": null,
           "result": "continue posted",
@@ -2433,6 +2471,35 @@
   ],
   "events": [
     {
+      "at": "2026-09-05T21:30:08Z",
+      "seat": "bram",
+      "task": null,
+      "result": "continue posted",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T21:29:48Z",
+      "seat": "bram",
+      "task": 4,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T21:29:48Z",
+      "seat": "bram",
+      "task": 4,
+      "result": "gate4 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
       "at": "2026-09-05T21:26:17Z",
       "seat": "bram",
       "task": null,
@@ -3181,7 +3248,7 @@
       "a": "bram",
       "b": "cael",
       "grail": {
-        "a": 38.75,
+        "a": 40,
         "b": 78.12,
         "lead": "cael"
       },
@@ -3191,7 +3258,7 @@
         "lead": "cael"
       },
       "first_try": {
-        "a": 0.75,
+        "a": 0.8,
         "b": 1,
         "lead": "cael"
       },
@@ -3210,7 +3277,7 @@
       "a": "bram",
       "b": "quip",
       "grail": {
-        "a": 38.75,
+        "a": 40,
         "b": 18.6,
         "lead": "bram"
       },
@@ -3220,7 +3287,7 @@
         "lead": "bram"
       },
       "first_try": {
-        "a": 0.75,
+        "a": 0.8,
         "b": 0,
         "lead": "bram"
       },
@@ -3239,7 +3306,7 @@
       "a": "bram",
       "b": "qwen",
       "grail": {
-        "a": 38.75,
+        "a": 40,
         "b": 25,
         "lead": "bram"
       },
@@ -3249,7 +3316,7 @@
         "lead": "bram"
       },
       "first_try": {
-        "a": 0.75,
+        "a": 0.8,
         "b": 1,
         "lead": "qwen"
       },
@@ -3383,6 +3450,6 @@
     "pid": 31392,
     "builtAt": "2026-09-05T17:16:45Z"
   },
-  "rebuild_ms": 11.43,
-  "etag": "ff7698ff02b91d293193cda6119f08ab"
+  "rebuild_ms": 12.09,
+  "etag": "4890637977fb84e9ac07c28dd2a7c8f8"
 }
