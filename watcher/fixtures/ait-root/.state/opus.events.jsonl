@@ -1,0 +1,9 @@
+{"at":"2026-09-03T09:10:00Z","seat":"opus","task":0,"result":"cleared"}
+{"at":"2026-09-03T09:40:00Z","seat":"opus","task":1,"result":"cleared"}
+{"at":"2026-09-03T10:20:00Z","seat":"opus","task":2,"result":"cleared"}
+{"at":"2026-09-03T10:50:00Z","seat":"opus","task":3,"result":"cleared"}
+{"at":"2026-09-03T11:00:00Z","seat":"opus","task":4,"result":"refused","missing":["GATE TEST: PASS missing"]}
+{"at":"2026-09-03T11:20:00Z","seat":"opus","task":4,"result":"cleared"}
+{"at":"2026-09-03T11:40:00Z","seat":"opus","task":5,"result":"cleared"}
+{"at":"2026-09-03T12:00:00Z","seat":"opus","task":6,"result":"cleared"}
+{"at":"2026-09-05T12:08:00Z","seat":"opus","task":0,"result":"cleared"}
