@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
-  "generated": "2026-09-05T17:17:32Z",
-  "generated_at": "2026-09-05T17:17:32Z",
+  "generated": "2026-09-05T20:21:04Z",
+  "generated_at": "2026-09-05T20:21:04Z",
   "root": "C:\\dev\\ait",
   "fleet": {
-    "seats": 2,
-    "readable": 2,
+    "seats": 4,
+    "readable": 4,
     "unreadable": 0,
     "shipped": 0,
-    "mean_grail": 21.8,
-    "active_loops": 2,
-    "tools_on_disk": 1,
+    "mean_grail": 23.4,
+    "active_loops": 4,
+    "tools_on_disk": 2,
     "ledger_rows": 1,
     "manifest_rows": 0,
     "deltas": {
@@ -26,6 +26,696 @@
     }
   },
   "seats": [
+    {
+      "identity": {
+        "seat": "bram",
+        "runtime": "Bram",
+        "runtime_key": "bram",
+        "readable": true,
+        "unreadable_since": null,
+        "unreadable_error": null
+      },
+      "loop": {
+        "task": 1,
+        "tool": null,
+        "stop": false,
+        "loops_done": 0,
+        "started": "2026-09-05T20:09:40Z",
+        "tokens": {
+          "novelty": "on",
+          "depth": "standard",
+          "difficulty": "3",
+          "category": "any",
+          "audience": "ai-engineer",
+          "lang": "python",
+          "combo": "none",
+          "deps": "stdlib",
+          "platform": "xplat",
+          "visibility": "public",
+          "builds": "4",
+          "timebox": "0",
+          "loop": "inf",
+          "seat": "bram"
+        },
+        "history_count": 3
+      },
+      "grail": {
+        "total": 25,
+        "parts": {
+          "shipped": 0,
+          "first_try": 25,
+          "novelty": 0,
+          "speed": 0
+        },
+        "inputs": {
+          "shipped": 0,
+          "first_try_clears": 1,
+          "total_clears": 1,
+          "first_try_rate": 1,
+          "novelty_mean": 0,
+          "novelty_n": 0,
+          "median_minutes_per_shipped": null,
+          "shipped_field_max": 0,
+          "speed_ref_minutes": 240
+        }
+      },
+      "task_timing": {
+        "0": {
+          "name": "workspace",
+          "entered_at": "2026-09-05T20:09:40Z",
+          "cleared_at": "2026-09-05T20:10:15Z",
+          "minutes": 0.58
+        },
+        "1": {
+          "name": "preflight",
+          "entered_at": "2026-09-05T20:10:15Z",
+          "cleared_at": null,
+          "minutes": null
+        },
+        "2": {
+          "name": "build_v1",
+          "entered_at": null,
+          "cleared_at": null,
+          "minutes": null
+        },
+        "3": {
+          "name": "combine_v2",
+          "entered_at": null,
+          "cleared_at": null,
+          "minutes": null
+        },
+        "4": {
+          "name": "quality_gates",
+          "entered_at": null,
+          "cleared_at": null,
+          "minutes": null
+        },
+        "5": {
+          "name": "publish",
+          "entered_at": null,
+          "cleared_at": null,
+          "minutes": null
+        },
+        "6": {
+          "name": "self_report",
+          "entered_at": null,
+          "cleared_at": null,
+          "minutes": null
+        }
+      },
+      "gate_attempts": [
+        {
+          "at": "2026-09-05T20:10:15Z",
+          "seat": "bram",
+          "task": 0,
+          "result": "cleared",
+          "missing": [],
+          "first_try": true,
+          "loop_index": 0
+        }
+      ],
+      "tasks": {
+        "0": {
+          "name": "workspace",
+          "fields": {
+            "root_ok": true,
+            "manifest": true,
+            "encyclopedia": true,
+            "ledger": true
+          }
+        },
+        "1": {
+          "name": "preflight",
+          "fields": {
+            "tokens": {
+              "novelty": "on",
+              "depth": "standard",
+              "difficulty": "3",
+              "category": "any",
+              "audience": "ai-engineer",
+              "lang": "python",
+              "combo": "none",
+              "deps": "stdlib",
+              "platform": "xplat",
+              "visibility": "public",
+              "builds": "4",
+              "timebox": "0",
+              "loop": "inf",
+              "seat": "bram"
+            },
+            "local_vs_github": "",
+            "redundancy": "",
+            "chosen_tool": null,
+            "novelty_file": null,
+            "novelty_score": null
+          }
+        },
+        "2": {
+          "name": "build_v1",
+          "fields": {
+            "builds": {},
+            "shoulder_angels_1": false,
+            "shoulder_angels_2": false,
+            "builds_token": "4"
+          }
+        },
+        "3": {
+          "name": "combine_v2",
+          "fields": {
+            "production_v2": false,
+            "score_table": false,
+            "pivots": false
+          }
+        },
+        "4": {
+          "name": "quality_gates",
+          "fields": {
+            "gates": {
+              "TEST": null,
+              "DOCUMENTATION": null,
+              "EXAMPLES": null,
+              "ERROR HANDLING": null,
+              "CODE QUALITY": null,
+              "INTEGRATION": null
+            }
+          }
+        },
+        "5": {
+          "name": "publish",
+          "fields": {
+            "completion_report": false,
+            "readme": false,
+            "manifest_row": false,
+            "ledger_row": false,
+            "repo": ""
+          }
+        },
+        "6": {
+          "name": "self_report",
+          "fields": {
+            "self_report_id": null,
+            "stop": false
+          }
+        }
+      },
+      "tools": [],
+      "file_stats": [
+        {
+          "path": ".state/bram.json",
+          "exists": true,
+          "bytes": 1083,
+          "mtime": "2026-09-05T20:10:35Z"
+        },
+        {
+          "path": ".state/bram.events.jsonl",
+          "exists": true,
+          "bytes": 80,
+          "mtime": "2026-09-05T20:10:15Z"
+        }
+      ],
+      "events": [
+        {
+          "at": "2026-09-05T20:09:40Z",
+          "seat": "bram",
+          "task": null,
+          "result": "start",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T20:10:15Z",
+          "seat": "bram",
+          "task": 0,
+          "result": "cleared",
+          "missing": [],
+          "source": "events.jsonl",
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T20:10:15Z",
+          "seat": "bram",
+          "task": 0,
+          "result": "gate0 cleared",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T20:10:35Z",
+          "seat": "bram",
+          "task": null,
+          "result": "continue posted",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        }
+      ]
+    },
+    {
+      "identity": {
+        "seat": "cael",
+        "runtime": "Cael",
+        "runtime_key": "cael",
+        "readable": true,
+        "unreadable_since": null,
+        "unreadable_error": null
+      },
+      "loop": {
+        "task": 2,
+        "tool": "Arrived",
+        "stop": false,
+        "loops_done": 0,
+        "started": "2026-09-05T20:07:26Z",
+        "tokens": {
+          "novelty": "on",
+          "depth": "standard",
+          "difficulty": "3",
+          "category": "any",
+          "audience": "ai-engineer",
+          "lang": "python",
+          "combo": "none",
+          "deps": "stdlib",
+          "platform": "xplat",
+          "visibility": "public",
+          "builds": "4",
+          "timebox": "0",
+          "loop": "inf",
+          "seat": "cael"
+        },
+        "history_count": 6
+      },
+      "grail": {
+        "total": 25,
+        "parts": {
+          "shipped": 0,
+          "first_try": 25,
+          "novelty": 0,
+          "speed": 0
+        },
+        "inputs": {
+          "shipped": 0,
+          "first_try_clears": 2,
+          "total_clears": 2,
+          "first_try_rate": 1,
+          "novelty_mean": 0,
+          "novelty_n": 0,
+          "median_minutes_per_shipped": null,
+          "shipped_field_max": 0,
+          "speed_ref_minutes": 240
+        }
+      },
+      "task_timing": {
+        "0": {
+          "name": "workspace",
+          "entered_at": "2026-09-05T20:07:26Z",
+          "cleared_at": "2026-09-05T20:07:49Z",
+          "minutes": 0.38
+        },
+        "1": {
+          "name": "preflight",
+          "entered_at": "2026-09-05T20:07:49Z",
+          "cleared_at": "2026-09-05T20:14:06Z",
+          "minutes": 6.28
+        },
+        "2": {
+          "name": "build_v1",
+          "entered_at": "2026-09-05T20:14:06Z",
+          "cleared_at": null,
+          "minutes": null
+        },
+        "3": {
+          "name": "combine_v2",
+          "entered_at": null,
+          "cleared_at": null,
+          "minutes": null
+        },
+        "4": {
+          "name": "quality_gates",
+          "entered_at": null,
+          "cleared_at": null,
+          "minutes": null
+        },
+        "5": {
+          "name": "publish",
+          "entered_at": null,
+          "cleared_at": null,
+          "minutes": null
+        },
+        "6": {
+          "name": "self_report",
+          "entered_at": null,
+          "cleared_at": null,
+          "minutes": null
+        }
+      },
+      "gate_attempts": [
+        {
+          "at": "2026-09-05T20:07:49Z",
+          "seat": "cael",
+          "task": 0,
+          "result": "cleared",
+          "missing": [],
+          "first_try": true,
+          "loop_index": 0
+        },
+        {
+          "at": "2026-09-05T20:14:06Z",
+          "seat": "cael",
+          "task": 1,
+          "result": "cleared",
+          "missing": [],
+          "first_try": true,
+          "loop_index": 0
+        }
+      ],
+      "tasks": {
+        "0": {
+          "name": "workspace",
+          "fields": {
+            "root_ok": true,
+            "manifest": true,
+            "encyclopedia": true,
+            "ledger": true
+          }
+        },
+        "1": {
+          "name": "preflight",
+          "fields": {
+            "tokens": {
+              "novelty": "on",
+              "depth": "standard",
+              "difficulty": "3",
+              "category": "any",
+              "audience": "ai-engineer",
+              "lang": "python",
+              "combo": "none",
+              "deps": "stdlib",
+              "platform": "xplat",
+              "visibility": "public",
+              "builds": "4",
+              "timebox": "0",
+              "loop": "inf",
+              "seat": "cael"
+            },
+            "local_vs_github": "Scan 2026-09-05T20:10",
+            "redundancy": "Candidate overlaps wait-for-it (TCP up), kubernetes wait --for, `cmd && grep`, pipelock receipts (crypto evidence), reverify (claim vs binary ground truth), and MetaphyKing LiveAudit / CheckerAccountability (AutoProject names, not this primitive).\n\nChoice: **(a) something different.**\n\nReason: those tools wait for *a condition* or verify *a signed artifact*. Arrived waits for *the identifier the local hop just minted* to appear in an independent second instrument. Local success is a debt, not a verdict. Not a v2 of LiveAudit or EchoLineage (provenance / audit, different job). Not a feature bump of APIProbe (probes APIs, does not bind hop-1 ids).",
+            "chosen_tool": "Arrived",
+            "novelty_file": "Arrived/novelty_STANDARD.md",
+            "novelty_score": null
+          }
+        },
+        "2": {
+          "name": "build_v1",
+          "fields": {
+            "builds": {
+              "v1-A": {
+                "exists": false,
+                "production_v1": false,
+                "readme": false,
+                "tests": false
+              },
+              "v1-B": {
+                "exists": false,
+                "production_v1": false,
+                "readme": false,
+                "tests": false
+              },
+              "v1-C": {
+                "exists": false,
+                "production_v1": false,
+                "readme": false,
+                "tests": false
+              },
+              "v1-D": {
+                "exists": false,
+                "production_v1": false,
+                "readme": false,
+                "tests": false
+              }
+            },
+            "shoulder_angels_1": true,
+            "shoulder_angels_2": true,
+            "builds_token": "4"
+          }
+        },
+        "3": {
+          "name": "combine_v2",
+          "fields": {
+            "production_v2": false,
+            "score_table": false,
+            "pivots": false
+          }
+        },
+        "4": {
+          "name": "quality_gates",
+          "fields": {
+            "gates": {
+              "TEST": null,
+              "DOCUMENTATION": null,
+              "EXAMPLES": null,
+              "ERROR HANDLING": null,
+              "CODE QUALITY": null,
+              "INTEGRATION": null
+            }
+          }
+        },
+        "5": {
+          "name": "publish",
+          "fields": {
+            "completion_report": false,
+            "readme": false,
+            "manifest_row": false,
+            "ledger_row": false,
+            "repo": ""
+          }
+        },
+        "6": {
+          "name": "self_report",
+          "fields": {
+            "self_report_id": null,
+            "stop": false
+          }
+        }
+      },
+      "tools": [
+        {
+          "name": "Arrived",
+          "build_log": {
+            "tokens_text": "Parsed from start block `[AIT seat=cael]` (Vesper/OmniLad first block, 2026-09-05). Missing keys took runner defaults. Unknown keys: none. No token changed this iteration (first loop; no prior tool time/ease/gap evidence to justify a change). `loop=inf` is the default and is a flag to Logan, not a refusal — same measurement Bram posted.\n\n| token | value | source | reason |\n|---|---|---|---|\n| novelty | on | default | first block; Novelty Engine STANDARD required |\n| depth | standard | default | bar 70, not DEEP/80 |\n| difficulty | 3 | default | one-file is too thin; multi-module is 5 |\n| category | any | default | no category lock from start |\n| audience | ai-engineer | default | AIT audience |\n| lang | python | default | stdlib first |\n| combo | none | default | first block |\n| deps | stdlib | default | no third-party |\n| platform | xplat | default | win+posix |\n| visibility | public | default | Logan 2026-09-05 public default |\n| builds | 4 | default | both forks at both Shoulder Angels |\n| timebox | 0 | default | no soft budget |\n| loop | inf | default | unbounded until OmniLad stop; reported as flag |\n| seat | cael | start block | this seat |\n\nStop token: not received.",
+            "local_vs_github": "Scan 2026-09-05T20:10",
+            "redundancy": "Candidate overlaps wait-for-it (TCP up), kubernetes wait --for, `cmd && grep`, pipelock receipts (crypto evidence), reverify (claim vs binary ground truth), and MetaphyKing LiveAudit / CheckerAccountability (AutoProject names, not this primitive).\n\nChoice: **(a) something different.**\n\nReason: those tools wait for *a condition* or verify *a signed artifact*. Arrived waits for *the identifier the local hop just minted* to appear in an independent second instrument. Local success is a debt, not a verdict. Not a v2 of LiveAudit or EchoLineage (provenance / audit, different job). Not a feature bump of APIProbe (probes APIs, does not bind hop-1 ids).",
+            "chosen_tool": "Arrived - a stdlib Python CLI that treats local command success as a hop-1 identifier debt: parse an id from hop-1 output, probe an independent hop-2 command until that same id appears, and refuse any success token if hop-2 is silent. Built for AI engineers who ship `[OK]` / `posted id=N` from the local hop while the far side never saw it.",
+            "shoulder_angels_1": true,
+            "shoulder_angels_2": true,
+            "score_table": false,
+            "pivots": false,
+            "gates": {
+              "TEST": null,
+              "DOCUMENTATION": null,
+              "EXAMPLES": null,
+              "ERROR HANDLING": null,
+              "CODE QUALITY": null,
+              "INTEGRATION": null
+            },
+            "self_report_id": null
+          },
+          "novelty_file": "Arrived/novelty_STANDARD.md",
+          "novelty_score": null,
+          "production_v2": false,
+          "completion_report": false,
+          "readme": false,
+          "examples": false,
+          "builds": {
+            "v1-A": {
+              "exists": false,
+              "production_v1": false,
+              "readme": false,
+              "tests": false
+            },
+            "v1-B": {
+              "exists": false,
+              "production_v1": false,
+              "readme": false,
+              "tests": false
+            },
+            "v1-C": {
+              "exists": false,
+              "production_v1": false,
+              "readme": false,
+              "tests": false
+            },
+            "v1-D": {
+              "exists": false,
+              "production_v1": false,
+              "readme": false,
+              "tests": false
+            }
+          },
+          "files": [
+            {
+              "path": "Arrived/BUILD_LOG.md",
+              "exists": true,
+              "bytes": 8072,
+              "mtime": "2026-09-05T20:19:22Z"
+            },
+            {
+              "path": "Arrived/PRODUCTION_V2.md",
+              "exists": false,
+              "bytes": 0,
+              "mtime": null
+            },
+            {
+              "path": "Arrived/COMPLETION_REPORT.md",
+              "exists": false,
+              "bytes": 0,
+              "mtime": null
+            },
+            {
+              "path": "Arrived/README.md",
+              "exists": false,
+              "bytes": 0,
+              "mtime": null
+            },
+            {
+              "path": "Arrived/EXAMPLES.md",
+              "exists": false,
+              "bytes": 0,
+              "mtime": null
+            }
+          ],
+          "manifest": [],
+          "ledger": []
+        }
+      ],
+      "file_stats": [
+        {
+          "path": ".state/cael.json",
+          "exists": true,
+          "bytes": 1375,
+          "mtime": "2026-09-05T20:14:26Z"
+        },
+        {
+          "path": ".state/cael.events.jsonl",
+          "exists": true,
+          "bytes": 160,
+          "mtime": "2026-09-05T20:14:06Z"
+        },
+        {
+          "path": "Arrived/BUILD_LOG.md",
+          "exists": true,
+          "bytes": 8072,
+          "mtime": "2026-09-05T20:19:22Z"
+        },
+        {
+          "path": "Arrived/PRODUCTION_V2.md",
+          "exists": false,
+          "bytes": 0,
+          "mtime": null
+        },
+        {
+          "path": "Arrived/COMPLETION_REPORT.md",
+          "exists": false,
+          "bytes": 0,
+          "mtime": null
+        },
+        {
+          "path": "Arrived/README.md",
+          "exists": false,
+          "bytes": 0,
+          "mtime": null
+        },
+        {
+          "path": "Arrived/EXAMPLES.md",
+          "exists": false,
+          "bytes": 0,
+          "mtime": null
+        }
+      ],
+      "events": [
+        {
+          "at": "2026-09-05T20:07:26Z",
+          "seat": "cael",
+          "task": null,
+          "result": "start",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T20:07:49Z",
+          "seat": "cael",
+          "task": 0,
+          "result": "cleared",
+          "missing": [],
+          "source": "events.jsonl",
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T20:07:49Z",
+          "seat": "cael",
+          "task": 0,
+          "result": "gate0 cleared",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T20:08:09Z",
+          "seat": "cael",
+          "task": null,
+          "result": "continue posted",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T20:12:23Z",
+          "seat": "cael",
+          "task": null,
+          "result": "choose",
+          "missing": [],
+          "source": "state.history",
+          "tool": "Arrived",
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T20:14:06Z",
+          "seat": "cael",
+          "task": 1,
+          "result": "cleared",
+          "missing": [],
+          "source": "events.jsonl",
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T20:14:06Z",
+          "seat": "cael",
+          "task": 1,
+          "result": "gate1 cleared",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T20:14:26Z",
+          "seat": "cael",
+          "task": null,
+          "result": "continue posted",
+          "missing": [],
+          "source": "state.history",
+          "tool": null,
+          "raw_ok": true
+        }
+      ]
+    },
     {
       "identity": {
         "seat": "quip",
@@ -154,6 +844,27 @@
           "missing": [],
           "first_try": false,
           "loop_index": 0
+        },
+        {
+          "at": "2026-09-05T18:39:04Z",
+          "seat": "quip",
+          "task": 2,
+          "result": "refused",
+          "missing": [
+            "builds/v1-A/PRODUCTION_V1.md stamp missing",
+            "builds/v1-A/README.md missing",
+            "builds/v1-B/PRODUCTION_V1.md stamp missing",
+            "builds/v1-B/README.md missing",
+            "builds/v1-B has no test file or tests/ dir",
+            "builds/v1-C/PRODUCTION_V1.md stamp missing",
+            "builds/v1-C/README.md missing",
+            "builds/v1-C has no test file or tests/ dir",
+            "builds/v1-D/PRODUCTION_V1.md stamp missing",
+            "builds/v1-D/README.md missing",
+            "builds/v1-D has no test file or tests/ dir"
+          ],
+          "first_try": false,
+          "loop_index": 0
         }
       ],
       "tasks": {
@@ -197,32 +908,32 @@
           "fields": {
             "builds": {
               "v1-A": {
-                "exists": false,
-                "production_v1": false,
-                "readme": false,
-                "tests": false
+                "exists": true,
+                "production_v1": true,
+                "readme": true,
+                "tests": true
               },
               "v1-B": {
-                "exists": false,
-                "production_v1": false,
-                "readme": false,
-                "tests": false
+                "exists": true,
+                "production_v1": true,
+                "readme": true,
+                "tests": true
               },
               "v1-C": {
-                "exists": false,
-                "production_v1": false,
-                "readme": false,
-                "tests": false
+                "exists": true,
+                "production_v1": true,
+                "readme": true,
+                "tests": true
               },
               "v1-D": {
-                "exists": false,
+                "exists": true,
                 "production_v1": false,
                 "readme": false,
-                "tests": false
+                "tests": true
               }
             },
-            "shoulder_angels_1": false,
-            "shoulder_angels_2": false,
+            "shoulder_angels_1": true,
+            "shoulder_angels_2": true,
             "builds_token": "4"
           }
         },
@@ -273,8 +984,8 @@
             "local_vs_github": "",
             "redundancy": "**Candidate:** `cognitive-seam` (codename: `seam`)\r\n\r\n**Graph Search:**\r\n- `tools\\ait.cmd search cognitive-seam` → (Stay import blocked, but graph is fresh)\r\n- `python C:\\dev\\stay-fleet\\stay_fleet.py search cognitive-seam` → (fleet reader available)\r\n- GitHub search: no repo named `cognitive-seam` or `seam` in MetaphyKing\r\n\r\n**Prior Art Overlap (from Novelty Engine run):**\r\n- AI Code Assistants (Copilot, Cursor): 35% — they generate implementation; we generate architectural insight\r\n- ADR Tools: 25% — they record decisions; we synthesi",
             "chosen_tool": "**Tool Name:** `cognitive-seam` (codename: `seam`)\r\n\r\n**One-Line Purpose:** A deterministic CLI that analy",
-            "shoulder_angels_1": false,
-            "shoulder_angels_2": false,
+            "shoulder_angels_1": true,
+            "shoulder_angels_2": true,
             "score_table": false,
             "pivots": false,
             "gates": {
@@ -295,36 +1006,36 @@
           "examples": false,
           "builds": {
             "v1-A": {
-              "exists": false,
-              "production_v1": false,
-              "readme": false,
-              "tests": false
+              "exists": true,
+              "production_v1": true,
+              "readme": true,
+              "tests": true
             },
             "v1-B": {
-              "exists": false,
-              "production_v1": false,
-              "readme": false,
-              "tests": false
+              "exists": true,
+              "production_v1": true,
+              "readme": true,
+              "tests": true
             },
             "v1-C": {
-              "exists": false,
-              "production_v1": false,
-              "readme": false,
-              "tests": false
+              "exists": true,
+              "production_v1": true,
+              "readme": true,
+              "tests": true
             },
             "v1-D": {
-              "exists": false,
+              "exists": true,
               "production_v1": false,
               "readme": false,
-              "tests": false
+              "tests": true
             }
           },
           "files": [
             {
               "path": "cognitive-seam/BUILD_LOG.md",
               "exists": true,
-              "bytes": 3574,
-              "mtime": "2026-09-05T16:28:20Z"
+              "bytes": 16128,
+              "mtime": "2026-09-05T19:25:21Z"
             },
             {
               "path": "cognitive-seam/PRODUCTION_V2.md",
@@ -365,14 +1076,14 @@
         {
           "path": ".state/quip.events.jsonl",
           "exists": true,
-          "bytes": 394,
-          "mtime": "2026-09-05T16:35:48Z"
+          "bytes": 941,
+          "mtime": "2026-09-05T18:39:04Z"
         },
         {
           "path": "cognitive-seam/BUILD_LOG.md",
           "exists": true,
-          "bytes": 3574,
-          "mtime": "2026-09-05T16:28:20Z"
+          "bytes": 16128,
+          "mtime": "2026-09-05T19:25:21Z"
         },
         {
           "path": "cognitive-seam/PRODUCTION_V2.md",
@@ -469,6 +1180,27 @@
           "missing": [],
           "source": "state.history",
           "tool": null,
+          "raw_ok": true
+        },
+        {
+          "at": "2026-09-05T18:39:04Z",
+          "seat": "quip",
+          "task": 2,
+          "result": "refused",
+          "missing": [
+            "builds/v1-A/PRODUCTION_V1.md stamp missing",
+            "builds/v1-A/README.md missing",
+            "builds/v1-B/PRODUCTION_V1.md stamp missing",
+            "builds/v1-B/README.md missing",
+            "builds/v1-B has no test file or tests/ dir",
+            "builds/v1-C/PRODUCTION_V1.md stamp missing",
+            "builds/v1-C/README.md missing",
+            "builds/v1-C has no test file or tests/ dir",
+            "builds/v1-D/PRODUCTION_V1.md stamp missing",
+            "builds/v1-D/README.md missing",
+            "builds/v1-D has no test file or tests/ dir"
+          ],
+          "source": "events.jsonl",
           "raw_ok": true
         }
       ]
@@ -737,6 +1469,144 @@
   ],
   "events": [
     {
+      "at": "2026-09-05T20:14:26Z",
+      "seat": "cael",
+      "task": null,
+      "result": "continue posted",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T20:14:06Z",
+      "seat": "cael",
+      "task": 1,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T20:14:06Z",
+      "seat": "cael",
+      "task": 1,
+      "result": "gate1 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T20:12:23Z",
+      "seat": "cael",
+      "task": null,
+      "result": "choose",
+      "missing": [],
+      "source": "state.history",
+      "tool": "Arrived",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T20:10:35Z",
+      "seat": "bram",
+      "task": null,
+      "result": "continue posted",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T20:10:15Z",
+      "seat": "bram",
+      "task": 0,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T20:10:15Z",
+      "seat": "bram",
+      "task": 0,
+      "result": "gate0 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T20:09:40Z",
+      "seat": "bram",
+      "task": null,
+      "result": "start",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T20:08:09Z",
+      "seat": "cael",
+      "task": null,
+      "result": "continue posted",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T20:07:49Z",
+      "seat": "cael",
+      "task": 0,
+      "result": "cleared",
+      "missing": [],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T20:07:49Z",
+      "seat": "cael",
+      "task": 0,
+      "result": "gate0 cleared",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T20:07:26Z",
+      "seat": "cael",
+      "task": null,
+      "result": "start",
+      "missing": [],
+      "source": "state.history",
+      "tool": null,
+      "raw_ok": true
+    },
+    {
+      "at": "2026-09-05T18:39:04Z",
+      "seat": "quip",
+      "task": 2,
+      "result": "refused",
+      "missing": [
+        "builds/v1-A/PRODUCTION_V1.md stamp missing",
+        "builds/v1-A/README.md missing",
+        "builds/v1-B/PRODUCTION_V1.md stamp missing",
+        "builds/v1-B/README.md missing",
+        "builds/v1-B has no test file or tests/ dir",
+        "builds/v1-C/PRODUCTION_V1.md stamp missing",
+        "builds/v1-C/README.md missing",
+        "builds/v1-C has no test file or tests/ dir",
+        "builds/v1-D/PRODUCTION_V1.md stamp missing",
+        "builds/v1-D/README.md missing",
+        "builds/v1-D has no test file or tests/ dir"
+      ],
+      "source": "events.jsonl",
+      "raw_ok": true
+    },
+    {
       "at": "2026-09-05T16:35:48Z",
       "seat": "quip",
       "task": 1,
@@ -850,6 +1720,151 @@
   ],
   "head_to_head": [
     {
+      "a": "bram",
+      "b": "cael",
+      "grail": {
+        "a": 25,
+        "b": 25,
+        "lead": null
+      },
+      "shipped": {
+        "a": 0,
+        "b": 0,
+        "lead": null
+      },
+      "first_try": {
+        "a": 1,
+        "b": 1,
+        "lead": null
+      },
+      "novelty": {
+        "a": 0,
+        "b": 0,
+        "lead": null
+      },
+      "speed": {
+        "a": null,
+        "b": null,
+        "lead": null
+      }
+    },
+    {
+      "a": "bram",
+      "b": "quip",
+      "grail": {
+        "a": 25,
+        "b": 18.6,
+        "lead": "bram"
+      },
+      "shipped": {
+        "a": 0,
+        "b": 0,
+        "lead": null
+      },
+      "first_try": {
+        "a": 1,
+        "b": 0,
+        "lead": "bram"
+      },
+      "novelty": {
+        "a": 0,
+        "b": 93,
+        "lead": "quip"
+      },
+      "speed": {
+        "a": null,
+        "b": null,
+        "lead": null
+      }
+    },
+    {
+      "a": "bram",
+      "b": "qwen",
+      "grail": {
+        "a": 25,
+        "b": 25,
+        "lead": null
+      },
+      "shipped": {
+        "a": 0,
+        "b": 0,
+        "lead": null
+      },
+      "first_try": {
+        "a": 1,
+        "b": 1,
+        "lead": null
+      },
+      "novelty": {
+        "a": 0,
+        "b": 0,
+        "lead": null
+      },
+      "speed": {
+        "a": null,
+        "b": null,
+        "lead": null
+      }
+    },
+    {
+      "a": "cael",
+      "b": "quip",
+      "grail": {
+        "a": 25,
+        "b": 18.6,
+        "lead": "cael"
+      },
+      "shipped": {
+        "a": 0,
+        "b": 0,
+        "lead": null
+      },
+      "first_try": {
+        "a": 1,
+        "b": 0,
+        "lead": "cael"
+      },
+      "novelty": {
+        "a": 0,
+        "b": 93,
+        "lead": "quip"
+      },
+      "speed": {
+        "a": null,
+        "b": null,
+        "lead": null
+      }
+    },
+    {
+      "a": "cael",
+      "b": "qwen",
+      "grail": {
+        "a": 25,
+        "b": 25,
+        "lead": null
+      },
+      "shipped": {
+        "a": 0,
+        "b": 0,
+        "lead": null
+      },
+      "first_try": {
+        "a": 1,
+        "b": 1,
+        "lead": null
+      },
+      "novelty": {
+        "a": 0,
+        "b": 0,
+        "lead": null
+      },
+      "speed": {
+        "a": null,
+        "b": null,
+        "lead": null
+      }
+    },
+    {
       "a": "quip",
       "b": "qwen",
       "grail": {
@@ -881,15 +1896,15 @@
   ],
   "records": {
     "highest_grail": {
-      "seat": "qwen",
+      "seat": "bram",
       "value": 25
     },
     "most_shipped": {
-      "seat": "quip",
+      "seat": "bram",
       "value": 0
     },
     "highest_first_try": {
-      "seat": "qwen",
+      "seat": "bram",
       "value": 1
     },
     "highest_novelty": {
@@ -907,6 +1922,6 @@
     "pid": 31392,
     "builtAt": "2026-09-05T17:16:45Z"
   },
-  "rebuild_ms": 3.3,
-  "etag": "9eaaa3df30d49dbf80a31b8a40c8b743"
+  "rebuild_ms": 7.56,
+  "etag": "10a68e1d0d74907292b74e52f0c3dd46"
 }
