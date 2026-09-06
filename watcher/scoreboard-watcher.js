@@ -285,7 +285,7 @@ function parseNoveltyScore(text) {
 
 function sectionBody(text, heading) {
   const re = new RegExp(
-    '^#{1,3}\\s*' + heading.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\s*$([\\s\\S]*?)(?=^#{1,3}\\s|\\Z)',
+    '^#{1,3}\\s*' + heading.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\s*$([\\s\\S]*?)(?=^#{1,3}\\s|(?![\\s\\S]))',
     'im'
   );
   const m = text.match(re);
