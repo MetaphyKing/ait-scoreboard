@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated": "2026-09-06T21:13:25Z",
-  "generated_at": "2026-09-06T21:13:25Z",
+  "generated": "2026-09-06T21:18:31Z",
+  "generated_at": "2026-09-06T21:18:31Z",
   "root": "C:\\dev\\ait",
   "fleet": {
     "seats": 4,
@@ -2014,7 +2014,7 @@
               "seat": "quip"
             },
             "local_vs_github": "",
-            "redundancy": "**Candidate:** `cognitive-seam` (codename: `seam`)\r\n\r\n**Graph Search:**\r\n- `tools\\ait.cmd search cognitive-seam` → (Stay import blocked, but graph is fresh)\r\n- `python C:\\dev\\stay-fleet\\stay_fleet.py search cognitive-seam` → (fleet reader available)\r\n- GitHub search: no repo named `cognitive-seam` or `seam` in MetaphyKing\r\n\r\n**Prior Art Overlap (from Novelty Engine run):**\r\n- AI Code Assistants (Copilot, Cursor): 35% — they generate implementation; we generate architectural insight\r\n- ADR Tools: 25% — they record decisions; we synthesize the decision space\r\n- C4/Structurizr: 20% — they diagram; we diagnose cognitive fit\r\n- Dependency Analysis: 15% — they map structure; we map cognitive fit\r\n- Static Analysis: 30% — they measure code; we measure intent drift\r\n\r\n**Maximum Overlap:** 35% — **Status: NOVEL**\r\n\r\n**Redundancy Decision:** (a) Something different — no existing tool measures *cognitive fit* between architecture and team working memory.\r\n\r\n---",
+            "redundancy": "",
             "chosen_tool": "cognitive-seam",
             "novelty_file": "cognitive-seam/novelty_phase4_test.md",
             "novelty_score": 93
@@ -2049,8 +2049,8 @@
                 "tests": true
               }
             },
-            "shoulder_angels_1": true,
-            "shoulder_angels_2": true,
+            "shoulder_angels_1": false,
+            "shoulder_angels_2": false,
             "builds_token": "4"
           }
         },
@@ -2097,12 +2097,12 @@
         {
           "name": "cognitive-seam",
           "build_log": {
-            "tokens_text": "{\"novelty\": \"on\", \"depth\": \"standard\", \"difficulty\": \"3\", \"category\": \"any\", \"audience\": \"ai-engineer\", \"lang\": \"python\", \"combo\": \"none\", \"deps\": \"stdlib\", \"platform\": \"xplat\", \"visibility\": \"public\", \"builds\": \"4\", \"timebox\": \"0\", \"loop\": \"inf\", \"seat\": \"quip\"}",
+            "tokens_text": "{\"novelty\": \"on\", \"depth\": \"standard\", \"difficulty\": \"3\", \"category\": \"any\", \"audience\": \"ai-engineer\", \"lang\": \"python\", \"combo\": \"none\", \"deps\": \"stdlib\", \"platform\": \"xplat\", \"visibility\": \"public\", \"builds\": \"4\", \"timebox\": \"0\", \"loop\": \"inf\", \"seat\": \"quip\"}\r\n\r\n---",
             "local_vs_github": "",
-            "redundancy": "**Candidate:** `cognitive-seam` (codename: `seam`)\r\n\r\n**Graph Search:**\r\n- `tools\\ait.cmd search cognitive-seam` → (Stay import blocked, but graph is fresh)\r\n- `python C:\\dev\\stay-fleet\\stay_fleet.py search cognitive-seam` → (fleet reader available)\r\n- GitHub search: no repo named `cognitive-seam` or `seam` in MetaphyKing\r\n\r\n**Prior Art Overlap (from Novelty Engine run):**\r\n- AI Code Assistants (Copilot, Cursor): 35% — they generate implementation; we generate architectural insight\r\n- ADR Tools: 25% — they record decisions; we synthesize the decision space\r\n- C4/Structurizr: 20% — they diagram; we diagnose cognitive fit\r\n- Dependency Analysis: 15% — they map structure; we map cognitive fit\r\n- Static Analysis: 30% — they measure code; we measure intent drift\r\n\r\n**Maximum Overlap:** 35% — **Status: NOVEL**\r\n\r\n**Redundancy Decision:** (a) Something different — no existing tool measures *cognitive fit* between architecture and team working memory.\r\n\r\n---",
-            "chosen_tool": "**Tool Name:** `cognitive-seam` (codename: `seam`)\r\n\r\n**One-Line Purpose:** A deterministic CLI that analyzes a codebase as a *cognitive niche* — measuring where architectural intent drifts from team working memory, and proposing exact structural seams where minimal refactoring restores cognitive fit.\r\n\r\n**Novelty Engine Score:** 93/100 (DEEP mode, 85+ bar cleared) — full reports at `C:\\dev\\Hermes\\Agents\\Quip\\inbox\\novelty-engine\\phase1-4_*.md`\r\n\r\n**Novelty Sheet (from phase4_test.md):**\r\n- Dimension 1 (Conceptual Novelty): 28/30\r\n- Dimension 2 (Structural Novelty): 23/25\r\n- Dimension 3 (Domain Fitness): 18/20\r\n- Dimension 4 (Robustness): 14/15\r\n- Dimension 5 (Synthesis Strength): 10/10\r\n- **Total: 93/100** — DEEP mode PASSED (85+ bar)\r\n\r\n**All 5 Lockout Checkpoints:** PASSED\r\n**All 7 Mechanisms:** EXECUTED\r\n**Adversarial Gauntlet:** SURVIVED\r\n\r\n---",
-            "shoulder_angels_1": true,
-            "shoulder_angels_2": true,
+            "redundancy": "",
+            "chosen_tool": "",
+            "shoulder_angels_1": false,
+            "shoulder_angels_2": false,
             "score_table": false,
             "pivots": false,
             "gates": {
@@ -2151,8 +2151,8 @@
             {
               "path": "cognitive-seam/BUILD_LOG.md",
               "exists": true,
-              "bytes": 16128,
-              "mtime": "2026-09-05T19:25:21Z"
+              "bytes": 6154,
+              "mtime": "2026-09-06T21:15:59Z"
             },
             {
               "path": "cognitive-seam/PRODUCTION_V2.md",
@@ -2199,8 +2199,8 @@
         {
           "path": "cognitive-seam/BUILD_LOG.md",
           "exists": true,
-          "bytes": 16128,
-          "mtime": "2026-09-05T19:25:21Z"
+          "bytes": 6154,
+          "mtime": "2026-09-06T21:15:59Z"
         },
         {
           "path": "cognitive-seam/PRODUCTION_V2.md",
@@ -3682,6 +3682,6 @@
     "pid": 39472,
     "builtAt": "2026-09-06T07:19:35Z"
   },
-  "rebuild_ms": 13.25,
-  "etag": "9237786cb68434bde8f4da87f2d0ac05"
+  "rebuild_ms": 20.05,
+  "etag": "601a584db2c8b91a1bb44ffb4fa2c728"
 }
