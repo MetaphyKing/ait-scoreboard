@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated": "2026-09-06T21:33:24Z",
-  "generated_at": "2026-09-06T21:33:24Z",
+  "generated": "2026-09-06T21:38:33Z",
+  "generated_at": "2026-09-06T21:38:33Z",
   "root": "C:\\dev\\ait",
   "fleet": {
     "seats": 4,
@@ -12,7 +12,7 @@
     "active_loops": 2,
     "tools_on_disk": 4,
     "ledger_rows": 4,
-    "manifest_rows": 4,
+    "manifest_rows": 0,
     "deltas": {
       "seats": 0,
       "readable": 0,
@@ -306,9 +306,9 @@
           "fields": {
             "completion_report": true,
             "readme": true,
-            "manifest_row": true,
+            "manifest_row": false,
             "ledger_row": true,
-            "repo": "https://github.com/MetaphyKing/VariantCollator"
+            "repo": ""
           }
         },
         "6": {
@@ -405,16 +405,7 @@
               "mtime": "2026-09-05T21:29:07Z"
             }
           ],
-          "manifest": [
-            {
-              "tool": "VariantCollator",
-              "repo": "https://github.com/MetaphyKing/VariantCollator",
-              "date": "2026-09-05",
-              "purpose": "Finds text that looks identical across files and is not, naming the characters that do not render",
-              "status": "Uploaded",
-              "builder": "bram"
-            }
-          ],
+          "manifest": [],
           "ledger": [
             {
               "id": "Artifact/VariantCollator/v-cdc9",
@@ -1058,9 +1049,9 @@
           "fields": {
             "completion_report": true,
             "readme": true,
-            "manifest_row": true,
+            "manifest_row": false,
             "ledger_row": true,
-            "repo": "https://github.com/MetaphyKing/AsWritten"
+            "repo": ""
           }
         },
         "6": {
@@ -1157,16 +1148,7 @@
               "mtime": "2026-09-05T20:52:49Z"
             }
           ],
-          "manifest": [
-            {
-              "tool": "Arrived",
-              "repo": "https://github.com/MetaphyKing/Arrived",
-              "date": "2026-09-05",
-              "purpose": "Hop-pair CLI: local success mints an id-debt; hop-2 must echo that id; silence is fail",
-              "status": "Uploaded",
-              "builder": "cael"
-            }
-          ],
+          "manifest": [],
           "ledger": [
             {
               "id": "Artifact/Arrived/a-8582",
@@ -1263,24 +1245,7 @@
               "mtime": "2026-09-05T21:05:10Z"
             }
           ],
-          "manifest": [
-            {
-              "tool": "AsWritten",
-              "repo": "https://github.com/MetaphyKing/AsWritten",
-              "date": "2026-09-05",
-              "purpose": "CLI that certifies a claimed extract against file bytes and lists C0 controls that renderers hide",
-              "status": "In Progress",
-              "builder": "cael"
-            },
-            {
-              "tool": "AsWritten",
-              "repo": "https://github.com/MetaphyKing/AsWritten",
-              "date": "2026-09-05",
-              "purpose": "CLI that certifies a claimed extract against file bytes and lists C0 controls that renderers hide",
-              "status": "Uploaded",
-              "builder": "cael"
-            }
-          ],
+          "manifest": [],
           "ledger": [
             {
               "id": "Artifact/AsWritten/a-e91a",
@@ -2112,7 +2077,7 @@
         "5": {
           "name": "publish",
           "fields": {
-            "completion_report": false,
+            "completion_report": true,
             "readme": true,
             "manifest_row": false,
             "ledger_row": false,
@@ -2152,7 +2117,7 @@
           "novelty_file": "cognitive-seam/novelty_phase4_test.md",
           "novelty_score": 93,
           "production_v2": true,
-          "completion_report": false,
+          "completion_report": true,
           "readme": true,
           "examples": true,
           "builds": {
@@ -2196,9 +2161,9 @@
             },
             {
               "path": "cognitive-seam/COMPLETION_REPORT.md",
-              "exists": false,
-              "bytes": 0,
-              "mtime": null
+              "exists": true,
+              "bytes": 4586,
+              "mtime": "2026-09-06T21:33:56Z"
             },
             {
               "path": "cognitive-seam/README.md",
@@ -2244,9 +2209,9 @@
         },
         {
           "path": "cognitive-seam/COMPLETION_REPORT.md",
-          "exists": false,
-          "bytes": 0,
-          "mtime": null
+          "exists": true,
+          "bytes": 4586,
+          "mtime": "2026-09-06T21:33:56Z"
         },
         {
           "path": "cognitive-seam/README.md",
@@ -3864,6 +3829,6 @@
     "pid": 39472,
     "builtAt": "2026-09-06T07:19:35Z"
   },
-  "rebuild_ms": 12.16,
-  "etag": "3806d7e20181f6e7966a67fc38019811"
+  "rebuild_ms": 11.81,
+  "etag": "f83842e4f47947c9230f842f4f48117b"
 }
