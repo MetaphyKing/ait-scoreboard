@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated": "2026-09-06T07:23:34Z",
-  "generated_at": "2026-09-06T07:23:34Z",
+  "generated": "2026-09-06T21:03:22Z",
+  "generated_at": "2026-09-06T21:03:22Z",
   "root": "C:\\dev\\ait",
   "fleet": {
     "seats": 4,
@@ -2035,8 +2035,8 @@
               },
               "v1-D": {
                 "exists": true,
-                "production_v1": false,
-                "readme": false,
+                "production_v1": true,
+                "readme": true,
                 "tests": true
               }
             },
@@ -2133,8 +2133,8 @@
             },
             "v1-D": {
               "exists": true,
-              "production_v1": false,
-              "readme": false,
+              "production_v1": true,
+              "readme": true,
               "tests": true
             }
           },
@@ -3615,6 +3615,6 @@
     "pid": 39472,
     "builtAt": "2026-09-06T07:19:35Z"
   },
-  "rebuild_ms": 14.46,
-  "etag": "77848ec6882e3dac20d7f6bc5f3b88bd"
+  "rebuild_ms": 13.75,
+  "etag": "bb63d45e36220283929763f7c3eb1540"
 }
